@@ -1,0 +1,21 @@
+marstrong@mars-mba tickets % git pull
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (4/4), 959 bytes | 18.00 KiB/s, done.
+From https://github.com/haydenlinder/tickets
+   e23d0bc..941ecec  master     -> origin/master
+Updating e23d0bc..941ecec
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+marstrong@mars-mba tickets % git checkout -b marshall-test-feature
+Switched to a new branch 'marshall-test-feature'
+marstrong@mars-mba tickets % git mkdir marshall-test-feature
+git: 'mkdir' is not a git command. See 'git --help'.
+marstrong@mars-mba tickets % mkdir marshall-test-feature 
+marstrong@mars-mba tickets % cd marshall-test-feature 
+marstrong@mars-mba marshall-test-feature % touch marshall_test_feature.txt
+marstrong@mars-mba marshall-test-feature % code marshall_test_feature.txt 
+marstrong@mars-mba marshall-test-feature % 
