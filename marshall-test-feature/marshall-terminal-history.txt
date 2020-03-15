@@ -1,3 +1,194 @@
+Last login: Wed Mar 11 16:49:54 on ttys000
+marstrong@mars-mba ~ % cd source 
+marstrong@mars-mba source % git clone https://github.com/haydenlinder/tickets.git
+Cloning into 'tickets'...
+remote: Enumerating objects: 39, done.
+remote: Counting objects: 100% (39/39), done.
+remote: Compressing objects: 100% (25/25), done.
+remote: Total 39 (delta 13), reused 32 (delta 8), pack-reused 0
+Unpacking objects: 100% (39/39), 20.77 KiB | 100.00 KiB/s, done.
+marstrong@mars-mba source % ls
+FrontEndAuthentication       decypher
+FullStack                    front_end_auth_solution
+FullStack_old                front_end_auth_solution.zip
+Icon?                        fruit_stand_01
+MarshallStrong-4417_1439.zip fruit_stand_01.zip
+MyRX                         master.icns
+aA-classwork                 master.png
+artshare                     my-react-app
+assessment_practice          nineties-genius-master
+assessments                  nineties-genius-master.zip
+auth_video_demo              react-demo-widgets
+auth_video_demo.zip          react_map_demo.zip
+bluebird-dec-2019            skeleton.zip
+bluebird.wiki                tickets
+cohort-resources             yenius2
+marstrong@mars-mba source % cd tickets 
+marstrong@mars-mba tickets % ls
+README.md         package-lock.json routes
+app.js            package.json
+marstrong@mars-mba tickets % code README.md 
+marstrong@mars-mba tickets % git checkout -b marshall-branch
+Switched to a new branch 'marshall-branch'
+marstrong@mars-mba tickets % touch marshall_branch_note.txt
+marstrong@mars-mba tickets % ls
+README.md                marshall_branch_note.txt package.json
+app.js                   package-lock.json        routes
+marstrong@mars-mba tickets % code marshall_branch_note.txt 
+marstrong@mars-mba tickets % git add --all
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git add --all
+marstrong@mars-mba tickets % git commit -m "changed Readme, added txt file"
+[marshall-branch 720a544] changed Readme, added txt file
+ 2 files changed, 7 insertions(+)
+ create mode 100644 marshall_branch_note.txt
+marstrong@mars-mba tickets % git pull merge master
+error: You have not concluded your merge (MERGE_HEAD exists).
+hint: Please, commit your changes before merging.
+fatal: Exiting because of unfinished merge.
+marstrong@mars-mba tickets % git commit -m "merge Marshall branch with master"
+[marshall-branch 396d912] merge Marshall branch with master
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % 
+marstrong@mars-mba tickets % git brnach
+git: 'brnach' is not a git command. See 'git --help'.
+
+The most similar command is
+	branch
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git push origin marshall-branch  
+Enumerating objects: 10, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 747 bytes | 747.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: 
+remote: Create a pull request for 'marshall-branch' on GitHub by visiting:
+remote:      https://github.com/haydenlinder/tickets/pull/new/marshall-branch
+remote: 
+To https://github.com/haydenlinder/tickets.git
+ * [new branch]      marshall-branch -> marshall-branch
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git checkout master
+Switched to branch 'master'
+Your branch is behind 'origin/master' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+marstrong@mars-mba tickets % git pull
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), 627 bytes | 627.00 KiB/s, done.
+From https://github.com/haydenlinder/tickets
+   9a841d9..431a4b5  master     -> origin/master
+Updating 9a0fcd1..431a4b5
+Fast-forward
+ README.md                                 |     6 +
+ app.js                                    |     6 +-
+ config/passport.js                        |    16 +
+ frontend/.gitignore                       |    23 +
+ frontend/README.md                        |    68 +
+ frontend/package-lock.json                | 15245 ++++++++++++++++++++++++++++
+ frontend/package.json                     |    47 +
+ frontend/public/favicon.ico               |   Bin 0 -> 3150 bytes
+ frontend/public/index.html                |    43 +
+ frontend/public/logo192.png               |   Bin 0 -> 5347 bytes
+ frontend/public/logo512.png               |   Bin 0 -> 9664 bytes
+ frontend/public/manifest.json             |    25 +
+ frontend/public/robots.txt                |     3 +
+ frontend/src/actions/session_actions.js   |    14 +
+ frontend/src/components/app.jsx           |    13 +
+ frontend/src/components/root.jsx          |    14 +
+ frontend/src/index.js                     |    37 +
+ frontend/src/reducers/entities_reducer.js |    11 +
+ frontend/src/reducers/errors_reducer.js   |    11 +
+ frontend/src/reducers/root_reducer.js     |    12 +
+ frontend/src/reducers/session_reducer.js  |    14 +
+ frontend/src/reducers/tickets_reducer.js  |    11 +
+ frontend/src/reducers/users_reducer.js    |    11 +
+ frontend/src/serviceWorker.js             |   141 +
+ frontend/src/setupTests.js                |     5 +
+ frontend/src/store/store.js               |    15 +
+ frontend/src/util/route_util.jsx          |    35 +
+ frontend/src/util/session_api_util.js     |     9 +
+ marshall_branch_note.txt                  |     1 +
+ models/User.js                            |    19 +
+ package-lock.json                         |   392 +-
+ package.json                              |     6 +-
+ routes/api/users.js                       |    88 +-
+ validation/login.js                       |    26 +
+ validation/register.js                    |    41 +
+ validation/valid_text.js                  |     5 +
+ 36 files changed, 16395 insertions(+), 18 deletions(-)
+ create mode 100644 config/passport.js
+ create mode 100644 frontend/.gitignore
+ create mode 100644 frontend/README.md
+ create mode 100644 frontend/package-lock.json
+ create mode 100644 frontend/package.json
+ create mode 100644 frontend/public/favicon.ico
+ create mode 100644 frontend/public/index.html
+ create mode 100644 frontend/public/logo192.png
+ create mode 100644 frontend/public/logo512.png
+ create mode 100644 frontend/public/manifest.json
+ create mode 100644 frontend/public/robots.txt
+ create mode 100644 frontend/src/actions/session_actions.js
+ create mode 100644 frontend/src/components/app.jsx
+ create mode 100644 frontend/src/components/root.jsx
+ create mode 100644 frontend/src/index.js
+ create mode 100644 frontend/src/reducers/entities_reducer.js
+ create mode 100644 frontend/src/reducers/errors_reducer.js
+ create mode 100644 frontend/src/reducers/root_reducer.js
+ create mode 100644 frontend/src/reducers/session_reducer.js
+ create mode 100644 frontend/src/reducers/tickets_reducer.js
+ create mode 100644 frontend/src/reducers/users_reducer.js
+ create mode 100644 frontend/src/serviceWorker.js
+ create mode 100644 frontend/src/setupTests.js
+ create mode 100644 frontend/src/store/store.js
+ create mode 100644 frontend/src/util/route_util.jsx
+ create mode 100644 frontend/src/util/session_api_util.js
+ create mode 100644 marshall_branch_note.txt
+ create mode 100644 models/User.js
+ create mode 100644 validation/login.js
+ create mode 100644 validation/register.js
+ create mode 100644 validation/valid_text.js
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git pull    
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 2), reused 6 (delta 2), pack-reused 0
+Unpacking objects: 100% (6/6), 571 bytes | 71.00 KiB/s, done.
+From https://github.com/haydenlinder/tickets
+   431a4b5..aaa41c2  master     -> origin/master
+Updating 431a4b5..aaa41c2
+Fast-forward
+ README.md | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+
+nothing added to commit but untracked files present (use "git add" to track)
+marstrong@mars-mba tickets % git pull
+remote: Enumerating objects: 24, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 18 (delta 7), reused 14 (delta 4), pack-reused 0
+Unpacking objects: 100% (18/18), 2.25 KiB | 121.00 KiB/s, done.
+From https://github.com/haydenlinder/tickets
+   aaa41c2..e23d0bc  master     -> origin/master
+ * [new branch]      bradtest   -> origin/bradtest
+Updating aaa41c2..e23d0bc
+Fast-forward
+ README.md | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+marstrong@mars-mba tickets % git branch
 marstrong@mars-mba tickets % git pull
 remote: Enumerating objects: 8, done.
 remote: Counting objects: 100% (8/8), done.
@@ -18,4 +209,39 @@ marstrong@mars-mba tickets % mkdir marshall-test-feature
 marstrong@mars-mba tickets % cd marshall-test-feature 
 marstrong@mars-mba marshall-test-feature % touch marshall_test_feature.txt
 marstrong@mars-mba marshall-test-feature % code marshall_test_feature.txt 
-marstrong@mars-mba marshall-test-feature % 
+marstrong@mars-mba marshall-test-feature % touch marshall-terminal-history.txt
+marstrong@mars-mba marshall-test-feature % git add --all
+marstrong@mars-mba marshall-test-feature % git commit -m created marshall_test_feature directory
+error: pathspec 'marshall_test_feature' did not match any file(s) known to git
+error: pathspec 'directory' did not match any file(s) known to git
+marstrong@mars-mba marshall-test-feature % git commit -m "created marshall_test_feature" directory
+error: pathspec 'directory' did not match any file(s) known to git
+marstrong@mars-mba marshall-test-feature % cd ..
+marstrong@mars-mba tickets % git commit -m "created marshall_test_feature" directory
+error: pathspec 'directory' did not match any file(s) known to git
+marstrong@mars-mba tickets % git commit -m "created marshall_test_feature directory"
+[marshall-test-feature dab0154] created marshall_test_feature directory
+ 3 files changed, 22 insertions(+)
+ create mode 100644 .DS_Store
+ create mode 100644 marshall-test-feature/marshall-terminal-history.txt
+ create mode 100644 marshall-test-feature/marshall_test_feature.txt
+marstrong@mars-mba tickets % git branch
+marstrong@mars-mba tickets % git status
+On branch marshall-test-feature
+nothing to commit, working tree clean
+marstrong@mars-mba tickets % git push -u origin marshall-test-feature  
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.10 KiB | 1.10 MiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'marshall-test-feature' on GitHub by visiting
+remote:      https://github.com/haydenlinder/tickets/pull/new/marshall-test-feature
+remote: 
+To https://github.com/haydenlinder/tickets.git
+ * [new branch]      marshall-test-feature -> marshall-test-feature
+Branch 'marshall-test-feature' set up to track remote branch 'marshall-test-feature' from 'origin'.
+marstrong@mars-mba tickets % 
