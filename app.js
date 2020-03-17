@@ -1,54 +1,41 @@
-const express = require('express');
-const app = express()
-const mongoose = require('mongoose');
-const db = require('./config/keys').mongoURI;
-const users = require("./routes/api/users");
-const User = require("./models/User");
-const bodyParser = require("body-parser");
-
-const users = require("./routes/api/users")
-const tickets = require("./routes/api/tickets")
-const tags = require('./routes/api/tags')
-
-const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(passport.initialize())
-require('./config/passport')(passport);
-
-app.use("/api/users", users)    
-app.use("/api/tickets", tickets)
-app.use('api/tags', tags)
-
+// DATABASE SETUP
+const mongoose = require('mongoose'); //mongoose connects app to MongoDB
+const port = process.env.PORT || 5000;  
 app.listen(port, () => console.log(`Server is running on port ${port}`));
-
+const db = require('./config/keys').mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+
+// ROUTES SETUP
+const express = require('express');  //creates a new Express server
+const app = express();  //app is an invocation of our express server
+
+// ROUTES
+// root route
+app.get("/", (req, res) => { res.send("Hello World!") });
+// import users routes, use with users paths
+const users = require("./routes/api/users");
+app.use("/api/users", users);
+// import tickets routes, use with tickets paths
+const tickets = require("./routes/api/tickets");
+app.use("/api/tickets", tickets);
+// import tags routes, use with tags paths
+const tags = require('./routes/api/tags');
+app.use('api/tags', tags);
 
 
-app.get("/", (req, res) => {
-    const user = new User ({
-        first_name: "jim2",
-        last_name: "jones",
-        email: "jim@catsforhumanity.org",
-        password: "jimisgreat123"
-    })
-    user.save()
-    res.send("Hello World!")
-})
+// USER AUTH
+const passport = require('passport');
+app.use(passport.initialize())
+require('./config/passport')(passport);
 
-app.use("/api/users", users)   
-
-const port = process.env.PORT || 5000;
-
-
-app.listen(port, () => {console.log(`Server is running on port ${port}`)});
-
-
+ 
+// https://www.npmjs.com/package/body-parser
+// imports body-parser so that we can parse the JSON we send to our frontend
+const bodyParser = require('body-parser');
+// sets up middleware needed for body-parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());

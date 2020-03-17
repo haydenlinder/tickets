@@ -18,4 +18,4 @@
 
 13. git checkout master (switch to master branch)
 14. git pull origin master (pull updates you just pushed in step 11)
-15. git branch -d {branch-name} (delete the local branch)
+15. git branch -d {branch-name} (delete the local branch)git
