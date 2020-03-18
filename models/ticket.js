@@ -63,5 +63,5 @@ const ticketSchema = new Schema({
     },
 });
 
-Ticket = mongoose.model('Ticket', ticketSchema, 'tickets');
+Ticket = mongoose.model('Ticket', ticketSchema, "tickets");
 module.exports = Ticket;
