@@ -28,7 +28,7 @@ class NavBar extends React.Component {
 
                         <div className="right-nav">
                             <Link to={'/tickets'}>tickets</Link>
-                            <Link to={'/profile'}>Profile</Link>
+                            <Link to={`/users/${this.props.currentUser.id}`}>{this.props.currentUser.firstName}</Link>
                             <Link to={'/new_ticket'}>Write a Ticket</Link>
                             <button onClick={this.logoutUser}>Logout</button>
                         </div>
