@@ -1,5 +1,15 @@
-import seeder from "mongoose-seed";
-const db = require('./config/keys').mongoURI;
+// import seeder from "mongoose-seed";
+const { seeder } = require('mongo-seeding');
+
+// const db = require('./config/keys').mongoURI;
+const config = {
+    database: {
+        host: '127.0.0.1',
+        port: 27017,
+        name: 'mydatabase',
+    },
+    dropDatabase: true,
+};
 
 // const organizationModel = require('../models/organization');
 const organizationSeeds = require('./organizations');

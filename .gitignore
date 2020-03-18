@@ -1,2 +1,4 @@
 node_modules/
 /config/keys.js 
+/config/seeder.js
+/config/db_driver.js
