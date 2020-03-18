@@ -1,4 +1,4 @@
-const organizationSeeds = {
+const userSeeds = {
     // 'model': 'Organization',
     // 'documents': [
     //     {
@@ -24,4 +24,4 @@ const organizationSeeds = {
     // ]
 };
 
-module.exports = organizationSeeds;
+module.exports = userSeeds;
