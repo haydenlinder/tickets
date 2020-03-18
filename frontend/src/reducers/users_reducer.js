@@ -1,8 +1,12 @@
+import { RECEIVE_CURRENT_USER, RECEIVE_USER_LOGOUT } from "../actions/session_actions";
 
 const usersReducer = (state = {}, action) => {
-    switch (action) {
-        case "banana":
-            return state;
+    Object.freeze(state);
+    let newState = Object.assign({}, state) 
+    switch (action.type) {
+        case RECEIVE_CURRENT_USER:
+            newState[action.payload.id] = action.payload
+            return newState;
         default:
             return state;
     }

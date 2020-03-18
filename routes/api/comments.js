@@ -14,13 +14,13 @@ router.post("/",
             return res.status(400).json(errors)
         }
 
-            const newComment = new Comment ({
-                body: req.body.body
-            })
+        const newComment = new Comment ({
+            body: req.body.body
+        })
 
-            newComment.save().then(comment => res.json(comment))    
-        
-})
+        newComment.save().then(comment => res.json(comment))    
+    }
+)
 
 router.get("/tickets/:ticket_id", (req, res) => {
     Comment
@@ -38,7 +38,7 @@ router.get("/tickets/:ticket_id", (req, res) => {
 router.patch("/:id",
         passport.authenticate('jwt', { session: false }),
         (req, res) => {
-        Comment
+            Comment
             .findById(req.params.id)
             .then(comment => {
                 if (comment.user.equals(req.user.id)) {
@@ -52,12 +52,13 @@ router.patch("/:id",
                       });
                 }
             })
-    })
+        }
+)
 
 router.delete("/:id", 
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-    Comment
+        Comment
         .findById(req.params.id) 
         .then(comment => {
             if (comment.user.equals(req.user.id)) {
@@ -69,7 +70,7 @@ router.delete("/:id",
                 "You do not have permission to delete"})
             }
         })  
-    })
-
-    module.exports = router
+    }
+)
  
+module.exports = router;

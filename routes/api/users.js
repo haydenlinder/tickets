@@ -22,8 +22,8 @@ router.post("/register", (req, res) => {
         } else {
             const orgName = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 organization: orgName,
                 password: req.body.password
@@ -35,7 +35,12 @@ router.post("/register", (req, res) => {
                     newUser.password = hash;
                     newUser.save()
                     .then(user => {
-                        const payload = { id: user.id };
+                        const payload = { 
+                            id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            organization: user.organization
+                        };
 
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
@@ -69,7 +74,12 @@ router.post("/login", (req, res) => {
 
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
-                const payload = { id: user.id };
+                const payload = { 
+                    id: user.id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    organization: user.organization
+                };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                     res.json({
