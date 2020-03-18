@@ -31,7 +31,13 @@ seeder.connect(db, () => {
         'ticket',
         'user',
     ], () => {
-        seeder.populateModels(seeds, () => {
+        seeder.populateModels(seeds, (err, done) => {
+            if (err) {
+                return console.log("seeding error", err);
+            }
+            if (done) {
+                return console.log("seeding completed", done);
+            }
             seeder.disconnect()
         });
     });
