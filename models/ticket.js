@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const TicketSchema = new Schema({
+const ticketSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -61,8 +61,7 @@ const TicketSchema = new Schema({
         type: Date,
         default: undefined
     },
-})
+});
 
-Ticket = mongoose.model('Ticket', TicketSchema)
-
-module.exports = Ticket
+Ticket = mongoose.model('Ticket', ticketSchema);
+module.exports = Ticket;

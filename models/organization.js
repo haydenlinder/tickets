@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const OrganizationSchema = new Schema({
+const organizationSchema = new Schema({
     handle: {
         type: String,
         required: true
@@ -18,7 +18,7 @@ const OrganizationSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
-Organization = mongoose.model('Organization', OrganizationSchema)
+Organization = mongoose.model('Organization', organizationSchema);
 module.exports = Organization;
