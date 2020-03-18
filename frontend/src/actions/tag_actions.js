@@ -11,7 +11,7 @@ const receiveTag = tag => ({
 
 const receiveTags = tags => ({
     type: RECEIVE_TAGS,
-    tag
+    tags
 })
 
 const receiveTagErrors = errors => ({
@@ -22,7 +22,7 @@ const receiveTagErrors = errors => ({
 export const createTag = tag => dispatch => (
     tagAPIUtil.createTag(tag)
     .then(tag => dispatch(receiveTag(tag)))
-    .catch(errors = dispatch(receiveTagErrors(errors)))
+    .catch(errors => dispatch(receiveTagErrors(errors))) 
 )
 
 export const getTags = () => dispatch => (
@@ -33,5 +33,5 @@ export const getTags = () => dispatch => (
 export const getTag = (name) => dispatch => (
     tagAPIUtil.getTag(name)
     .then(tag => dispatch(receiveTag(tag)))
-    .catch(errors = dispatch(receiveTagErrors(errors)))
+    .catch(errors => dispatch(receiveTagErrors(errors)))
 )

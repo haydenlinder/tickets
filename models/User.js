@@ -22,11 +22,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now
     }
 })
 
-const User = mongoose.model('users', UserSchema);
+User = mongoose.model('User', UserSchema)
 module.exports = User;

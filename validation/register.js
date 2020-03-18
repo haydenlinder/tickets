@@ -14,7 +14,7 @@ module.exports = function validateRegisterInput(data) {
     orgName = validText(orgName) ? orgName : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
-
+    
     if (Validator.isEmpty(data.first_name)) {
         errors.first_name = 'first_name field is required';
     }

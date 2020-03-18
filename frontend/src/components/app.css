@@ -1,0 +1,8 @@
+.hover-pointer:hover {
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+}
+
