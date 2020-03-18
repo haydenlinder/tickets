@@ -13,22 +13,22 @@ const userSeeds = require('./users');
 
 const seeds = [
     organizationSeeds,
-    tagSeeds,
-    ticketSeeds,
+    // tagSeeds,
+    // ticketSeeds,
     userSeeds
 ];
 
 seeder.connect(db, () => {
     seeder.loadModels([
         '../models/organization',
-        '../models/tag',
-        '../models/ticket',
+        // '../models/tag',
+        // '../models/ticket',
         '../models/user',
     ]);
     seeder.clearModels([
         'organization',
-        'tag',
-        'ticket',
+        // 'tag',
+        // 'ticket',
         'user',
     ], () => {
         seeder.populateModels(seeds, (err, done) => {
