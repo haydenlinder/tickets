@@ -5,8 +5,8 @@ module.exports = function validateTagInput(tag) {
 
     tag.name = validText(tag.name) ? tag.name : '';
 
-    if (!validText(tag.name)) errors.name = 'Tag name required';
-    if (tag.name.includes(" ")) errors.name = 'Tags cannot include spaces'
+    if (!validText(tag.name)) errors.name = 'A Tag must have a name.';
+    if (tag.name.includes(" ")) errors.name = 'A Tag name must not include spaces.'
 
     return {
         errors,

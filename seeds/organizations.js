@@ -3,7 +3,7 @@ import seeder from "mongoose-seed";
 const db = require('./config/keys').mongoURI;
 
 const Organization = require('');
-const User = require('../models/User');
+const User = require('../models/user');
 
 const organizationSeeds = {
     'model': 'Organization',

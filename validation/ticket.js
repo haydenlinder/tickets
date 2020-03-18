@@ -8,7 +8,7 @@ module.exports = function validateTicketInput(ticket) {
     ticket.body = validText(ticket.body) ? ticket.body : ''
 
     if (Validator.isEmpty(ticket.title)) {
-        errors.title = "Title can't be blank"
+        errors.title = "A Ticket must have a title."
     }
 
     return {

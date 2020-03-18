@@ -3,10 +3,10 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const express = require("express");
 const router = express.Router();
+const keys = require('../../config/keys')
 const validateRegisterInput = require("../../validation/register")
 const validateLoginInput = require("../../validation/login")
 const User = require('../../models/User')
-
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -53,7 +53,6 @@ router.post("/register", (req, res) => {
 
 router.post("/login", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -61,9 +60,10 @@ router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    User.findOne({ email }).then(user => {
+    User.findOne({ email })
+    .then(user => {
         if (!user) {
-            errors.email = "This user does not exist";
+            errors.email = "There is no account associated with that email";
             return res.status(400).json(errors);
         }
 
