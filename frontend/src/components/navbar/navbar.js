@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import '../app.css'
+import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -18,18 +19,36 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div>
-                    <Link to={'/tickets'}>tickets</Link>
-                    <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/new_ticket'}>Write a Ticket</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
+                <div className="header">
+                    <div className="nav">
+
+                        <div className="left-nav">
+                            Tickets
+                        </div>
+
+                        <div className="right-nav">
+                            <Link to={'/tickets'}>tickets</Link>
+                            <Link to={'/profile'}>Profile</Link>
+                            <Link to={'/new_ticket'}>Write a Ticket</Link>
+                            <button onClick={this.logoutUser}>Logout</button>
+                        </div>
+
+                    </div>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
+                <div className="header">
+                    <div className="nav">
+                        <div className="left-nav"> 
+                            Tickets
+                        </div>
+
+                        <div className="right-nav">
+                            <Link to={'/signup'}>Signup</Link>
+                            <Link to={'/login'}>Login</Link>
+                        </div>
+                    </div>
                 </div>
             );
         }
@@ -38,7 +57,6 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="hover-pointer container">
-                <h1>Tickets</h1>
                 {this.getLinks()}
             </div>
         );

@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(61, 204, 123);
+    color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    min-width: 1000px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.nav .left-nav {
+    font-size: 30px;
+}
+
+.nav .right-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav .right-nav a {
+    padding: 10px
+}

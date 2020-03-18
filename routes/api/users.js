@@ -22,8 +22,8 @@ router.post("/register", (req, res) => {
         } else {
             const orgName = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 organization: orgName,
                 password: req.body.password
