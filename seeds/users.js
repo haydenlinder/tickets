@@ -1,27 +1,77 @@
 const userSeeds = {
-    // 'model': 'Organization',
-    // 'documents': [
-    //     {
-    //         'handle': 'cats4humanity.org',
-    //         'name': 'Cats for Humanity',
-    //         'motto': 'a cat in every household!'
-    //     },
-    //     {
-    //         'handle': 'address',
-    //         'name': 'ACME',
-    //         'motto': "if you take your cues from error messages, this is the company for you"
-    //     },
-    //     {
-    //         'handle': 'gmail.com',
-    //         'name': 'Google',
-    //         'motto': "if you have a gmail account, you work at Google!"
-    //     },
-    //     {
-    //         'handle': 'appacademy.io',
-    //         'name': 'appAcademy',
-    //         'motto': "appAcademy: if you liked your old life, you wouldn't be here. "
-    //     },
-    // ]
+    'model': 'User',
+    'documents': [
+        {
+            'firstName': 'Hayden',
+            'lastName': 'Linder',
+            'email': 'hayden@cats4humanity.org',
+            'organization': 'cats4humanity.org',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Brad',
+            'lastName': 'Nelson',
+            'email': 'brad@cats4humanity.org',
+            'organization': 'cats4humanity.org',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Joe',
+            'lastName': 'Johnston',
+            'email': 'joe@cats4humanity.org',
+            'organization': 'cats4humanity.org',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Marshall',
+            'lastName': 'Strong',
+            'email': 'marshall@cats4humanity.org',
+            'organization': 'cats4humanity.org',
+            'password': 'password'
+        }, 
+        {
+            'firstName': 'Demo',
+            'lastName': 'User',
+            'email': 'user@cats4humanity.org',
+            'organization': 'cats4humanity.org',
+            'password': 'password'
+        },
+        {
+            'firstName': 'ACME',
+            'lastName': 'User',
+            'email': 'email@address',
+            'organization': 'address',
+            'password': 'password'
+        },
+        {
+            'firstName': 'gmail',
+            'lastName': 'User',
+            'email': 'user@gmail.com',
+            'organization': 'gmail.com',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Carlos',
+            'lastName': 'Garcia',
+            'email': 'carlos@appacademy.io',
+            'organization': 'appacademy.io',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Julia',
+            'lastName': 'Wang',
+            'email': 'julia@appacademy.io',
+            'organization': 'appacademy.io',
+            'password': 'password'
+        },
+        {
+            'firstName': 'Mike',
+            'lastName': 'Madsen',
+            'email': 'mike@appacademy.io',
+            'organization': 'appacademy.io',
+            'password': 'password'
+        },
+    ]
 };
 
 module.exports = userSeeds;
