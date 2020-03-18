@@ -27,6 +27,14 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
+const demoUser = {
+    first_name: "Demo",
+    last_name: "User",
+    email: "demoUser@C4H.com",
+    password: "password",
+    password2: "password"
+}
+
 export const signup = user => dispatch => (
     sessionAPIUtil.signup(user)
     .then(
@@ -54,6 +62,9 @@ export const login = user => dispatch => {
     })
 }
 
+export const demoUserLogin = demoUser => dispatch => {
+    return dispatch(login(demoUser))
+}
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken')

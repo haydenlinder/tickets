@@ -4,7 +4,7 @@ const passport = require('passport');
 
 const validateTagInput = require('../../validation/tag');
 
-const Tag = require('../../models/Tag')
+const Tag = require('../../models/tag')
 
 router.post('/', 
     passport.authenticate('jwt', { session: false }),

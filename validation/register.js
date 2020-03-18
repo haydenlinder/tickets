@@ -30,19 +30,19 @@ module.exports = function validateRegisterInput(data) {
         errors.email = 'The format of your email@address may be incorrect.';
     }
 
-    User.findOne({ email: data.email }).then(user => {
-        if (!user) {
-            errors.email = "A User with this email already exists.";
-            return res.status(400).json(errors);
-        }
-    })
+    // User.findOne({ email: data.email }).then(user => {
+    //     if (!user) {
+    //         errors.email = "A User with this email already exists.";
+    //         return res.status(400).json(errors);
+    //     }
+    // })
 
-    Organization.findOne({ handle: organizationHandle }).then(organization => {
-        if (!organization) {
-            errors.handle = "Your Organization is not registered.";
-            return res.status(400).json(errors);
-        }
-    })
+    // Organization.findOne({ handle: organizationHandle }).then(organization => {
+    //     if (!organization) {
+    //         errors.handle = "Your Organization is not registered.";
+    //         return res.status(400).json(errors);
+    //     }
+    // })
 
     if (Validator.isEmpty(data.password)) {
         errors.password = 'A password is required.';
