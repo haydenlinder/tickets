@@ -1,39 +1,38 @@
 import seeder from "mongoose-seed";
-
 const db = require('./config/keys').mongoURI;
-const Organization = require('../models/organization');
-const Organizations = require('./organizations');
-const User = require('./users');
 
-const data = [
-    {
-        'model': 'User',
-        'documents': [
-            {
-                'name': 'Doc1',
-                'value': 200
-            },
-            {
-                'name': 'Doc2',
-                'value': 400
-            }
-        ]
-    }
+// const organizationModel = require('../models/organization');
+const organizationSeeds = require('./organizations');
+// const tagModel = require('../models/tag');
+const tagSeeds = require('./tags');
+// const ticketModel = require('../models/ticket');
+const ticketSeeds = require('./tickets');
+// const userModel = require('../models/user');
+const userSeeds = require('./users');
+
+
+const seeds = [
+    organizationSeeds,
+    tagSeeds,
+    ticketSeeds,
+    userSeeds
 ];
 
-
-
-
-
-
-
-
-
 seeder.connect(db, () => {
-    seeder.loadModels([User]);
-    seeder.clearModels([User], () => {
-        seeder.populateModels(data, () => {
-            seeder.disconnect();
+    seeder.loadModels([
+        '../models/organization',
+        '../models/tag',
+        '../models/ticket',
+        '../models/user',
+    ]);
+    seeder.clearModels([
+        'organization',
+        'tag',
+        'ticket',
+        'user',
+    ], () => {
+        seeder.populateModels(seeds, () => {
+            seeder.disconnect()
         });
     });
 });
