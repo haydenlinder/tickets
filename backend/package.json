@@ -1,13 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "lint": "eslint ./",
     "test": "jest -i --verbose --coverage --runInBand",
     "start": "node app.js",
     "dboff": "killall mongod",
-    "watch": "nodemon index.js",
+    "watch": "nodemon app.js",
     "dbon": "mkdir -p ./db && mongod --dbpath ./db"
   },
   "author": "",
@@ -20,10 +20,5 @@
     "http-errors": "^1.7.3",
     "mongoose": "^5.9.5",
     "superagent": "^5.2.2"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "jest": "^24.9.0",
-  },
-  "description": ""
+  }
 }

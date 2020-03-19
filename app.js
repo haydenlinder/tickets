@@ -63,17 +63,17 @@ app.listen(port, () => console.log(`Server is running on port ${port}`));
 // };
 
 
-// mongoose.Promise = require('bluebird');
-// mongoose.connect(key.mongoURI, { useNewUrlParser: true });
-// mongoose.connection.on('connected', () => {
-//     console.log(`Database connection open to ${mongoose.connection.host} ${mongoose.connection.name}`);
-// });
-// mongoose.connection.on('error', (err) => {
-//     console.log('Mongoose default connection error: ' + err);
-// });
-// mongoose.connection.on('disconnected', () => {
-//     console.log('Mongoose default connection disconnected');
-// });
+mongoose.Promise = require('bluebird');
+mongoose.connect(key.mongoURI, { useNewUrlParser: true });
+mongoose.connection.on('connected', () => {
+    console.log(`Database connection open to ${mongoose.connection.host} ${mongoose.connection.name}`);
+});
+mongoose.connection.on('error', (err) => {
+    console.log('Mongoose default connection error: ' + err);
+});
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose default connection disconnected');
+});
 
 // runOrgSeeds(organizationSeeds);
 
