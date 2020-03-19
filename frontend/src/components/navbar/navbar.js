@@ -45,7 +45,7 @@ class NavBar extends React.Component {
                 </div>
             );
         } else {
-            if (this.props.location.pathname === '/signup' || this.props.location.pathname === '/') {
+            if (this.props.location.pathname === '/') {
                 return (
                     <div className="header">
                         <div className="nav">
@@ -55,25 +55,38 @@ class NavBar extends React.Component {
 
                             <div className="right-nav">
                                 <Link to={'/signup'}>Signup</Link>
-                                {/* <Link to={'/login'}>Login</Link> */}
+                                <Link to={'/login'}>Login</Link>
                                 <button className="button1" onClick={this.handleDemo}>login as a demo user</button>
                             </div>
                         </div>
                     </div>
                 );
             }
+            else if (this.props.location.pathname === "/signup") {
+                return (
+                    <div className="header">
+                        <div className="nav">
+                        <div className="left-nav">Tickets</div>
+
+                        <div className="right-nav">
+                            {/* <Link to={"/signup"}>Signup</Link> */}
+                            <Link to={"/login"}>Login</Link>
+                            <button className="button1" onClick={this.handleDemo}>login as a demo user</button>
+                        </div>
+                        </div>
+                    </div>
+                );
+            } 
             else {
                 return (
                     <div className="header">
                         <div className="nav">
-                            <div className="left-nav">
-                                Tickets
-                            </div>
+                            <div className="left-nav">Tickets</div>
 
                             <div className="right-nav">
-                                {/* <Link to={'/signup'}>Signup</Link> */}
-                                <Link to={'/login'}>Login</Link>
-                                <button className="button1" onClick={this.handleDemo}>login as a demo user</button>
+                            <Link to={'/signup'}>Signup</Link>
+                            {/* <Link to={"/login"}>Login</Link> */}
+                            <button className="button1" onClick={this.handleDemo}>login as a demo user</button>
                             </div>
                         </div>
                     </div>
