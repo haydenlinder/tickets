@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 class Profile extends React.Component {
     constructor(props) {
         super(props)
+          
     }
 
     componentDidMount() {
@@ -12,6 +13,7 @@ class Profile extends React.Component {
     }
 
     render() {
+        
         const {user, comments, tickets} = this.props;
 
         const userCommentInfo = comments.map(ticket => (
@@ -41,10 +43,8 @@ class Profile extends React.Component {
         return (
             <div>
                 <div className="profile-header-container">
-                    <h1>
-                    Hello! {user.firstName} {user.lastName}
-                </h1>
-            </div>
+                    <h1>Hello! {user.firstName} {user.lastName}</h1>
+                </div>
 
             <div>{userTicketInfo}</div>
             <div>{userCommentInfo}</div>

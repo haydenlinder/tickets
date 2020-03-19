@@ -51,6 +51,7 @@ export const signup = user => dispatch => (
 
 
 export const login = user => dispatch => {
+    
     sessionAPIUtil.login(user)
     .then(res => {
         const { token } = res.data;
