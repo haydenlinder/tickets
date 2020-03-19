@@ -1,15 +1,17 @@
 require('dotenv').config();
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+const express = require('express')
+const usersRouter = express.Router();
 const User = require('../../models/user');
 
 // Authentication utilities
 const APP_SECRET = process.env.APP_SECRET;
 
-const encrcyptPassword = (plaintextPassword) => {
+const encryptPassword = (plaintextPassword) => {
     bcrypt.hash(plaintextPassword, 10, (err, hash) => {
         if (err) { throw err } else { return hash} 
     })
@@ -50,8 +52,6 @@ const generateJWT = (currentUser) => {
 };
 
 // Router
-const usersRouter = express.Router();
-
 usersRouter.route('/register').post(
     (req, res) => {
         // validate new user

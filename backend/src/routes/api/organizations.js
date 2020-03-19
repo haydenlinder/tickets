@@ -1,4 +1,6 @@
-const router = express.Router();
+const passport = require('passport')
+const express = require('express')
+const organizationsRouter = express.Router();
 const Organization = require('../../models/organization');
 
 organizationsRouter.route('/')

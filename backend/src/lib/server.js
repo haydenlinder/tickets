@@ -11,7 +11,7 @@ const router = express.Router();
 
 // environment settings
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.DEV_URI;
+const MONGO_URI = process.env.DB_URI_DEV;
 
 // server settings & utilites
 app.use(cors());

@@ -19,10 +19,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    organization: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Organization'
-    },
+    // organization: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Organization'
+    // },
     passwordDigest: {
         type: String,
         required: true
