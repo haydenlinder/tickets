@@ -9,29 +9,40 @@ require('dotenv').config();
 const app = express();
 const router = express.Router();
 
-// env variables
+// environment settings
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.DEV_URI;
+const MONGO_URI = process.env.DEV_URI;
 
-mongoose.Promise = Promise;
-// mongoose.Promise = require('bluebird');
-mongoose.connect(MONGODB_URI);
+// server settings & utilites
+app.use(cors());
+app.use(bodyParser.json());
 
-const startServer = app.listen(PORT, () => {
+const startServer = app.listen(PORT, () => { 
     console.log(`Server is listening on port: ${PORT}`);
 })
 
 const stopServer = () => {
-    app.close(PORT, () => {
-        console.log(`Shut down on port: ${PORT}`)
-    })
+    app.close(PORT, () => { console.log(`Shut down on port: ${PORT}`)})
 }
 
-app.use(cors());
-app.use(bodyParser.json());
+// Router
+const organizationsRouter = require("./routes/api/organizations");
+const usersRouter = require("./routes/api/users");
+const ticketsRouter = require("./routes/api/tickets");
+const tagsRouter = require('./routes/api/tags');
+const commentsRouter = require('./routes/api/comments');
 
+app.use("/api/organizations", organizationsRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/tickets", ticketsRouter);
+app.use('api/tags', tagsRouter);
+app.use('api/comments', commentsRouter);
 
-const mongoURI = process.env.DEV_URI; 
+// actually start the server
+startServer();
+
+// mongoose settings & utilities
+mongoose.Promise = require('bluebird');
 mongoose.connect(mongoURI, { useNewUrlParser: true, useCreateIndex: true });
 mongoose.connection.on('connected', () => {
     console.log(`Database connection open to ${mongoose.connection.host} ${mongoose.connection.name}`);
