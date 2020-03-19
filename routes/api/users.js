@@ -25,7 +25,7 @@ router.post("/register", (req, res) => {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                organization: orgName,
+                orgHandle: orgHandle,
                 password: req.body.password
             });
 
@@ -39,7 +39,7 @@ router.post("/register", (req, res) => {
                             id: user.id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            organization: user.organization
+                            orgHandle: user.orgHandle
                         };
 
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

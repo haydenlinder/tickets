@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 
-const keys = require('../config/keys');
+const keys = require('./config/keys');
 const passport = require('passport')
 
 const env = 'development';
@@ -10,7 +10,7 @@ const key = keys[env];
 const mongoURI = key.mongoURI;
 
 const Organization = require('./models/organization');
-const organizationSeeds = require('./seeds/organizations');
+// const organizationSeeds = require('./seeds/organizations');
 // const Tag = require('../models/tag');
 // const tagSeeds = require('./tags');
 // const Ticket = require('../models/ticket');
@@ -51,22 +51,30 @@ app.use('api/comments', comments)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-const runOrgSeeds = (seeds) => {
-    console.log('Seeding organizations to ' + mongoose.connection.name + '...');
+// const runOrgSeeds = (seeds) => {
+//     console.log('Seeding organizations to ' + mongoose.connection.name + '...');
 
-    for (seed of seeds) {
-        const newOrg = new Organization(seed);
-        newOrg.save().then(newOrg => res.json(newOrg));
-    }
-};
+//     for (seed of seeds) {
+//         const newOrg = new Organization(seed);
+//         await newOrg.save();
+//     }
+//     const a = await Organization.find();
+//     console.log('organizations: ', a);
+// };
 
 
+// mongoose.Promise = require('bluebird');
+// mongoose.connect(key.mongoURI, { useNewUrlParser: true });
+// mongoose.connection.on('connected', () => {
+//     console.log(`Database connection open to ${mongoose.connection.host} ${mongoose.connection.name}`);
+// });
+// mongoose.connection.on('error', (err) => {
+//     console.log('Mongoose default connection error: ' + err);
+// });
+// mongoose.connection.on('disconnected', () => {
+//     console.log('Mongoose default connection disconnected');
+// });
 
-mongoose
-    .connect(mongoURI, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
-    .catch(err => console.log(err));
-    
-runOrgSeeds(organizationSeeds);
+// runOrgSeeds(organizationSeeds);
 
-module.exports = app;
+// module.exports = app;
