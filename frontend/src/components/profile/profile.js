@@ -5,12 +5,13 @@ class Profile extends React.Component {
     constructor(props) {
         super(props)
       
+    
     }
 
-    // componentDidMount() {
-    //     this.props.fetchCreatedTickets(this.props.params.match.userId)
-    //     this.props.fetchUserComments(this.props.params.match.userId)
-    // }
+    componentDidMount() {
+        this.props.fetchCreatedTickets(this.props.match.params.userId)
+        this.props.fetchUserComments(this.props.match.params.userId)
+    }
 
     render() {
         const {user, comments, tickets} = this.props;
@@ -26,7 +27,7 @@ class Profile extends React.Component {
           </div>
         )); 
 
-        const userTicketInfo = tickets.map( ticket =>  
+        const userTicketInfo = tickets.map(ticket => (  
             <div>
                 <span> 
                     {ticket.createdAt} 
@@ -37,7 +38,7 @@ class Profile extends React.Component {
                     {ticket.id}
                 </Link> 
             </div>
-        ) 
+        )); 
 
         return (
             <div>

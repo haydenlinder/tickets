@@ -6,9 +6,9 @@ export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 
 
-const receiveComments = comment => ({
+const receiveComments = comments => ({
   type: RECEIVE_COMMENTS,
-  comment
+  comments
 });
 
 const receiveNewComment = (comment) => ({
@@ -32,12 +32,11 @@ export const fetchTicketComments = (id) => dispatch => (
         .catch(errors => dispatch(receiveCommentErrors(errors)))
 )
 
-export const fetchUserComments = userId => dispatch =>
-  commentAPIUtil
-    .fetchUserComments(userId)
+export const fetchUserComments = userId => dispatch => (
+  commentAPIUtil.fetchUserComments(userId)
     .then(comments => dispatch(receiveComments(comments)))
-    .catch(errors => dispatch(receiveCommentErrors(errors)));
-
+    .catch(errors => dispatch(receiveCommentErrors(errors)))
+)
 
 export const createComment = (comment) => dispatch => (
     commentAPIUtil.writeComment(comment)

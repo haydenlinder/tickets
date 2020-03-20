@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 const validateTicketInput = require('../../validation/ticket')
+const Ticket = require('../../models/ticket')
 
 router.get("/", (req, res) => {
     Ticket
@@ -10,7 +11,7 @@ router.get("/", (req, res) => {
         .then(tickets => res.json(tickets))
 }
 )
-router.post('/tickets/new',
+router.post("/",
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateTicketInput(req.body);
@@ -51,7 +52,7 @@ router.patch("/:ticketId", (req, res) => {
 
 
 router.get("/creator/:userId", (req, res) => {
-  Ticket.find({ creatorId: req.params.userId})
+  Ticket.find({ creator: req.params.userId})
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>
@@ -60,7 +61,7 @@ router.get("/creator/:userId", (req, res) => {
 });
 
 router.get("/owner/:userId", (req, res) => {
-    Ticket.find({ ownerId: req.params.userId })
+    Ticket.find({ owner: req.params.userId })
         .sort({ createdAt: -1 })
         .then(tickets => res.json(tickets))
         .catch(err =>

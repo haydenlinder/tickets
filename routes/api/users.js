@@ -78,7 +78,7 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    organization: user.organization
+                    orgHandle: user.orgHandle
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

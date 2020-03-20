@@ -34,13 +34,13 @@ router.get("/tickets/:ticketId", (req, res) => {
 })
 
 router.get("/author/:userId", (req, res) => {
-  Ticket.find({ authorId: req.params.userId })
+  Ticket.find({ author: req.params.userId })
     .sort({ createdAt: -1 })
-    .then(tickets => res.json(tickets))
+    .then(comments => res.json(comments))
     .catch(err =>
       res
-        .status(404)
-        .json({ noticketsfound: "No tickets found from that user" })
+        .status(400)
+        .json({ noticketsfound: "No comments found from that user" })
     );
 });
 
