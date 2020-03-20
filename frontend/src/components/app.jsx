@@ -9,9 +9,11 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import TicketFormContainer from './tickets/ticket_form_container';
+import activity_ticket_index_container from './tickets/activity_ticket_index_container';
 import NotFound from './errors/not_found';
 import './reset.css'
 import './app.css'
+
 
 
 
@@ -27,6 +29,7 @@ const App = () => (
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
                 <ProtectedRoute exact path="/tickets/:ticketId" component={TicketFormContainer} />
+                <ProtectedRoute exact path="/tickets/" component={activity_ticket_index_container} />
                 <Route component={NotFound} />
             </Switch>
             </div>
