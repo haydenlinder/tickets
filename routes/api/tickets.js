@@ -52,6 +52,18 @@ router.post("/",
 
 router.get("/:ticketId", (req, res) => {
     Ticket
+        .find({ id: req.params.id })
+        .populate("updatedBy")
+        .sort({updatedAt: -1})
+        .then(ticket => res.json(ticket))
+        .catch(err => err.status(400).json(err))
+})
+
+router.patch("/:ticketId", (req, res) => {
+        Ticket.updateOne({ id: req.params.ticketId })
+        .sort({updatedAt: -1})
+        .then(ticket => res.json(ticket))
+        .catch(err => err.status(400).json(err))
     .findById(req.params.ticketId)
     .populate('creator', ['firstName', 'lastName', '_id'])
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
