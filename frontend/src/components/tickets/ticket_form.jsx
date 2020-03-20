@@ -20,7 +20,7 @@ class TicketForm extends React.Component {
             endDate: undefined,
             creator: this.props.currentUser.id
         }
-        this.handlesubmit = this.handlesubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -42,6 +42,7 @@ class TicketForm extends React.Component {
                     blocks: res.ticket.blocks,
                     startDate: res.ticket.startDate,
                     endDate: res.ticket.endDate,
+                    id: res.ticket._id
                 })
             })
         }
@@ -54,10 +55,14 @@ class TicketForm extends React.Component {
         }
     }
 
-    handlesubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        this.props.createTicket(this.state)
-        .then(res => this.props.history.push(`${res.ticket._id}`))
+        if (this.props.ticketId !== "new") {
+            this.props.updateTicket(this.state)
+        } else {
+            this.props.createTicket(this.state)
+            .then(res => this.props.history.push(`${res.ticket._id}`))
+        }
     }
 
     update(field) {
@@ -199,7 +204,7 @@ class TicketForm extends React.Component {
                     />
 
                     <button 
-                        onClick={this.handlesubmit}
+                        onClick={this.handleSubmit}
                         className="button1">
                         {this.props.ticketId === 'new' ? 'create' : 'save'}
                     </button>

@@ -63,16 +63,13 @@ router.get("/:ticketId", (req, res) => {
 })
 
 router.patch("/:ticketId", (req, res) => {
-    Ticket.updateOne({id: req.params.ticketId})
-    .populate('creator')
-    .populate('updatedBy')
-    .populate('lastUpdateSeenBy')
-    .populate('subscribers')
-    .then(ticket => res.json(ticket))
-    .catch(err => err.status(400).json(err))
+    Ticket.findByIdAndUpdate(
+        req.params.ticketId,
+        req.body,
+        { new: true },
+        (err, ticket) => res.json(ticket)
+    )
 })
-
-
 
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creator: req.params.userId})
@@ -92,7 +89,5 @@ router.get("/owner/:userId", (req, res) => {
             res.status(404).json({ noticketsfound: "No tickets found from that user" })
         );
 });
-
-
 
 module.exports = router;
