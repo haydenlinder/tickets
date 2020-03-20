@@ -18,10 +18,14 @@ const ticketSchema = new Schema({
         type: Array,
         default: []
     },
-    subscribers: {
-        type: Array,
-        default: []
-    },
+    subscribers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

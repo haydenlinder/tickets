@@ -35,23 +35,21 @@ router.post("/",
             creator: req.body.creator
         });
 
-
-        // newTicket.save().then(ticket => res.json(ticket));
         newTicket.save()
         .then(ticket => {
             Ticket.findById(ticket._id)
-            .populate('creator') 
-            .exec() 
-            .then(populated =>{
-                console.log(populated)
-                return res.json(populated)
-            }
+            .populate('creator')
+            .populate('updatedBy')
+            .populate('lastUpdateSeenBy')
+            .populate('subscribers')            
+            .then(
+                populated => res.json(populated)
             )
         });
     }
 );
 
-router.get("/:id", (req, res) => {
+router.get("/:ticketId", (req, res) => {
     Ticket
         .find({ id: req.params.id })
         .populate("updatedBy")
@@ -65,6 +63,25 @@ router.patch("/:ticketId", (req, res) => {
         .sort({updatedAt: -1})
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
+    .findById(req.params.ticketId)
+    .populate('creator')
+    .populate('updatedBy')
+    .populate('lastUpdateSeenBy')
+    .populate('subscribers')
+    .then(ticket => {
+        return res.json(ticket)
+    })
+    .catch(err => err.status(400).json(err))
+})
+
+router.patch("/:ticketId", (req, res) => {
+    Ticket.updateOne({id: req.params.ticketId})
+    .populate('creator')
+    .populate('updatedBy')
+    .populate('lastUpdateSeenBy')
+    .populate('subscribers')
+    .then(ticket => res.json(ticket))
+    .catch(err => err.status(400).json(err))
 })
 
 
