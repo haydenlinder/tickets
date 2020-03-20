@@ -54,12 +54,15 @@ router.post("/",
 router.get("/:id", (req, res) => {
     Ticket
         .find({ id: req.params.id })
+        .populate("updatedBy")
+        .sort({updatedAt: -1})
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
 })
 
 router.patch("/:ticketId", (req, res) => {
         Ticket.updateOne({ id: req.params.ticketId })
+        .sort({updatedAt: -1})
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
 })

@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 
 class ActivityIndexItem extends React.Component{
@@ -9,27 +10,21 @@ class ActivityIndexItem extends React.Component{
     render() {
         const {ticket} = this.props
 
-        // firstAndLast = ticket.updatedBy.map(user => 
-        //     <span>
-        //         {user.firstName}
-        //         {user.lastName}
-        //     </span>
-        // )
-
-        // tags = ticket.tags.map(tag =>
-        //     <span>
-        //         {tag}
-        //     </span>
-        // )
-
-
+        timeUpdate = ticket.updatedAt.map(update => <span> {update} </span>)
+        userUpdateLink = ticket.updatedBy.map(user => <Link to={`/user/${user.id}`} >{user.firstName} {user.lastName}</Link> )
+        ticketComments = ticket.comments.map(comment => <p> {comment.body} </p> )
+        userCommentLink = ticket.comments.author.map(user => <Link to={`/user/${user.id}`}> {user.firstName} {user.lastName} </Link>)
 
         return (
-            <div>
-               {/* <p> Updated at: {ticket.updatedAt} {firstAndLast}</p>
-               <p>{tags}</p> */}
-            </div>
-        )
+          <div>
+            <label> Updates:
+                <p> {timeUpdate} {userUpdateLink} </p>
+            </label>
+            <label> Comments:
+                <p> {ticketComments} {userCommentLink} </p>
+            </label>
+          </div>
+        );
     }
 }
 

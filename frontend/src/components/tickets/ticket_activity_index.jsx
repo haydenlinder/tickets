@@ -7,19 +7,17 @@ class TicketActivityIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getTicket()
+        this.props.getTicket(this.props.match.params.ticketId)
     }
 
     render() {
-        const {tickets} = this.props
+        const {ticket, comments} = this.props
         return(
             <div>
-                <h1>Tickets:</h1>
-                {
-                tickets.map(ticket => (
+                <h1>Ticket Activity:</h1>
                     <ActivityIndexItem 
-                        ticket={ticket}
-                        key={ticket.id}                      
+                        ticket={ticket}   
+                        comments={comments}                   
                     />                    
                 ))}
             </div>
