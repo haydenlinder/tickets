@@ -10,7 +10,7 @@ class NavBar extends React.Component {
     this.writeTicket = this.writeTicket.bind(this)
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
-    this.handleDemo = this.handleDemo.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
@@ -25,7 +25,7 @@ class NavBar extends React.Component {
     this.props.history.push("/tickets/new")
   }
 
-  handleDemo(e) {
+  handleClick(e) {
     e.preventDefault();
     this.props.loginDemoUser()
     this.props.history.push("/tickets/owner");
@@ -70,7 +70,7 @@ class NavBar extends React.Component {
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
               {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
-              <button className="button1" onClick={this.handleDemo}>
+              <button className="button1" onClick={this.handleClick}>
                 login as a demo user
               </button>
             </div>

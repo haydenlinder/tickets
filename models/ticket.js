@@ -11,8 +11,8 @@ const ticketSchema = new Schema({
         default: Date.now
     },
     updatedAt: {
-        type: Date,
-        default: Date.now
+        type: Array,
+        default: []
     },
     tags: {
         type: Array,
@@ -27,20 +27,21 @@ const ticketSchema = new Schema({
         ref: 'User'
     },
     title: {
-        type: String
+        type: String,
+        required: true
     },
     body: {
         type: String,
         required: false
     },
-    lastUpdateSeenBy: {
-        type: Array,
-        default: []
-    },
-    updatedBy: {
-        type: Array,
-        default: [] 
-    },
+    lastUpdateSeenBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    updatedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     status: {
         type: String,
         default: "No Progress"

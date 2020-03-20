@@ -3,7 +3,6 @@ import React from 'react';
 class TicketForm extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             updatedAt: Date.now,
             tags: [],
@@ -44,6 +43,7 @@ class TicketForm extends React.Component {
                     blocks: ticket.blocks,
                     startDate: ticket.startDate,
                     endDate: ticket.endDate,
+                    creator: ticket.creator
                 })
             })
         }
@@ -69,7 +69,6 @@ class TicketForm extends React.Component {
 
     render(){
 
-        
         if (this.props.ticketId !== 'new') {
             this.view();
             if (!this.props.ticket) return null

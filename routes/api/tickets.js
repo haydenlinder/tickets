@@ -14,12 +14,12 @@ router.get("/", (req, res) => {
 router.post("/",
     // passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        
         const { errors, isValid } = validateTicketInput(req.body);
 
         if (!isValid) {
             return res.status(422).json(errors);
         }
-
         const newTicket = new Ticket({
             title: req.body.title,
             owner: req.body.owner,
@@ -32,10 +32,22 @@ router.post("/",
             blocks: req.body.blocks,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            creator: req.creator
+            creator: req.body.creator
         });
 
-        newTicket.save().then(ticket => res.json(ticket));
+
+        // newTicket.save().then(ticket => res.json(ticket));
+        newTicket.save()
+        .then(ticket => {
+            Ticket.findById(ticket._id)
+            .populate('creator') 
+            .exec() 
+            .then(populated =>{
+                console.log(populated)
+                return res.json(populated)
+            }
+            )
+        });
     }
 );
 
@@ -56,6 +68,7 @@ router.patch("/:ticketId", (req, res) => {
 
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creator: req.params.userId})
+    .populate('creator')
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>
