@@ -6,7 +6,7 @@ class TicketForm extends React.Component {
         this.state = {
             updatedAt: Date.now,
             tags: [],
-            subscribers: [],
+            subscribers: [this.props.currentUser.id],
             owner: undefined,
             title: '',
             body: '',
@@ -26,24 +26,22 @@ class TicketForm extends React.Component {
     componentDidMount() {
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
-            .then((ticket) => {
+            .then((res) => {
                 this.setState({
-
-                    updatedAt: ticket.updatedAt,
-                    tags: ticket.tags,
-                    subscribers: ticket.subscribers,
-                    owner: ticket.owner,
-                    title: ticket.title,
-                    body: ticket.body,
-                    lastUpdateSeenBy: ticket.lastUpdateSeenBy,
-                    updatedBy: ticket.updatedBy,
-                    status: ticket.status,
-                    priority: ticket.priority,
-                    dependsOn: ticket.dependsOn,
-                    blocks: ticket.blocks,
-                    startDate: ticket.startDate,
-                    endDate: ticket.endDate,
-                    creator: ticket.creator
+                    updatedAt: res.ticket.updatedAt,
+                    tags: res.ticket.tags,
+                    subscribers: res.ticket.subscribers,
+                    owner: res.ticket.owner,
+                    title: res.ticket.title,
+                    body: res.ticket.body,
+                    lastUpdateSeenBy: res.ticket.lastUpdateSeenBy,
+                    updatedBy: res.ticket.updatedBy,
+                    status: res.ticket.status,
+                    priority: res.ticket.priority,
+                    dependsOn: res.ticket.dependsOn,
+                    blocks: res.ticket.blocks,
+                    startDate: res.ticket.startDate,
+                    endDate: res.ticket.endDate,
                 })
             })
         }
@@ -59,6 +57,7 @@ class TicketForm extends React.Component {
     handlesubmit(e) {
         e.preventDefault();
         this.props.createTicket(this.state)
+        .then(res => this.props.history.push(`${res.ticket._id}`))
     }
 
     update(field) {
@@ -70,10 +69,9 @@ class TicketForm extends React.Component {
     render(){
 
         if (this.props.ticketId !== 'new') {
-            this.view();
             if (!this.props.ticket) return null
+            // this.view();
         }
-
         const statusSelect = (
             <select 
                 defaultValue={this.state.status}
