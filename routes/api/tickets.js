@@ -38,10 +38,11 @@ router.post("/",
         newTicket.save()
         .then(ticket => {
             Ticket.findById(ticket._id)
-            .populate('creator')
-            .populate('updatedBy')
-            .populate('lastUpdateSeenBy')
-            .populate('subscribers')            
+            .populate('creator', ['firstName', 'lastName', '_id'])
+            .populate('updatedBy', ['firstName', 'lastName', '_id'])
+            .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+            .populate('subscribers', ['firstName', 'lastName', '_id'])  
+            .populate('updatedBy', ['firstName', 'lastName', '_id'])          
             .then(
                 populated => res.json(populated)
             )
@@ -64,10 +65,10 @@ router.patch("/:ticketId", (req, res) => {
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
     .findById(req.params.ticketId)
-    .populate('creator')
-    .populate('updatedBy')
-    .populate('lastUpdateSeenBy')
-    .populate('subscribers')
+    .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+    .populate('subscribers', ['firstName', 'lastName', '_id'])
+    .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => {
         return res.json(ticket)
     })
@@ -75,20 +76,27 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.patch("/:ticketId", (req, res) => {
-    Ticket.updateOne({id: req.params.ticketId})
-    .populate('creator')
-    .populate('updatedBy')
-    .populate('lastUpdateSeenBy')
-    .populate('subscribers')
+    Ticket.findByIdAndUpdate(
+        req.params.ticketId,
+        req.body,
+        { new: true }
+    )
+    .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+    .populate('subscribers', ['firstName', 'lastName', '_id'])
+    .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => res.json(ticket))
-    .catch(err => err.status(400).json(err))
+    .catch(err =>
+        res.status(422).json({ badrequest: "Bad request" })
+    )
 })
-
-
 
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creator: req.params.userId})
-    .populate('creator')
+    .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('updatedBy', ['firstName', 'lastName', '_id'])
+    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+    .populate('subscribers', ['firstName', 'lastName', '_id'])
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>
@@ -98,13 +106,11 @@ router.get("/creator/:userId", (req, res) => {
 
 router.get("/owner/:userId", (req, res) => {
     Ticket.find({ owner: req.params.userId })
-        .sort({ createdAt: -1 })
-        .then(tickets => res.json(tickets))
-        .catch(err =>
-            res.status(404).json({ noticketsfound: "No tickets found from that user" })
-        );
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+        res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
 });
-
-
 
 module.exports = router;

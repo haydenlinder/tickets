@@ -8,12 +8,11 @@ const ticketSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
-    updatedAt: {
-        type: Array,
-        default: []
-    },
+    updatedAt: [{
+        type: Date
+    }],
     tags: {
         type: Array,
         default: []
@@ -40,7 +39,8 @@ const ticketSchema = new Schema({
     },
     lastUpdateSeenBy: [{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        unique: true
     }],
     updatedBy: [{
         type: Schema.Types.ObjectId,
