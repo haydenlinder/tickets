@@ -5,7 +5,6 @@ import TicketForm from "./ticket_form";
 
 const msp = (state, ownProps) => ({
     ticketId: ownProps.match.params.ticketId,
-    ticket: state.entities.tickets[ownProps.match.params.ticketId],
     currentUser: state.entities.users[state.session.user]
 });
 

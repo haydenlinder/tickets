@@ -1,4 +1,5 @@
 import React from 'react';
+import TicketActivityContainer from "./ticket_activity_container"
 
 class TicketForm extends React.Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class TicketForm extends React.Component {
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
+                debugger
                 this.setState(this.props.ticket)
             })
         }
@@ -36,20 +38,24 @@ class TicketForm extends React.Component {
         let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id)
         if (!viewerIds.includes(this.props.currentUser.id)) {
             this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser.id)
+            debugger
             this.props.updateTicket(this.props.ticket)
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser.id)
         this.state.lastUpdateSeenBy = []
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
         } else {
+            debugger
             this.props.createTicket(this.state)
             .then(res => {
+            debugger
                 if (res.errors) return null 
                 this.props.history.push(`${res.ticket._id}`)
             })
@@ -139,70 +145,70 @@ class TicketForm extends React.Component {
             </select>
         )
 
-        return(
-            <div className="form-container">
-                <form className="form">
-                    <input 
-                        type="text" 
-                        placeholder="title" 
-                        value={this.state.title}
-                        onChange={this.update('title')}
-                    />
+        return (
+          <div className="form-container">
+            <form className="form">
+              <input
+                type="text"
+                placeholder="title"
+                value={this.state.title}
+                onChange={this.update("title")}
+              />
 
-                    <input 
-                        type="text" 
-                        placeholder="owner" 
-                        value={this.state.owner}
-                        onChange={this.update('owner')}
-                    />
+              <input
+                type="text"
+                placeholder="owner"
+                value={this.state.owner}
+                onChange={this.update("owner")}
+              />
 
-                    <textarea 
-                        cols="30" rows="10"
-                        value={this.state.body}
-                        placeholder="body"
-                        onChange={this.update('body')}
-                    >
+              <textarea
+                cols="30"
+                rows="10"
+                value={this.state.body}
+                placeholder="body"
+                onChange={this.update("body")}
+              ></textarea>
 
-                    </textarea>
+              {statusSelect}
 
-                    {statusSelect}
+              {prioritySelect}
 
-                    {prioritySelect}
+              <input
+                type="text"
+                placeholder="depends on"
+                onChange={this.update("dependsOn")}
+              />
 
-                    <input 
-                        type="text"
-                        placeholder="depends on" 
-                        onChange={this.update('dependsOn')}
-                    />
+              <input
+                type="text"
+                value={this.state.blocks}
+                placeholder="blocks"
+                onChange={this.update("blocks")}
+              />
 
-                    <input 
-                        type="text"
-                        value={this.state.blocks}
-                        placeholder="blocks" 
-                        onChange={this.update('blocks')}
-                    />
+              <input
+                type="date"
+                value={this.state.startDate}
+                onChange={this.update("startDate")}
+              />
 
-                    
-                    <input 
-                        type="date"
-                        value={this.state.startDate}
-                        onChange={this.update('startDate')}
-                    />
+              <input
+                type="date"
+                value={this.state.endDate}
+                onChange={this.update("endDate")}
+              />
 
-                    <input 
-                        type="date"
-                        value={this.state.endDate}
-                        onChange={this.update('endDate')}
-                    />
+              <button onClick={this.handleSubmit} className="button1">
+                {this.props.ticketId === "new" ? "create" : "save"}
+              </button>
 
-                    <button 
-                        onClick={this.handleSubmit}
-                        className="button1">
-                        {this.props.ticketId === 'new' ? 'create' : 'save'}
-                    </button>
-                </form>
-            </div>
-        )
+              {/* {this.props.ticketId !== "new" ? 
+                  <TicketActivityContainer/> 
+              : null} */}
+            </form>
+          </div>
+        );
         
         
     }
