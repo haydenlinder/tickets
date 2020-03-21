@@ -21,7 +21,7 @@ export const getTicket = id => (
 
 export const updateTicket = (ticket) => (
     axios.patch(
-        `/api/tickets/${ticket.id}`,
+        `/api/tickets/${ticket._id}`,
         ticket
     )
 )

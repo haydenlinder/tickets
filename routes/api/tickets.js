@@ -86,9 +86,9 @@ router.patch("/:ticketId", (req, res) => {
     .populate('subscribers', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => res.json(ticket))
-    .catch(err =>
-        res.status(422).json({ badrequest: "Bad request" })
-    )
+    .catch(err => {
+        return res.status(422).json({ badrequest: err })
+    })
 })
 
 router.get("/creator/:userId", (req, res) => {

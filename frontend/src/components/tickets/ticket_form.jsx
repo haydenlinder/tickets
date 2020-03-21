@@ -27,32 +27,17 @@ class TicketForm extends React.Component {
     componentDidMount() {
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
-            .then((res) => {
-                this.setState({
-                    updatedAt: res.ticket.updatedAt,
-                    tags: res.ticket.tags,
-                    subscribers: res.ticket.subscribers,
-                    owner: res.ticket.owner,
-                    title: res.ticket.title,
-                    body: res.ticket.body,
-                    lastUpdateSeenBy: res.ticket.lastUpdateSeenBy,
-                    updatedBy: res.ticket.updatedBy,
-                    status: res.ticket.status,
-                    priority: res.ticket.priority,
-                    dependsOn: res.ticket.dependsOn,
-                    blocks: res.ticket.blocks,
-                    startDate: res.ticket.startDate,
-                    endDate: res.ticket.endDate,
-                    id: res.ticket._id
-                })
+            .then(ticket => {
+                this.setState(this.props.ticket)
             })
         }
     }
 
     view() {
-        if (!this.state.lastUpdateSeenBy.includes(this.props.currentUser.id)) {
-            this.state.lastUpdateSeenBy.push(this.props.currentUser.id)
-            this.props.updateTicket(this.state)
+        let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id)
+        if (!viewerIds.includes(this.props.currentUser.id)) {
+            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser.id)
+            this.props.updateTicket(this.props.ticket)
         }
     }
 
@@ -61,12 +46,15 @@ class TicketForm extends React.Component {
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser.id)
         this.state.lastUpdateSeenBy = []
-
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
         } else {
             this.props.createTicket(this.state)
-            .then(res => this.props.history.push(`${res.ticket._id}`))
+            .then(res => {
+                if (res.errors) return null 
+                this.props.history.push(`${res.ticket._id}`)
+            })
+            .catch(err => console.log(err))
         }
     }
 
