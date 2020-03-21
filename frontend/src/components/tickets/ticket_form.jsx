@@ -206,8 +206,12 @@ class TicketForm extends React.Component {
                     </button>
                 </form>
 
+                {this.props.ticketId !== 'new' ? 
+                    <TicketActivityIndexContainer />
+                    :
+                    null
+                }
 
-                <TicketActivityIndexContainer />
             </div>
         )
         

@@ -3,6 +3,7 @@ import { RECEIVE_TICKETS, RECEIVE_TICKET, RECEIVE_USER_TICKETS } from "../action
 const ticketsReducer = (defaultState = {}, action) => {
     Object.freeze(defaultState)
     let newState = Object.assign({}, defaultState)
+    debugger
     switch (action.type) {
       case RECEIVE_TICKETS:
         action.tickets.forEach(ticket => {

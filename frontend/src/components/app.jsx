@@ -30,8 +30,6 @@ const App = () => (
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
                 <ProtectedRoute exact path="/tickets/:ticketId" component={TicketFormContainer} />
-                <ProtectedRoute exact path="/tickets/:ticketId" component={CommentFormContainer} />
-                <ProtectedRoute exact path="/tickets/:ticketId"  component={TicketActivityIndexContainer}/>
                 <Route component={NotFound} />
             </Switch>
             </div>
