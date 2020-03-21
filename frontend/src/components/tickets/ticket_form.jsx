@@ -1,4 +1,5 @@
 import React from 'react';
+import TicketActivityIndexContainer from "../tickets/ticket_activity_index_container"
 
 class TicketForm extends React.Component {
     constructor(props) {
@@ -204,6 +205,9 @@ class TicketForm extends React.Component {
                         {this.props.ticketId === 'new' ? 'create' : 'save'}
                     </button>
                 </form>
+
+
+                <TicketActivityIndexContainer />
             </div>
         )
         

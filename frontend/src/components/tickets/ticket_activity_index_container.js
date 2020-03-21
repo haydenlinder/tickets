@@ -5,7 +5,7 @@ import TicketActivityIndex from "./ticket_activity_index"
 
 
 const mSTP = (state, ownProps) => ({
-    ticket: state.entities.tickets[ownProps.match.params.ticketId],
+    // ticket: state.entities.tickets[ownProps.match.params.ticketId],
     comments: Object.values(state.entities.comments)
 })
 
