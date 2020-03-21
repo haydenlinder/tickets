@@ -4,7 +4,7 @@ class TicketForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            updatedAt: Date.now,
+            updatedAt: [],
             tags: [],
             subscribers: [this.props.currentUser.id],
             owner: undefined,
@@ -59,6 +59,8 @@ class TicketForm extends React.Component {
         e.preventDefault();
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser.id)
+        this.state.lastUpdateSeenBy = []
+
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
         } else {

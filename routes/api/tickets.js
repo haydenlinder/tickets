@@ -38,11 +38,11 @@ router.post("/",
         newTicket.save()
         .then(ticket => {
             Ticket.findById(ticket._id)
-            .populate('creator')
-            .populate('updatedBy')
-            .populate('lastUpdateSeenBy')
-            .populate('subscribers')  
-            .populate('updatedBy')          
+            .populate('creator', ['firstName', 'lastName', '_id'])
+            .populate('updatedBy', ['firstName', 'lastName', '_id'])
+            .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+            .populate('subscribers', ['firstName', 'lastName', '_id'])  
+            .populate('updatedBy', ['firstName', 'lastName', '_id'])          
             .then(
                 populated => res.json(populated)
             )
@@ -82,7 +82,7 @@ router.patch("/:ticketId", (req, res) => {
         { new: true }
     )
     .populate('creator', ['firstName', 'lastName', '_id'])
-    .populate('lastUpdateSeenBy')
+    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
     .populate('subscribers', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => res.json(ticket))
@@ -93,8 +93,10 @@ router.patch("/:ticketId", (req, res) => {
 
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creator: req.params.userId})
-    .populate('creator')
-    .populate('updatedBy')
+    .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('updatedBy', ['firstName', 'lastName', '_id'])
+    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+    .populate('subscribers', ['firstName', 'lastName', '_id'])
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>
@@ -104,11 +106,11 @@ router.get("/creator/:userId", (req, res) => {
 
 router.get("/owner/:userId", (req, res) => {
     Ticket.find({ owner: req.params.userId })
-        .sort({ createdAt: -1 })
-        .then(tickets => res.json(tickets))
-        .catch(err =>
-            res.status(404).json({ noticketsfound: "No tickets found from that user" })
-        );
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+        res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
 });
 
 module.exports = router;
