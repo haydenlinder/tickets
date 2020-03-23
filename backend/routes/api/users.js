@@ -36,10 +36,11 @@ router.post("/register", (req, res) => {
                     newUser.save()
                     .then(user => {
                         const payload = { 
-                            id: user.id,
+                            _id: user._id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            organization: user.organization
+                            organization: user.organization,
+                            starred: user.starred
                         };
 
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -76,10 +77,11 @@ router.post("/login", (req, res) => {
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
                 const payload = { 
-                    id: user.id,
+                    _id: user._id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    orgHandle: user.orgHandle
+                    orgHandle: user.orgHandle,
+                    starred: user.starred
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -99,7 +101,7 @@ router.post("/login", (req, res) => {
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
-        id: req.user.id,
+        _id: req.user._id,
         email: req.user.email
     });
 })

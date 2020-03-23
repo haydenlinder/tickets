@@ -18,7 +18,7 @@ const ticketSchema = new Schema({
         type: Array,
         default: []
     },
-    subscribers: [{
+    subscribed: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],

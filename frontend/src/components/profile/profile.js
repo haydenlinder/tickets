@@ -23,7 +23,7 @@ class Profile extends React.Component {
               {ticket.author.firstName}
               {ticket.author.lastName} commented on
             </span>
-            <Link to={`/comments/${ticket.id}`}>{ticket.id}</Link>
+            <Link to={`/comments/${ticket._id}`}>{ticket._id}</Link>
           </div>
         )); 
 
@@ -34,8 +34,8 @@ class Profile extends React.Component {
                     {ticket.creator.firstName}  
                     {ticket.creator.lastName} created
                 </span>
-                <Link to={`/tickets/${ticket.id}`}>
-                    {ticket.id}
+                <Link to={`/tickets/${ticket._id}`}>
+                    {ticket._id}
                 </Link> 
             </div>
         )); 

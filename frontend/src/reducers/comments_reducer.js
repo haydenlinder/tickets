@@ -8,16 +8,16 @@ const commentReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_COMMENTS: 
             for (let i = 0; i < action.comments.length; i++) {
-                nextState[action.comments[i].id] = action.comments[i]
+                nextState[action.comments[i]._id] = action.comments[i]
             }
             return nextState;
         case RECEIVE_NEW_COMMENT: 
-            nextState[action.comment.id] = action.comment;
+            nextState[action.comment._id] = action.comment;
             return nextState
         // case RECEIVE_TICKET:
         //     return action.comments
         case DELETE_COMMENT: 
-            delete nextState[action.comment.id]
+            delete nextState[action.comment._id]
             return nextState
         default: 
             return state

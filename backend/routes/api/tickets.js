@@ -20,7 +20,7 @@ router.post("/",
             status: req.body.status,
             priority: req.body.priority,
             tags: req.body.tags,
-            subscribers: req.body.subscribers,
+            subscribed: req.body.subscribed,
             dependsOn: req.body.dependsOn,
             blocks: req.body.blocks,
             startDate: req.body.startDate,
@@ -32,9 +32,10 @@ router.post("/",
         .then(ticket => {
             Ticket.findById(ticket._id)
             .populate('creator', ['firstName', 'lastName', '_id'])
+            .populate('owner', ['firstName', 'lastName', '_id'])
             .populate('updatedBy', ['firstName', 'lastName', '_id'])
             .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
-            .populate('subscribers', ['firstName', 'lastName', '_id'])  
+            .populate('subscribed', ['firstName', 'lastName', '_id'])  
             .populate('updatedBy', ['firstName', 'lastName', '_id'])          
             .then(
                 populated => res.json(populated)
@@ -47,8 +48,9 @@ router.get("/:ticketId", (req, res) => {
     Ticket
     .findById(req.params.ticketId)
     .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('owner', ['firstName', 'lastName', '_id'])
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
-    .populate('subscribers', ['firstName', 'lastName', '_id'])
+    .populate('subscribed', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => {
         return res.json(ticket)
@@ -63,8 +65,9 @@ router.patch("/:ticketId", (req, res) => {
         { new: true }
     )
     .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('owner', ['firstName', 'lastName', '_id'])
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
-    .populate('subscribers', ['firstName', 'lastName', '_id'])
+    .populate('subscribed', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => res.json(ticket))
     .catch(err => {
@@ -74,7 +77,7 @@ router.patch("/:ticketId", (req, res) => {
 
 router.get("/:folder/:userId", (req, res) => {
 
-    if (Array.isArray(req.params.folder)) {
+    if (req.params.folder === 'subscribed') {
         
         Ticket.find({ [req.params.folder]: { $elemMatch: { _id: req.params.userId } } })
             .populate('subscribers')
@@ -88,14 +91,16 @@ router.get("/:folder/:userId", (req, res) => {
     } else {
 
         Ticket.find({ [req.params.folder]: req.params.userId })
-          .populate('creator')
-          .populate('owner')
-          .then(tickets => res.json(tickets))
-          .catch(err =>
-            res
-              .status(404)
-              .json({ noticketsfound: "No tickets found from that user" })
-          );
+        .populate('creator', ['firstName', 'lastName', '_id'])
+        .populate('owner', ['firstName', 'lastName', '_id'])
+        .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+        .populate('subscribed', ['firstName', 'lastName', '_id'])
+        .populate('updatedBy', ['firstName', 'lastName', '_id'])
+        .then(tickets => res.json(tickets))
+        .catch(err => res
+            .status(404)
+            .json({ noticketsfound: "No tickets found from that user" })
+        );
     }
     
 });
@@ -103,7 +108,7 @@ router.get("/:folder/:userId", (req, res) => {
 // router.get("/:folder/:userId", (req, res) => {
     
 //     Ticket.find({ [req.params.folder]: { $elemMatch: {_id: req.params.userId } } })
-//       .populate('subscribers')
+//       .populate('subscribed')
 //       .populate('starred')
 //       .then(tickets => res.json(tickets))
 //       .catch(err =>
@@ -132,8 +137,8 @@ router.get("/:folder/:userId", (req, res) => {
 // });
 
 // router.get("/subscribed/:userId", (req, res) => {
-//     Ticket.find({ subscribers: req.params.userId })
-//     // .populate('subscribers', ['firstName', 'lastName', '_id'])
+//     Ticket.find({ subscribed: req.params.userId })
+//     // .populate('subscribed', ['firstName', 'lastName', '_id'])
 //     .sort({ createdAt: -1 })
 //     .then(tickets => res.json(tickets))
 //     .catch(err =>

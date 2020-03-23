@@ -46,9 +46,9 @@ class TicketActivityIndex extends React.Component {
             return (
             <ul>
                 {feedItem.body ? 
-                <CommentIndexItem comment={feedItem} />
+                <CommentIndexItem key={i + new Date().getTime()} comment={feedItem} />
                 : 
-                <ActivityIndexItem update={feedItem} />
+                <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
                 }
             </ul>
             );

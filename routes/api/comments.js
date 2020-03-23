@@ -22,7 +22,7 @@ router.post("/ticket/:ticketId",
 
         newComment.save()
             .then(comment => {
-                Comment.findById(comment.id)
+                Comment.findById(comment._id)
                 .populate("author", ['firstName', 'lastName', '_id'])
                 .populate("ticket", ["_id"])
                 .then(
@@ -62,7 +62,7 @@ router.patch("/:id",
             Comment
             .findById(req.params.id)
             .then(comment => {
-                if (comment.user.equals(req.user.id)) {
+                if (comment.user.equals(req.user._id)) {
                     comment.update(req.body.body)
                 } else {
                     res
@@ -82,7 +82,7 @@ router.delete("/:id",
         Comment
         .findById(req.params.id) 
         .then(comment => {
-            if (comment.user.equals(req.user.id)) {
+            if (comment.user.equals(req.user._id)) {
                 comment.remove()
             } else {
                 res

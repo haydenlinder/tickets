@@ -70,7 +70,7 @@ class TicketIndex extends React.Component {
               <th>Starred</th>
 
               {tickets.map(ticket => (
-                  <TicketIndexItem key={ticket.id} ticket={ticket} />
+                  <TicketIndexItem key={ticket._id} ticket={ticket} />
               ))}
             </table>
           </div>

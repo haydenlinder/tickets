@@ -16,7 +16,7 @@ class TicketCommentIndex extends React.Component {
         return(
             <ul>
                 {comments.map(comment => <li><CommentIndexItem 
-                    key={comment.id} 
+                    key={comment._id} 
                     comment={comment} 
                     deleteComment={deleteComment} 
                     updateComment={updateComment} 

@@ -8,14 +8,14 @@ const LeftPanel = ({ userId }) => (
     <div className="left-panel-container">
         <h1 className="folders">Folders</h1>
         <Link to={`/tickets/owner/${userId}`}>Owner</Link>
-        <Link to={`/tickets/subscribed/${userId}`}>Subscriber</Link>
+        <Link to={`/tickets/subscribed/${userId}`}>Subscribed</Link>
         <Link to={`/tickets/creator/${userId}`}>Creator</Link>
         <Link to={`/tickets/starred/${userId}`}>Starred</Link>
     </div>
 )
 
 const msp = state => ({
-    userId: state.session.user
+    userId: state.session._id
 })
 
 const LeftPanelContainer = connect(msp, null)(LeftPanel);

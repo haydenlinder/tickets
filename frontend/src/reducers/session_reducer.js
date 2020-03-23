@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState.isAuthenticated = !!action.payload
-            newState.user = action.payload.id
+            newState.user = action.payload._id
             return newState;
         case RECEIVE_USER_LOGOUT:
             return {

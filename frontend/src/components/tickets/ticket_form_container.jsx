@@ -8,7 +8,8 @@ import {fetchTicketComments} from "../../actions/comment_actions"
 const msp = (state, ownProps) => ({
     ticketId: ownProps.match.params.ticketId,
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
-    currentUser: state.entities.users[state.session.user],
+    currentUser: state.entities.users[state.session._id],
+    // ownerUsegirs: state.entities.users
 });
 
 const mdp = dispatch => ({
