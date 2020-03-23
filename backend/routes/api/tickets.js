@@ -78,7 +78,7 @@ router.get("/:folder/:userId", (req, res) => {
         
         Ticket.find({ [req.params.folder]: { $elemMatch: { _id: req.params.userId } } })
             .populate('subscribers')
-            .populate('starred')
+            .populate( 'tickets.starred' )
             .then(tickets => res.json(tickets))
             .catch(err =>
                 res

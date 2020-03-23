@@ -28,7 +28,7 @@ class NavBar extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.loginDemoUser()
-    this.props.history.push("/tickets/owner");
+    this.props.history.push(`{/tickets/owner/${this.props.currentUser.id}`);
     this.props.clearErrors()
   }
 

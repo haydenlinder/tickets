@@ -55,7 +55,6 @@ class TicketIndex extends React.Component {
         
         if (!this.state.tickets) return null
         const { tickets } = this.state
-        // console.log(tickets[0]._id)
         return (
           <div>
             <table className="ticket-index">
