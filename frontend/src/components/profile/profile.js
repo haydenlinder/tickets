@@ -39,7 +39,7 @@ class Profile extends React.Component {
             <div>
                 <div className="profile-header-container">
                     <h1>
-                    Hello! {user.firstName} {user.lastName}
+                    Hello {user.firstName} {user.lastName}!
                     </h1>
                 </div>
 

@@ -48,7 +48,7 @@ class NavBar extends React.Component {
                 {this.props.currentUser.firstName} &nbsp;
                 {this.props.currentUser.lastName}
               </Link>
-                {this.props.currentUser.organization}
+                {this.props.currentOrgHandle}
 
               
               <button className="button1" onClick={this.writeTicket}> 
@@ -67,7 +67,9 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <div className="left-nav">Tickets</div>
+            <div className="left-nav">
+              Tickets
+            </div>
 
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }

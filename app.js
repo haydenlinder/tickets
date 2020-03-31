@@ -19,6 +19,11 @@ app.use(bodyParser.json());
 app.use(passport.initialize())
 require('./config/passport')(passport);
 
+// // simple route
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to the backend for the Tickets application." });
+// });
+
 app.use("/api/users", users)    
 app.use("/api/tickets", tickets)
 app.use('/api/tags', tags)
@@ -35,7 +40,12 @@ app.listen(port, () =>
     console.log(`Entry file: Server is running. App is listening on port ${port}`)
     );
 
+mongoose.set('useCreateIndex', true);
+
 mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(db, { 
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => console.log("Entry file: Successfully connected to MongoDB"))
     .catch(err => console.log(err));

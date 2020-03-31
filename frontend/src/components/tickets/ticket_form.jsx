@@ -37,6 +37,8 @@ class TicketForm extends React.Component {
             })
             .then(() => this.view());
         }
+
+        this.props.getOrgUsers(this.props.currentOrg);
     }
 
     view() {

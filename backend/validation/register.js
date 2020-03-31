@@ -9,8 +9,8 @@ module.exports = function validateRegisterInput(data) {
     data.firstName = validText(data.firstName) ? data.firstName : '';
     data.lastName = validText(data.lastName) ? data.lastName : '';
     data.email = validText(data.email) ? data.email : '';
-    let organizationHandle = data.email.slice(data.email.search("@"));
-    organizationHandle = validText(organizationHandle) ? organizationHandle : '';
+    let orgHandle = data.email.slice(data.email.search("@"));
+    orgHandle = validText(orgHandle) ? orgHandle : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
     
@@ -36,7 +36,8 @@ module.exports = function validateRegisterInput(data) {
         }
     })
 
-    Organization.findOne({ handle: organizationHandle }).then(organization => {
+    Organization.findOne({ handle: organizationHandle })
+    .then(organization => {
         if (!organization) {
             errors.handle = "Your Organization is not registered.";
         }

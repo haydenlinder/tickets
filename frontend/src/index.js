@@ -17,13 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const decodedUser = jwt_decode(localStorage.jwtToken);
 
+      // debugger
+
         const preloadedState = {  
             entities: {
                 users: { 
                     [decodedUser._id]: decodedUser
                 }
             },
-            session: { isAuthenticated: true, _id: decodedUser._id } 
+            session: { 
+                isAuthenticated: true, 
+                _id: decodedUser._id,
+                orgHandle: decodedUser.orgHandle,
+            } 
         };
 
         store = configureStore(preloadedState);

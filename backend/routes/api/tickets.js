@@ -96,7 +96,7 @@ router.get("/:folder/:userId", (req, res) => {
         .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
         .populate('subscribed', ['firstName', 'lastName', '_id'])
         .populate('updatedBy', ['firstName', 'lastName', '_id'])
-        .then(tickets =>{
+        .then(tickets => {
             res.json(tickets)
         })
         .catch(err => res

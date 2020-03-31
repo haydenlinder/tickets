@@ -1,11 +1,11 @@
 const mongoDbUri = require('../../config/keys').mongoURI;
 const seeder = require('mongoose-seed');
 
-const organizationSeeds = require('./organizations');
-const userSeeds = require('./users');
-const ticketSeeds = require('./tickets');
-const commentSeeds = require('./comments');
-const tagSeeds = require('./tags');
+const organizationSeeds = require('./organization.seeds');
+const userSeeds = require('./users.seeds');
+const ticketSeeds = require('./ticket.seeds');
+const commentSeeds = require('./comment.seeds');
+const tagSeeds = require('./tag.seeds');
 
 // Data array containing seed data - documents organized by Model
 const data = [
@@ -15,6 +15,8 @@ const data = [
     // commentSeeds,
     // tagSeeds
 ];
+
+// seeder.set('useCreateIndex', true);
 
 // Connect to MogoDB via Mongoose
 seeder.connect(mongoDbUri, function () {
@@ -35,4 +37,3 @@ seeder.connect(mongoDbUri, function () {
     });
 
 });
-
