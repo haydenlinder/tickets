@@ -2,6 +2,11 @@ const organizationSeeds = {
     model: 'Organization',
     documents: [
         {
+            handle: "tickets.admin",
+            name: "Site Admin",
+            motto: "this is the organization for internal app administration"
+        },
+        {
             handle: "cats4humanity.org",
             name: "Cats for Humanity",
             motto: "a cat in every household!"
