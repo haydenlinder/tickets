@@ -26,10 +26,10 @@ class TicketActivityIndex extends React.Component {
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
             actor: ticket.updatedBy[i],
-            time: ticket.updatedAt[i],
-            viewer: ticket.lastUpdateSeenBy[i]
+            time: ticket.updatedAt[i]
         }));
 
+        debugger
 
         let feed = ticketsArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>
@@ -38,20 +38,31 @@ class TicketActivityIndex extends React.Component {
 
         let feedList = sortedFeed.map((feedItem, i) => {
             return (
-                <li key={i + new Date().getTime()}>
-                    {feedItem.body ? 
-                    <CommentIndexItem comment={feedItem} deleteComment={this.props.deleteComment} fetchTicketComments={this.props.fetchTicketComments} ticketId={this.props.ticketId} />
-                    : 
-                    <ActivityIndexItem update={feedItem} />
-                    }
-                </li>
-
+              <li key={i + new Date().getTime()}>
+                {feedItem.body ? (
+                  <CommentIndexItem
+                    comment={feedItem}
+                    deleteComment={this.props.deleteComment}
+                    fetchTicketComments={this.props.fetchTicketComments}
+                    ticketId={this.props.ticketId}
+                  />
+                ) : (
+                  <ActivityIndexItem update={feedItem} />
+                )}
+              </li>
             );
         });
 
             
 
-        return <div>{feedList}</div>;
+        return (
+          <div>
+            {this.props.ticket.lastUpdateSeenBy[0].firstName}{" "}
+            {this.props.ticket.lastUpdateSeenBy[0].lastName} last viewed the ticket
+            {feedList}
+            <div>ticket created at {this.props.ticket.createdAt}</div>
+          </div>
+        );
     }
 
 };
