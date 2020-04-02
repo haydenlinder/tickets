@@ -6,6 +6,7 @@ export const fetchOneUser = userId => {
     )
 };
 
+// export const fetchAllUsers = userId
 export const fetchOrgUsers = orgHandle => {
     return axios.get(
         `/api/users/${orgHandle}`

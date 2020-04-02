@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
         super(props)
 
         this.state = { 
-            body: '',
+            body: this.props.body,
             author: this.props.currentUser._id,
             ticketId: this.props.ticketId
         }
@@ -15,19 +15,23 @@ class CommentForm extends React.Component {
     }
 
     handleSubmit() {
-        this.props.createComment(this.state)
+        this.props.action(this.state)
     }
+
 
     update(field) {
        return e => {
             this.setState({ [field]: e.currentTarget.value})
         } 
-        
     }
 
     render() {
         return (
             <form className="comment-form" onSubmit={this.handleSubmit}>
+                <div className="avitar">
+                    {this.props.currentUser.firstName.slice(0, 1)}
+                    {this.props.currentUser.lastName.slice(0, 1)}
+                </div> 
                 <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
                 <button className="button1">Create Comment</button>
             </form>

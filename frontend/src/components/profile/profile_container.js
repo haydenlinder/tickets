@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import { fetchCreatedTickets} from "../../actions/ticket_actions"
 import { fetchUserComments } from "../../actions/comment_actions"
 import Profile from "./profile"
+import {withRouter} from "react-router-dom"
 
 const mSTP = (state, ownProps) => ({
     user: state.entities.users[ownProps.match.params.userId],
@@ -18,4 +19,4 @@ const mDTP = (dispatch) => ({
 
 
 
-export default connect(mSTP, mDTP)(Profile);
+export default withRouter(connect(mSTP, mDTP)(Profile))

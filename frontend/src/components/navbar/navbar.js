@@ -36,11 +36,12 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    if (this.props.currentUser) {
+    let { currentUser } = this.props
+    if (currentUser) {
       return (
         <div className="header">
           <div className="nav">
-            <Link className="link-style-header" to={`/tickets/owner/${this.props.currentUser._id}`}> Tickets</Link>
+            <Link className="link-style-header" to={`/tickets/owner/${currentUser._id}`}> Tickets</Link>
   
             <div className="right-nav">
               
@@ -49,11 +50,13 @@ class NavBar extends React.Component {
               <button className="button1 new-ticket" onClick={this.writeTicket}> 
                 + New Ticket
               </button>
-              <Link className="link-style"to={`/users/${this.props.currentUser._id}`}>
-                {this.props.currentUser.firstName} &nbsp;
-                {this.props.currentUser.lastName}
+              <Link className="link-style"to={`/users/${currentUser._id}`}>
+                <div className="avitar">
+                  {currentUser.firstName.slice(0,1)}{currentUser.lastName.slice(0,1)}
+                </div> 
+                {currentUser.firstName} {currentUser.lastName}
               </Link>
-                {this.props.currentUser.orgHandle}
+                {currentUser.orgHandle}
       
               <button className="button1 logout" onClick={this.logoutUser}>
                 Logout

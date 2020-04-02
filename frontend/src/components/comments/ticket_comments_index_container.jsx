@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { deleteComment, fetchTicketComments } from '../../actions/comment_actions'
 import CommentIndexItem from './ticket_comment_index'
 import {withRouter} from "react-router-dom"
 
@@ -11,9 +10,8 @@ const mSTP = (state, ownProps) => {
     }
 }
 
-const mDTP = dispatch => {
-    return{
+const mDTP = dispatch => ({
     updateComment: comment => dispatch(updateComment(comment))
-}
-}
+})
+
 export default withRouter(connect(mSTP, mDTP))(CommentIndexItem)

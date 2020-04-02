@@ -52,7 +52,7 @@ export const updateComment = (comment) => dispatch => (
     CommentAPIUtil.updateComment(comment) 
     .then(newComment => dispatch(receiveNewComment(newComment)))
     .catch(errors => dispatch(receiveCommentErrors(errors)))
-);
+    )
 
 export const deleteComment = (id) => dispatch => {
     return (

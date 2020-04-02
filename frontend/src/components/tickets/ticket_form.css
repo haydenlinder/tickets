@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    border: 1px solid grey;
 }
 
 
@@ -54,7 +55,6 @@ select {
 .selectors {
     display: flex;
     justify-content: space-between;
-    /* width: 800px; */
     height: 40px;
     margin: 10px;
 }
@@ -111,21 +111,34 @@ select {
 
 
 .activity-container {
-    padding: 10px;
+    width: 798px;
     background-color: lightgrey;
 }
+
+.avitar {
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 .comment-form {
     display: flex;
     flex-direction: row;
-    /* width: 800px; */
-    height: 30px;
+    justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
 }
 
 .comment-form input {
-    width: 650px;
+    width: 600px;
     margin-right: 10px;
 }
 
@@ -156,4 +169,34 @@ input.edited:focus, textarea.edited:focus {
 
 .ticket-errors {
     color: red;
+}
+
+.comment-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.activity-item {
+    margin-left: 40px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.comment-container .body {
+    margin-right: 5px
+}
+
+.time {
+    font-size: 11px;
+    margin-right: 5px;
 }
