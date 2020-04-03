@@ -29,8 +29,6 @@ input, textarea {
     padding-right: 10px;
 }
 
-
-
 input:focus, textarea:focus {
     border: 1px solid rgb(184, 183, 183);
 }
@@ -39,6 +37,7 @@ input:focus, textarea:focus {
     display: flex;
     margin: 10px;
 }
+
 .form .title {
     font-size: 24px;
     width: 720px;
@@ -86,8 +85,6 @@ select {
     align-items: center;
 }
 
-
-
 .schedule input {
     font-size: 13px;
     margin-left: 5px;
@@ -97,6 +94,10 @@ select {
 
 .margin {
     margin: 10px;
+}
+
+.subs-title {
+    margin-left: 15px;
 }
 
 .show{
@@ -123,12 +124,13 @@ button.button1.edited:hover {
     border: 1px solid black
 }
 
-
-
 input.edited:focus, textarea.edited:focus {
     border: 1px solid rgb(251, 251, 212);
 }
 
+.ticket-errors {
+    color: red;
+}
 
 .activity-container {
     width: 798px;
@@ -152,7 +154,6 @@ input.edited:focus, textarea.edited:focus {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
     background-color: rgb(241, 241, 241);
     padding: 10px;
 }
@@ -166,21 +167,19 @@ input.edited:focus, textarea.edited:focus {
 .activity-container {
     display: flex;
     flex-direction: column;
-    align-items: left;
 }
 
 .activity-container .title {
+    font-size: 13px;
+    letter-spacing: 0.5px;
     font-weight: 600;
     margin: 10px;
+    color: grey
 }
 
-.ticket-errors {
-    color: red;
-}
 
 .comment-container {
     display: flex;
-    /* flex-direction: column; */
     align-items: baseline;
     padding: 10px;
     background-color: rgb(241, 241, 241);

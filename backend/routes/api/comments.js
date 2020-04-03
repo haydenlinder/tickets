@@ -36,6 +36,7 @@ router.post("/",
 router.get("/tickets/:ticketId", (req, res) => {
     Comment
         .find({ ticket: req.params.ticketId })
+        .populate('author', ['firstName', 'lastName', '_id'])
         .sort({ createdAt: -1 })
         .then(comments => res.send(comments))
         .catch(err => 
@@ -63,6 +64,7 @@ router.patch("/:id",
 
         (req, res) => {
             Comment.findByIdAndUpdate( req.params.id, req.body, {new: true})
+            .populate('author', ['firstName', 'lastName', '_id'])
             .then((comment) => res.json(comment))
             .catch((err) => res.status(422).json(err))
                 // if (comment.user.equals(req.user._id)) {

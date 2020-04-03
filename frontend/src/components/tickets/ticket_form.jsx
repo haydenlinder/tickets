@@ -316,7 +316,15 @@ class TicketForm extends React.Component {
                   placeholder="body"
                   onChange={this.update("body")}
                 ></textarea>
-
+                <label className="subs-title">
+                    subscribed
+                </label> 
+                <textarea
+                    className={`${type} margin subscribed`}
+                    value={this.state.subscribed}
+                    placeholder="subscribed"
+                    onChange={this.update("subscribed")}
+                ></textarea>
 
                 <input
                   className={`${type} margin`}

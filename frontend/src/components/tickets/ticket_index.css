@@ -4,8 +4,8 @@ table {
 }
 
 tr {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    border-bottom: 1px solid bloack;
 }
 
 tr:hover {
@@ -13,10 +13,15 @@ tr:hover {
     cursor: pointer;
 }
 
+.resize {
+    resize: both;
+}
+
 div.star {
     z-index: 1;
     font-size: 20px;
     position: relative;
+    resize: both;
 }
 
 div.star:hover {

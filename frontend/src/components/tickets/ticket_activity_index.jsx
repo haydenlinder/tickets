@@ -20,8 +20,8 @@ class TicketActivityIndex extends React.Component {
         let commentsArr = comments.map(comment => ({
             userId: comment.author,
             commentId: comment._id,
-            firstName: this.props.currentUser.firstName,
-            lastName: this.props.currentUser.lastName,
+            firstName: comment.author.firstName,
+            lastName: comment.author.lastName,
             time: comment.createdAt,
             body: comment.body,
             ticketId: this.props.ticketId

@@ -20,21 +20,31 @@
     border-radius: 32px;
 }
 
-a {
+.profile-container a {
     text-decoration: none;
     font-weight: 600;
     color: black
 }
 
-a:hover{
+.profile-container a:hover{
     text-decoration: underline;
 }
 
-.index-item {
+.profile-container .ticket, .profile-container .comment {
     padding: 10px;
     background-color: white;
     margin: 10px;
 }
+
+/* .ticket {
+    background-color: rgb(227, 245, 235);
+    border: 1px solid rgb(145, 240, 188);
+}
+
+.comment {
+    background-color: rgb(224, 224, 245);
+    border: 1px solid rgb(171, 171, 248)
+} */
 
 .green{
     color: green;
