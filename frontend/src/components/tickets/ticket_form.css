@@ -110,6 +110,26 @@ select {
 }
 
 
+.edited {
+    border: 1px solid yellow;
+    background-color: rgb(248, 248, 218);
+}
+
+.button1.edited {
+    background-color: rgb(8, 92, 148);
+}
+
+button.button1.edited:hover {
+    border: 1px solid black
+}
+
+
+
+input.edited:focus, textarea.edited:focus {
+    border: 1px solid rgb(251, 251, 212);
+}
+
+
 .activity-container {
     width: 798px;
     background-color: lightgrey;
@@ -137,28 +157,10 @@ select {
     padding: 10px;
 }
 
-.comment-form input {
+.comment-form textarea {
     width: 600px;
     margin-right: 10px;
-}
-
-.edited {
-    border: 1px solid yellow;
-    background-color: rgb(248, 248, 218);
-}
-
-.button1.edited {
-    background-color: rgb(8, 92, 148);
-}
-
-button.button1.edited:hover {
-    border: 1px solid black
-}
-
-
-
-input.edited:focus, textarea.edited:focus {
-    border: 1px solid rgb(251, 251, 212);
+    max-height: 500px;
 }
 
 .activity-container {
@@ -167,17 +169,48 @@ input.edited:focus, textarea.edited:focus {
     align-items: left;
 }
 
+.activity-container .title {
+    font-weight: 600;
+    margin: 10px;
+}
+
 .ticket-errors {
     color: red;
 }
 
 .comment-container {
     display: flex;
-    align-items: center;
+    /* flex-direction: column; */
+    align-items: baseline;
     padding: 10px;
     background-color: rgb(241, 241, 241);
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
+}
+
+
+.comment-container .top {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.comment-container .bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    min-width: fit-content;
+}
+
+.comment-container .body {
+    margin-right: 5px;
+    overflow-wrap: anywhere;
+    padding-bottom: 5px;
 }
 
 .activity-item {
@@ -186,17 +219,13 @@ input.edited:focus, textarea.edited:focus {
     padding: 5px;
 }
 
-.author {
-    display: flex;
-    align-items: center;
+.time {
+    font-size: 11px;
     margin-right: 5px;
 }
 
-.comment-container .body {
-    margin-right: 5px
-}
-
-.time {
+.buttons .button1 {
     font-size: 11px;
+    padding: 3px;
     margin-right: 5px;
 }

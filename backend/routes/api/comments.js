@@ -24,7 +24,7 @@ router.post("/",
         .then(comment => {
             Comment.findById(comment._id)
             .populate("author", ['firstName', 'lastName', '_id'])
-            .populate("ticket", ["_id"])
+            .populate("ticket")
             .then(
                 populated => res.json(populated)
             )
@@ -48,6 +48,7 @@ router.get("/author/:userId", (req, res) => {
   Comment.find({ author: req.params.userId })
     .sort({ createdAt: -1 })
     .populate('author', ['firstName', 'lastName', '_id'])
+    .populate('ticket')
     .then(comments => res.json(comments))
     .catch(err =>
       res

@@ -1,6 +1,5 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom"
-
 class ActivityIndexItem extends React.Component {
   constructor(props) {
     super(props)
@@ -49,3 +48,4 @@ class ActivityIndexItem extends React.Component {
 }
 
 export default withRouter(ActivityIndexItem);
+

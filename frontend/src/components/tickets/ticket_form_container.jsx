@@ -4,6 +4,7 @@ import TicketForm from "./ticket_form";
 import {withRouter} from "react-router-dom";
 import {fetchTicketComments} from "../../actions/comment_actions"
 import { updateUser, getOneUser } from '../../actions/user_actions'
+import { clearTicketErrors } from "../../actions/ticket_actions"
 
 const msp = (state, ownProps) => {
 
@@ -23,7 +24,8 @@ const mdp = dispatch => ({
     getTicket: id => dispatch(getTicket(id)),
     updateTicket: ticket => dispatch(updateTicket(ticket)), 
     fetchTicketComments: id => dispatch(fetchTicketComments(id)),
-    updateUser: user => dispatch(updateUser(user))
+    updateUser: user => dispatch(updateUser(user)),
+    clearTicketErrors: () => dispatch(clearTicketErrors())
 });
 
 const TicketFormContainer = withRouter(connect(msp, mdp)(TicketForm));

@@ -6,18 +6,17 @@ class CommentForm extends React.Component {
         super(props)
 
         this.state = { 
-            body: this.props.body,
+            body: this.props.body || '',
             author: this.props.currentUser._id,
             ticketId: this.props.ticketId
         }
-
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit() {
+    handleSubmit(field) {
         this.props.action(this.state)
+        .then(() => this.setState({ body: "" }))
     }
-
 
     update(field) {
        return e => {
@@ -32,7 +31,7 @@ class CommentForm extends React.Component {
                     {this.props.currentUser.firstName.slice(0, 1)}
                     {this.props.currentUser.lastName.slice(0, 1)}
                 </div> 
-                <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
+                <textarea value={this.state.body} onChange={this.update('body')}></textarea>
                 <button className="button1">Create Comment</button>
             </form>
         )
