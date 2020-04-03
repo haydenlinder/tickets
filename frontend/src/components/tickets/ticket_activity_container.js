@@ -8,14 +8,14 @@ import {getTicket} from "../../actions/ticket_actions";
 const mSTP = (state, ownProps) => ({
     ticketId: ownProps.match.params.ticketId,
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
-    comments: Object.values(state.entities.comments),
+    comments: Object.values(state.entities.comments)
 });
 
 const mDTP = (dispatch) => ({
     fetchTicketComments: (ticketId) => dispatch(fetchTicketComments(ticketId)),
     getTicket: (ticketId) => dispatch(getTicket(ticketId)),
     deleteComment: (id) => dispatch(deleteComment(id)),
-    updateComment: (comment) => dispatch(updateComment(comment)),
+    updateComment: (comment) => dispatch(updateComment(comment))
 });
 
 

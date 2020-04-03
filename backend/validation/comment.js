@@ -10,6 +10,7 @@ module.exports = function validateCommentInput(comment)  {
         errors.body = "Comment body cannot be empty"
     }
 
+
     return {
        errors, 
        isValid: Object.keys(errors).length === 0
