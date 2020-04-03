@@ -91,6 +91,8 @@ class TicketForm extends React.Component {
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
+
+        // const errors = validateTicketInput()
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -121,6 +123,12 @@ class TicketForm extends React.Component {
             button.classList.remove('not-edited')
             button.classList.add('edited')
         };
+    }
+
+    handleDropdown(e) {
+        e.preventDefault()
+        // const select = document.getElementsByTagName("select")
+        // select.onClick()
     }
 
     render(){
@@ -331,6 +339,21 @@ class TicketForm extends React.Component {
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
                     <h1>Comments and activity</h1>
+                    <div>
+                        Last update seen by
+                        {/* {this.props.ticket.lastUpdateSeenBy.slice(0, 2).map(i => {
+                            
+                        })} */}
+                        {" "}{this.props.ticket.lastUpdateSeenBy[0].firstName}{" "}
+                        {this.props.ticket.lastUpdateSeenBy[0].lastName},
+                        {" "}{this.props.ticket.lastUpdateSeenBy[1].firstName}{" "}
+                        {this.props.ticket.lastUpdateSeenBy[1].lastName},
+                        {" "}{this.props.ticket.lastUpdateSeenBy[2].firstName}{" "}
+                        {this.props.ticket.lastUpdateSeenBy[2].lastName} + 
+                        {this.props.ticket.lastUpdateSeenBy.length - 3 !== 0 ? this.props.ticket.lastUpdateSeenBy.length - 3 : null}
+                        <select> {" "}{this.props.ticket.lastUpdateSeenBy[3].firstName}{" "}
+                        {this.props.ticket.lastUpdateSeenBy[3].lastName}</select> more
+                    </div>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>

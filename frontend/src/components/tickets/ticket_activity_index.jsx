@@ -1,6 +1,7 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
 import CommentIndexItem from "../comments/comment_index_item";
+import { array } from "prop-types";
 
 class TicketActivityIndex extends React.Component {
 
@@ -34,7 +35,13 @@ class TicketActivityIndex extends React.Component {
             time: ticket.updatedAt[i]
         }));
 
-        debugger
+        // let lusbArr = ticket.lastUpdateSeenBy.map(i => ({
+        //     firstName: ticket.lastUpdateSeenBy[i].firstName,
+        //     lastName: ticket.lastUpdateSeenBy[i].lastName,
+        //     userId: ticket.lastUpdateSeenBy[i]._id,
+        //     viewer: ticket.lastUpdateSeenBy[i],
+        //     time: ticket.updatedAt[i]
+        // }))
 
         let feed = ticketsArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>
@@ -65,8 +72,6 @@ class TicketActivityIndex extends React.Component {
 
         return (
           <div>
-            {this.props.ticket.lastUpdateSeenBy[0].firstName}{" "}
-            {this.props.ticket.lastUpdateSeenBy[0].lastName} last viewed the ticket
             {feedList}
             <div>ticket created at {this.props.ticket.createdAt}</div>
           </div>
