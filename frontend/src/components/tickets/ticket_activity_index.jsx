@@ -1,6 +1,7 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
 import CommentIndexItem from "../comments/comment_index_item";
+import TicketUpdateItem from "./ticket_update_item";
 import { array } from "prop-types";
 
 class TicketActivityIndex extends React.Component {
@@ -27,9 +28,6 @@ class TicketActivityIndex extends React.Component {
             ticketId: this.props.ticketId
         }));
 
-        // do you want a created at here 
-        // dont understand update and viewer
-
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
             firstName: ticket.updatedBy[i].firstName,
             lastName: ticket.updatedBy[i].lastName,
@@ -37,14 +35,6 @@ class TicketActivityIndex extends React.Component {
             actor: ticket.updatedBy[i],
             time: ticket.updatedAt[i]
         }));
-
-        // let lusbArr = ticket.lastUpdateSeenBy.map(i => ({
-        //     firstName: ticket.lastUpdateSeenBy[i].firstName,
-        //     lastName: ticket.lastUpdateSeenBy[i].lastName,
-        //     userId: ticket.lastUpdateSeenBy[i]._id,
-        //     viewer: ticket.lastUpdateSeenBy[i],
-        //     time: ticket.updatedAt[i]
-        // }))
 
         let feed = ticketsArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>

@@ -1,10 +1,12 @@
 import React from 'react';
 import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
+import TicketUpdateContainer from "./ticket_update_container"
 import {withRouter} from "react-router-dom"
 
 import '../app.css'
 import './ticket_form.css'
+import TicketUpdateItem from './ticket_update_item';
 
 class TicketForm extends React.Component {
     constructor(props) {
@@ -123,12 +125,6 @@ class TicketForm extends React.Component {
             button.classList.remove('not-edited')
             button.classList.add('edited')
         };
-    }
-
-    handleDropdown(e) {
-        e.preventDefault()
-        // const select = document.getElementsByTagName("select")
-        // select.onClick()
     }
 
     render(){
@@ -347,21 +343,7 @@ class TicketForm extends React.Component {
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
                     <h1>Comments and activity</h1>
-                    <div>
-                        Last update seen by
-                        {/* {this.props.ticket.lastUpdateSeenBy.slice(0, 2).map(i => {
-                            
-                        })} */}
-                        {" "}{this.props.ticket.lastUpdateSeenBy[0].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[0].lastName},
-                        {" "}{this.props.ticket.lastUpdateSeenBy[1].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[1].lastName},
-                        {" "}{this.props.ticket.lastUpdateSeenBy[2].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[2].lastName} + 
-                        {this.props.ticket.lastUpdateSeenBy.length - 3 !== 0 ? this.props.ticket.lastUpdateSeenBy.length - 3 : null}
-                        <select> {" "}{this.props.ticket.lastUpdateSeenBy[3].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[3].lastName}</select> more
-                    </div>
+                    <TicketUpdateContainer />
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>
