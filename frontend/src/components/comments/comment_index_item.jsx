@@ -117,6 +117,7 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         {this.state.edit ? this.editCommentDiv() : this.commentBodyDiv()}

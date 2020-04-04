@@ -25,10 +25,12 @@ const removeComment = (id) => ({
     _id: id
 });
 
-const receiveCommentErrors = (errors) => ({
+const receiveCommentErrors = (errors) => {
+    return{
     type: RECEIVE_COMMENT_ERRORS, 
-    errors: errors
-});
+    errors: errors.response.data
+    }
+};
 
 export const fetchTicketComments = (ticketId) => dispatch => (
     CommentAPIUtil.fetchTicketComments(ticketId)

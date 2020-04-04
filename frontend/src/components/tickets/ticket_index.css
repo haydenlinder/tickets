@@ -1,27 +1,45 @@
-table {
-    border-collapse: collapse;
-    text-align: center;
+.table {
+    display: flex;
+    flex-direction: column;
 }
 
-tr {
+.table-header-group {
+    display: flex;
+}
+
+.table-cell {
     border: 1px solid black;
-    border-bottom: 1px solid bloack;
+    padding: 5px;
+    overflow: hidden;
+    width: 100px;
 }
 
-tr:hover {
-    background-color: blanchedalmond;
+.table-row-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.handle{
+    border: 1px solid black;
+}
+
+.handle:hover {
+    cursor: col-resize;
+}
+
+.table-row {
+    display: flex;
+}
+
+.table-row:hover {
+    background-color: lightgrey;
     cursor: pointer;
-}
-
-.resize {
-    resize: both;
 }
 
 div.star {
     z-index: 1;
     font-size: 20px;
     position: relative;
-    resize: both;
 }
 
 div.star:hover {

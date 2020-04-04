@@ -8,7 +8,7 @@
 .page-container {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
+    max-width: 1200px;
     min-width: 1000px;
     overflow: scroll;
     background-color: white;
@@ -42,3 +42,6 @@ div.starred:hover {
     cursor: pointer;
 }
 
+.comment-errors{
+    color: red;
+}

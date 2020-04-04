@@ -40,7 +40,7 @@ class ActivityIndexItem extends React.Component {
   render() {
     return (
       <div className="activity-item">
-        <Link to={`/users/${this.props.update.userId}`}>{this.props.update.firstName} {this.props.update.actor.lastName}</Link>&nbsp;
+        <Link to={`/users/${this.props.update.userId}`}>{this.props.update.firstName} {this.props.update.lastName}</Link>&nbsp;
         updated the ticket on {this.convertDate(this.props.update.time)} at {this.convertTime(this.props.update.time)}
       </div>
     );

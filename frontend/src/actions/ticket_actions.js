@@ -19,10 +19,12 @@ const receiveTicket = ticket => ({
     ticket: ticket.data
 });
 
-const receiveTicketErrors = errors => ({
+const receiveTicketErrors = errors => {
+    return{
     type: RECEIVE_TICKET_ERRORS,
     errors: errors.response.data
-});
+    }
+};
 
 export const clearTicketErrors = () => ({
     type: CLEAR_TICKET_ERRORS

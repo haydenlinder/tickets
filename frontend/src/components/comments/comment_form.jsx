@@ -26,15 +26,22 @@ class CommentForm extends React.Component {
 
     render() {
         return (
-            <form className="comment-form" onSubmit={this.handleSubmit}>
-                <div className="avitar">
-                    {this.props.currentUser.firstName.slice(0, 1)}
-                    {this.props.currentUser.lastName.slice(0, 1)}
-                </div> 
-                <textarea value={this.state.body} onChange={this.update('body')}></textarea>
-                <button className="button1">Create Comment</button>
-            </form>
-        )
+          <form className="comment-form" onSubmit={this.handleSubmit}>
+            <div>
+              <span className="comment-errors">{this.props.errors.body}</span>
+            </div>
+            <div className="avitar">
+              {this.props.currentUser.firstName.slice(0, 1)}
+              {this.props.currentUser.lastName.slice(0, 1)}
+            </div>
+            <input
+              type="textarea"
+              value={this.state.body}
+              onChange={this.update("body")}
+            />
+            <button className="button1">Create Comment</button>
+          </form>
+        );
     }
   
 }

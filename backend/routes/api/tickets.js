@@ -9,7 +9,7 @@ router.post("/",
     (req, res) => {
         
         const { errors, isValid } = validateTicketInput(req.body);
-
+    
         if (!isValid) {
             return res.status(422).json(errors);
         }

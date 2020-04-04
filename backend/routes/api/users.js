@@ -82,7 +82,7 @@ router.post("/login", (req, res) => {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     orgHandle: user.orgHandle,
-                    starred: user.starred
+                    starred: user.starred, 
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

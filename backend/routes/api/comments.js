@@ -9,9 +9,8 @@ router.post("/",
     // passport.authenticate("jwt", {session: false})
     (req, res) => {
         const { errors, isValid } = validateCommentInput(req.body)
-
         if (!isValid) {
-            return res.status(400).json(errors)
+            return res.status(422).json(errors)
         }
 
         const newComment = new Comment ({
