@@ -32,19 +32,19 @@ class TicketUpdateItem extends React.Component {
                 )
             }
             return (
-                <div>
+                <div onClick={this.handleClick}>
                     Last Update Seen By: 
                     {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
-                    + {ticket.lastUpdateSeenBy.length - 3} more <select onClick={this.handleClick}></select>
+                    + {ticket.lastUpdateSeenBy.length - 3} more {'▼'}
                 </div>
             )
         } else {
             return (
-                <div>
+                <div onClick={this.handleClick}>
                     <ul>
                         Last Update Seen By:
                         {ticket.lastUpdateSeenBy.map((user, i) => <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </li>)}
-                        <select onClick={this.handleClick} ></select>
+                        {'▲'}
                     </ul>
                 </div>
 
