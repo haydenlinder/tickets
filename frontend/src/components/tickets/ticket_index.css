@@ -20,12 +20,18 @@
     display: flex;
     background-color: lightgrey;
     font-weight: 800;
+    font-size: 12px;
     line-height: 15px;
     text-align: center;
 }
 
 .table-header-group:hover {
     cursor: pointer;
+}
+
+.table-header-group .title {
+    font-weight: 800;
+    margin-right: 10px;
 }
 
 .table-cell {
@@ -35,6 +41,7 @@
     height: 25px;
     width: 100px;
     white-space: nowrap;
+    display: flex;
 }
 
 .table-row-group {
@@ -60,13 +67,14 @@
     cursor: pointer;
 }
 
-.creator, .owner, .title, .updated-at {
+.creator, .owner, .updated-at {
     width: 130px;
 }
 
 .priority {
     width: 110px;
 }
+
 .starred {
     display: flex;
     justify-content: center;

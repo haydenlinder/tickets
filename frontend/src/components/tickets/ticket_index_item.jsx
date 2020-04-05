@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-const TicketIndexItem = ({ ticket, history, currentUser, starredIds, updateUser }) => {
+const TicketIndexItem = ({ ticket, currentUser, starredIds, updateUser }) => {
     ticket.owner = ticket.owner ? ticket.owner : ""
     return (
         <div className="table-row ticket-index-item" >

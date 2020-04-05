@@ -37,11 +37,6 @@
     background-color: rgb(114, 144, 163);
 }
 
-div.starred:hover {
-    color: red;
-    cursor: pointer;
-}
-
 .comment-errors{
     color: red;
 }
