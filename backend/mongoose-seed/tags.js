@@ -5,7 +5,7 @@ const tagSeeds = {
             name: "CRITICAL",
         }, 
         {
-            name: "FEATURE_REQEST",
+            name: "FEATURE_REQUEST",
         }, 
         {
             name: "BUG",

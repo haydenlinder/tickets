@@ -47,7 +47,8 @@ class Profile extends React.Component {
     const { user, comments, tickets } = this.props;
     if (!user) return null 
     const sortedArray = tickets.concat(comments).sort((ele1, ele2) =>
-    ele1.createdAt < ele2.createdAt ? 1 : ele1.createdAt > ele2.createdAt ? -1 : 0)
+      ele1.createdAt < ele2.createdAt ? 1 : ele1.createdAt > ele2.createdAt ? -1 : 0
+    );
     
     return (
       <div className="profile-container">

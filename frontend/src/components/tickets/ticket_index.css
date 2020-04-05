@@ -1,17 +1,39 @@
 .table {
     display: flex;
     flex-direction: column;
+    margin: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.table a {
+    text-decoration: none;
+    color: black;
+}
+
+.table a:hover {
+    text-decoration: underline;
 }
 
 .table-header-group {
     display: flex;
+    background-color: lightgrey;
+    font-weight: 800;
+    line-height: 15px;
+}
+
+.table-header-group:hover {
+    cursor: pointer;
 }
 
 .table-cell {
-    border: 1px solid black;
+    border-top: 1px solid black;
     padding: 5px;
     overflow: hidden;
+    height: 25px;
     width: 100px;
+    white-space: nowrap;
 }
 
 .table-row-group {
@@ -20,7 +42,7 @@
 }
 
 .handle{
-    border: 1px solid black;
+    border: 1.5px solid black;
 }
 
 .handle:hover {
@@ -32,14 +54,14 @@
 }
 
 .table-row:hover {
-    background-color: lightgrey;
+    background-color: rgb(238, 238, 238);
     cursor: pointer;
 }
 
 div.star {
     z-index: 1;
     font-size: 20px;
-    position: relative;
+    line-height: 15px;
 }
 
 div.star:hover {

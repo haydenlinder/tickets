@@ -11,9 +11,9 @@ const tagSeeds = require('./tags');
 const data = [
     organizationSeeds,
     userSeeds,
-    // ticketSeeds,
-    // commentSeeds,
-    // tagSeeds
+    ticketSeeds,
+    commentSeeds,
+    tagSeeds
 ];
 
 // Connect to MogoDB via Mongoose
@@ -23,18 +23,18 @@ seeder.connect(mongoDbUri, function () {
     seeder.loadModels([
         './backend/models/organization.js',
         './backend/models/user.js',
-        // './backend/models/ticket.js',
-        // './backend/models/comment.js',
-        // './backend/models/tag.js'
+        './backend/models/ticket.js',
+        './backend/models/comment.js',
+        './backend/models/tag.js'
     ]);
 
     // Clear specified collections
     seeder.clearModels([
         'Organization', 
         'User',
-        // 'Ticket',
-        // 'Comment',
-        // 'Tag',
+        'Ticket',
+        'Comment',
+        'Tag',
     ], function () {
 
         // Callback function to populate DB once collections have been cleared

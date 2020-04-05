@@ -118,15 +118,30 @@ router.patch('/:userId', (req, res) => {
       .catch(err => err.status(422).json(err));
 });
 
-router.get('/:orgHandle', (req, res) => {
-    User.find(
-        { orgHandle: req.params.orgHandle },
-        'firstName lastName email orgHandle',
-        (err, users) => {
-            if (err) throw err;
-            return res.json(users);
-        }
-    );
+// Get all users
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => res.json(users))
+    .catch(err => {
+      res.status(500).json({
+        message:
+          err.message || "Some error occurred while retrieving users."
+      });
+    });
+});
+
+// Get all users with the specified orgHandle
+router.get('/orgHandle/:orgHandle', (req, res) => {
+  const orgHandle = req.params.orgHandle;
+
+  User.find({ orgHandle: orgHandle })
+    .then(users => res.json(users))
+    .catch(err => {
+      res.status(400).json({
+        message:
+          err.message || `No users found with orgHandle=${orgHandle}`
+      });
+    });
 });
 
 
