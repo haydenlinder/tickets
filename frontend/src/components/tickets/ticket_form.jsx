@@ -3,10 +3,8 @@ import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
 import TicketUpdateContainer from "./ticket_update_container"
 import {withRouter} from "react-router-dom"
-
 import '../app.css'
 import './ticket_form.css'
-import TicketUpdateItem from './ticket_update_item';
 
 class TicketForm extends React.Component {
     constructor(props) {

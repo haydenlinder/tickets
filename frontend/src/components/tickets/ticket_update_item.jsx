@@ -20,46 +20,50 @@ class TicketUpdateItem extends React.Component {
     }
 
     render() {
+        
   
-        if (this.state.collapsed) {
-            return (
-                <div>
-                    Last update seen by
-                    <div>
-                        { " " } { this.props.ticket.lastUpdateSeenBy[0].firstName } { " " }
-                        { this.props.ticket.lastUpdateSeenBy[0].lastName },
-                        { " " } { this.props.ticket.lastUpdateSeenBy[1].firstName } { " " }
-                        { this.props.ticket.lastUpdateSeenBy[1].lastName },
-                        { " " } { this.props.ticket.lastUpdateSeenBy[2].firstName } { " " }
-                        { this.props.ticket.lastUpdateSeenBy[2].lastName } +
-                        { this.props.ticket.lastUpdateSeenBy.length - 3 !== 0 ? this.props.ticket.lastUpdateSeenBy.length - 3 : null } <select onClick = { this.handleClick }> { " "}{ this.props.ticket.lastUpdateSeenBy[3].firstName } { " " }
-                        { this.props.ticket.lastUpdateSeenBy[3].lastName }</select> more
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    Last update seen by
-                    <div>
-                        {" "}{this.props.ticket.lastUpdateSeenBy[0].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[0].lastName},
-                        {" "}{this.props.ticket.lastUpdateSeenBy[1].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[1].lastName},
-                        {" "}{this.props.ticket.lastUpdateSeenBy[2].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[2].lastName}
-                    </div>
-                    <div>
-                        {" "}{this.props.ticket.lastUpdateSeenBy[3].firstName}{" "}
-                        {this.props.ticket.lastUpdateSeenBy[3].lastName}
-                        <select onClick={this.handleClick} ></select>
-                    </div>
+            if (this.state.collapsed) {       
+                
+                for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
+                    while (i < 3) {
+                            return (
+                            <div>
+                                Last Update Seen By: 
+                                { " " } { this.props.ticket.lastUpdateSeenBy[i].firstName } { " " }
+                                { this.props.ticket.lastUpdateSeenBy[i].lastName },
+                            </div>
+                        )}
+                        return( 
+                            <div>
+                                + { this.props.ticket.lastUpdateSeenBy.length - 3 !== 0 ? this.props.ticket.lastUpdateSeenBy.length - 3 : null } more <select onClick = {this.handleClick}></select>
+                            </div>
+                        )}
+                
+            } else {
 
-                </div>
-            )
+                for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
+                    while (i < 3) {
+                        return (
+                            <div>
+                                Last Update Seen By: 
+                                {" "}{this.props.ticket.lastUpdateSeenBy[i].firstName}{" "}
+                                {this.props.ticket.lastUpdateSeenBy[i].lastName},
+                            </div>
+                            
+                    )}
+                        return (
+                            <div>
+                                {" "}{this.props.ticket.lastUpdateSeenBy[i].firstName}{" "}
+                                {this.props.ticket.lastUpdateSeenBy[i].lastName}
+                                <select onClick={this.handleClick} ></select>
+                            </div>
+                    )
+                }
+            }
+
         }
-    }
 
+    
 } 
 
 export default TicketUpdateItem
