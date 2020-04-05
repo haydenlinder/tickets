@@ -21,9 +21,21 @@ class TicketUpdateItem extends React.Component {
 
     render() {
         
+        // let lusb = []
+
+        // for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
+        //     while (i < 3) {
+        //         lusb.push(this.props.ticket.lastUpdateSeenBy[i].firstName)
+        //         lusb.push(this.props.ticket.lastUpdateSeenBy[i].lastName)
+        //     }
+        // }
   
             if (this.state.collapsed) {       
-                
+                // return (
+                //     <div>
+                //         {lusb}
+                //     </div>
+                // )
                 for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
                     while (i < 3) {
                             return (
