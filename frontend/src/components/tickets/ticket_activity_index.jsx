@@ -36,7 +36,7 @@ class TicketActivityIndex extends React.Component {
             time: ticket.updatedAt[i],
         }));
 
-        let feed = ticketsArr.concat(commentsArr);
+        let feed = updatesArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>
             ele1.time < ele2.time ? 1 : ele1.time > ele2.time ? -1 : 0
         );
