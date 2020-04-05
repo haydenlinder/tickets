@@ -1,4 +1,4 @@
-import { RECEIVE_TAGS, RECEIVE_TAG } from '../actions/tag_actions';
+import { RECEIVE_TAGS, RECEIVE_TAG } from '../../actions/tag_actions';
 
 
 const tagsReducer = (state = {}, action) => {

@@ -1,5 +1,5 @@
 import { RECEIVE_ALL_ORGS, RECEIVE_ONE_ORG } 
-  from '../actions/organization_actions';
+  from '../../actions/organization_actions';
 
 
 const organizationsReducer = (defaultState = {}, action) => {

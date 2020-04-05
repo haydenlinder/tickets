@@ -1,4 +1,4 @@
-import { RECEIVE_TICKETS, RECEIVE_TICKET } from '../actions/ticket_actions';
+import { RECEIVE_TICKETS, RECEIVE_TICKET } from '../../actions/ticket_actions';
 
 
 const ticketsReducer = (defaultState = {}, action) => {

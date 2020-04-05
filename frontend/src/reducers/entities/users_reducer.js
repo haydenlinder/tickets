@@ -1,7 +1,7 @@
 import { RECEIVE_CURRENT_USER, RECEIVE_USER_LOGOUT } 
-  from '../actions/session_actions';
-import { RECEIVE_ONE_USER } from '../actions/user_actions';
-import { RECEIVE_ORG_USERS } from '../actions/organization_actions';
+  from '../../actions/session_actions';
+import { RECEIVE_ONE_USER } from '../../actions/user_actions';
+import { RECEIVE_ORG_USERS } from '../../actions/organization_actions';
 
 
 const usersReducer = (state = {}, action) => {

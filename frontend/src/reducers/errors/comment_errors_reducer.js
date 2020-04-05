@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENT_ERRORS } from '../actions/comment_actions';
+import { RECEIVE_COMMENT_ERRORS } from '../../actions/comment_actions';
 
 
 const commentErrorsReducer = (state = {}, action) => {

@@ -1,5 +1,5 @@
 import { RECEIVE_TICKET_ERRORS, CLEAR_TICKET_ERRORS } 
-  from '../actions/ticket_actions';
+  from '../../actions/ticket_actions';
 
 
 const ticketErrorsReducer = (defaultState = {}, action) => {

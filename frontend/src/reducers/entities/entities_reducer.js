@@ -4,7 +4,6 @@ import usersReducer from './users_reducer';
 import ticketsReducer from './tickets_reducer';
 import tagsReducer from './tags_reducer';
 import commentsReducer from './comments_reducer';
-import organizationErrorsReducer from './organization_errors_reducer';
 
 
 const entitiesReducer = combineReducers({

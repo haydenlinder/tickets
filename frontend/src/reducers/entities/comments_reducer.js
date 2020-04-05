@@ -1,5 +1,5 @@
 import { RECEIVE_COMMENTS, RECEIVE_NEW_COMMENT, DELETE_COMMENT } 
-  from '../actions/comment_actions';
+  from '../../actions/comment_actions';
 
 
 const commentReducer = (state = {}, action) => {

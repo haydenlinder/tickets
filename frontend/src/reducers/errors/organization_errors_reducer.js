@@ -1,5 +1,5 @@
 import { RECEIVE_ORG_ERRORS, CLEAR_ORG_ERRORS }
-  from '../actions/organization_actions';
+  from '../../actions/organization_actions';
 
 
 const organizationErrorsReducer = (defaultState = {}, action) => {
