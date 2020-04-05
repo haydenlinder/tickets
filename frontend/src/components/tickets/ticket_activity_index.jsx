@@ -59,7 +59,6 @@ class TicketActivityIndex extends React.Component {
             );
         });
 
-<<<<<<< HEAD
             
 
         return (
@@ -68,9 +67,6 @@ class TicketActivityIndex extends React.Component {
             <div>ticket created at {this.props.ticket.createdAt}</div>
           </div>
         );
-=======
-        return <div>{feedList}</div>;
->>>>>>> master
     }
 
 };
