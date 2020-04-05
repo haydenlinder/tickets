@@ -51,7 +51,3 @@ const commentSeeds = {
 };
 
 module.exports = commentSeeds;
-
-
-// cats ticket id 5e88f42a3064bd3629c353ff
-// mern ticket id 5e88f42a3064bd3629c35400

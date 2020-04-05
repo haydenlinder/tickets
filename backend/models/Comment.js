@@ -1,14 +1,14 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const commentSchema = new Schema({
     author: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
     },
     ticket: {
         type: Schema.Types.ObjectId, 
-        ref: "Ticket"
+        ref: 'Ticket'
     },
     body: {
         type: String, 
@@ -22,7 +22,7 @@ const commentSchema = new Schema({
         type: Date, 
         default: Date.now
     }
-})
+});
 
 Comment = mongoose.model('Comment', commentSchema);
 module.exports = Comment;
