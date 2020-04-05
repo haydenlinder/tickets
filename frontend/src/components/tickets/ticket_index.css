@@ -43,7 +43,8 @@
 }
 
 .handle{
-    border: 1.5px solid black;
+    border: 2px solid black;
+    background-color: black;
 }
 
 .handle:hover {
@@ -59,9 +60,26 @@
     cursor: pointer;
 }
 
+.creator, .owner, .title, .updated-at {
+    width: 130px;
+}
+
+.priority {
+    width: 110px;
+}
+.starred {
+    display: flex;
+    justify-content: center;
+    width: 65px;
+}
+
+
 div.star {
     z-index: 1;
     font-size: 20px;
+}
+
+.starred div.star {
     line-height: 15px;
 }
 

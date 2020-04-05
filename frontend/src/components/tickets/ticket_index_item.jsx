@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 const TicketIndexItem = ({ ticket, history, currentUser, starredIds, updateUser }) => {
     ticket.owner = ticket.owner ? ticket.owner : ""
     return (
-        <div className="table-row ticket-index-item" onClick={() => history.push(`/tickets/${ticket._id}`)} >
+        <div className="table-row ticket-index-item" >
             <div className='table-cell creator'> <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.creator._id}`}>{ticket.creator.firstName} {ticket.creator.lastName}</Link> </div><div className="handle 1" onClick={e => e.stopPropagation()}></div>
             <div className='table-cell owner'>{ticket.owner ? <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.owner._id}`}>{ticket.owner.firstName + ' ' + ticket.owner.lastName}</Link> : '--'}</div><div className="handle 2" onClick={e => e.stopPropagation()}></div>
             <div className="table-cell title">{ticket.title}</div><div className="handle 3" onClick={e => e.stopPropagation()}></div>
