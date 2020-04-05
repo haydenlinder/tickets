@@ -7,6 +7,7 @@ const initialState = {
   _id: {}
 };
 
+
 const sessionReducer = (state = initialState, action) => {
   Object.freeze(state);
   let nextState = Object.assign({}, state);
