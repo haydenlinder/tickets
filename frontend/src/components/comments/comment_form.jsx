@@ -20,10 +20,6 @@ class CommentForm extends React.Component {
          this.setState({ body: "" });
     }
 
-    componentWillUnmount(){
-        this.props.clearCommentErrors()
-    }
-
     update(field) {
        return e => {
             this.setState({ [field]: e.currentTarget.value})
