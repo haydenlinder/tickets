@@ -21,6 +21,7 @@
     background-color: lightgrey;
     font-weight: 800;
     line-height: 15px;
+    text-align: center;
 }
 
 .table-header-group:hover {

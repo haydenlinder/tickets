@@ -53,22 +53,41 @@ class TicketIndex extends React.Component {
 
   formatTable() {
     let handles = document.getElementsByClassName('handle');
-    let clickPos;
+    let clickPos, colNum, leftWidth, rightWidth;
 
     for (let i = 0; i < handles.length; i++) {
       handles[i].addEventListener('mousedown', (e) => {
-        e.preventDefault();
+        e.cancelBubble = true;
+        e.stopImmediatePropagation();
+        e.stopPropagation();
         clickPos = e.pageX;
-      })
+        colNum = e.target.classList[1];
+        leftWidth = e.target.previousElementSibling.offsetWidth;
+        rightWidth = e.target.nextElementSibling.offsetWidth;
+      }, false);
 
-      handles[i].addEventListener('mousemove', (e) => {
+      window.addEventListener('mousemove', (e) => {
         if (!clickPos) return 0;
+        e.stopPropagation();
         let dx = e.pageX - clickPos;
-        let leftSib = e.target.previousElementSibling;
-        let colNum = e.target.classList[1];
-        let colHandles = document.getElementsByClassName('colNum')
+        
+        let colHandles = document.getElementsByClassName(colNum)
 
-      })
+        for (let i = 0; i < colHandles.length; i++) {
+          let leftSib = colHandles[i].previousElementSibling;
+          let rightSib = colHandles[i].nextElementSibling;
+  
+          leftSib.style.width = leftWidth + dx + 'px';
+          rightSib.style.width = rightWidth - dx + 'px';
+        }
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        e.stopPropagation();
+        if (!clickPos) return 0
+        e.preventDefault();
+        clickPos = undefined;
+      });
     } 
 
   }
