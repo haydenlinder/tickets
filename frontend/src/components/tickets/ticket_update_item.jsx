@@ -19,60 +19,41 @@ class TicketUpdateItem extends React.Component {
         this.setState({collapsed: !this.state.collapsed})
     }
 
-    render() {
-        
-        // let lusb = []
+    getUpdates() {
+        const { ticket } = this.props
 
-        // for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
-        //     while (i < 3) {
-        //         lusb.push(this.props.ticket.lastUpdateSeenBy[i].firstName)
-        //         lusb.push(this.props.ticket.lastUpdateSeenBy[i].lastName)
-        //     }
-        // }
-  
-            if (this.state.collapsed) {       
-                // return (
-                //     <div>
-                //         {lusb}
-                //     </div>
-                // )
-                for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
-                    while (i < 3) {
-                            return (
-                            <div>
-                                Last Update Seen By: 
-                                { " " } { this.props.ticket.lastUpdateSeenBy[i].firstName } { " " }
-                                { this.props.ticket.lastUpdateSeenBy[i].lastName },
-                            </div>
-                        )}
-                        return( 
-                            <div>
-                                + { this.props.ticket.lastUpdateSeenBy.length - 3 !== 0 ? this.props.ticket.lastUpdateSeenBy.length - 3 : null } more <select onClick = {this.handleClick}></select>
-                            </div>
-                        )}
-                
-            } else {
-
-                for (let i = 0; i < this.props.ticket.lastUpdateSeenBy.length; i++) {
-                    while (i < 3) {
-                        return (
-                            <div>
-                                Last Update Seen By: 
-                                {" "}{this.props.ticket.lastUpdateSeenBy[i].firstName}{" "}
-                                {this.props.ticket.lastUpdateSeenBy[i].lastName},
-                            </div>
-                            
-                    )}
-                        return (
-                            <div>
-                                {" "}{this.props.ticket.lastUpdateSeenBy[i].firstName}{" "}
-                                {this.props.ticket.lastUpdateSeenBy[i].lastName}
-                                <select onClick={this.handleClick} ></select>
-                            </div>
-                    )
-                }
+        if (this.state.collapsed) {
+            if (ticket.lastUpdateSeenBy.length <= 3) {
+                return (
+                    <div>
+                        Last Update Seen By:
+                        {ticket.lastUpdateSeenBy.map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
+                    </div>
+                )
             }
+            return (
+                <div>
+                    Last Update Seen By: 
+                    {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
+                    + {ticket.lastUpdateSeenBy.length - 3} more <select onClick={this.handleClick}></select>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <ul>
+                        Last Update Seen By:
+                        {ticket.lastUpdateSeenBy.map((user, i) => <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </li>)}
+                        <select onClick={this.handleClick} ></select>
+                    </ul>
+                </div>
 
+            )
+        }
+    }
+
+    render() {
+            return <div>{this.getUpdates()}</div>
         }
 
     
