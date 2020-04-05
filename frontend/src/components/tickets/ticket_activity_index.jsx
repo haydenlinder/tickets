@@ -28,12 +28,12 @@ class TicketActivityIndex extends React.Component {
             ticketId: this.props.ticketId
         }));
 
-        let ticketsArr = ticket.updatedBy.map((actor, i) => ({
-            firstName: ticket.updatedBy[i].firstName,
-            lastName: ticket.updatedBy[i].lastName,
-            userId: ticket.updatedBy[i]._id,
-            actor: ticket.updatedBy[i],
-            time: ticket.updatedAt[i]
+        let updatesArr = ticket.updatedBy.map((actor, i) => ({
+            firstName: actor.firstName,
+            lastName: actor.lastName,
+            userId: actor._id,
+            actor: actor,
+            time: ticket.updatedAt[i],
         }));
 
         let feed = ticketsArr.concat(commentsArr);
@@ -59,6 +59,7 @@ class TicketActivityIndex extends React.Component {
             );
         });
 
+<<<<<<< HEAD
             
 
         return (
@@ -67,6 +68,9 @@ class TicketActivityIndex extends React.Component {
             <div>ticket created at {this.props.ticket.createdAt}</div>
           </div>
         );
+=======
+        return <div>{feedList}</div>;
+>>>>>>> master
     }
 
 };
