@@ -1,6 +1,6 @@
 import React from 'react'
 
-class lastUpdateSeenBy extends React.Component {
+class LastUpdateSeenBy extends React.Component {
     constructor(props) {
         super(props)
 
@@ -27,25 +27,44 @@ class lastUpdateSeenBy extends React.Component {
                 return (
                     <div>
                         Last Update Seen By:
-                        {ticket.lastUpdateSeenBy.map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
+                        {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => 
+                            <span>
+                                {i !== ticket.lastUpdateSeenBy.length - 1
+                                ? <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>
+                                : <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName} </span>
+                                }
+                            </span>
+                        )}
                     </div>
                 )
             }
             return (
                 <div onClick={this.handleClick}>
                     Last Update Seen By:
-                    {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
+                    {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) =>
+                        <span>
+                            {(i !== 2)
+                            ? <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>
+                            : <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName} </span>
+                            }
+                        </span>
+                    )}
                     + {ticket.lastUpdateSeenBy.length - 3} more {'▼'}
                 </div>
             )
         } else {
             return (
                 <div onClick={this.handleClick}>
-                    <ul>
                         Last Update Seen By:
-                        {ticket.lastUpdateSeenBy.map((user, i) => <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </li>)}
+                        {ticket.lastUpdateSeenBy.map((user, i) => 
+                            <ul>
+                                {(i !== ticket.lastUpdateSeenBy.length - 1)
+                                ? <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </li>
+                                : <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName} </li>
+                                }
+                            </ul>
+                        )}
                         {'▲'}
-                    </ul>
                 </div>
 
             )
@@ -59,4 +78,4 @@ class lastUpdateSeenBy extends React.Component {
 
 }
 
-export default lastUpdateSeenBy
+export default LastUpdateSeenBy
