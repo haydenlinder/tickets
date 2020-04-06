@@ -14,8 +14,9 @@ class TicketIndex extends React.Component {
         ord: true
       }
     };
+  
   }
-
+  
   receiveTickets(action) {
     this.setState({ 
       tickets: action.tickets, 
@@ -149,8 +150,9 @@ class TicketIndex extends React.Component {
           attr1 = attr1.toLowerCase();
           attr2 = attr2.toLowerCase();
         case 'updatedAt':
-          attr1 = attr1[0];
-          attr2 = attr2[0];
+          attr1 = this.formatDate(attr1[0]);
+          attr2 = this.formatDate(attr2[0]);
+          debugger
           break;
         default:
           break;
