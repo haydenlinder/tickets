@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-export const fetchOneUser = userId => {
-    return axios.get(`/api/users/${userId}`)
-};
+export const fetchOneUser = userId => (
+  axios.get(`/api/users/${userId}`)
+);
 
-export const fetchOrgUsers = orgHandle => {
-  // debugger
-    return axios.get(
-        `/api/users/org_users`,
-        orgHandle
-    );
-};
+export const fetchOrgUsers = orgHandle => (
+  axios.get(`/api/users/${orgHandle}`)
+);
+
+export const updateUser = user => (
+  axios.patch(`/api/users/${user._id}`, user)
+);

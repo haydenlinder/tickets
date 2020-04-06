@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 1000px;
+    min-width: 1100px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -24,7 +24,6 @@
 .nav .right-nav {
     display: flex;
     justify-content: space-between;
-    margin-right: 30px;
     align-items: center;
 }
 
@@ -33,11 +32,13 @@
 }
 
 .nav .right-nav a {
+    display: flex;
+    align-items: center;
     padding: 10px;
     color: white;
     text-decoration: none;
     font-family: sans-serif;
-    background: rgb(26, 167, 38);
+    background: black;
     border-radius: 3px;
     border: 1px solid black;
     height: 37px;
@@ -45,8 +46,32 @@
     font-weight: bold;
 }
 
+.nav .avitar {
+    border: 1px solid white;
+    border-radius: 30px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+}
+
 .nav .right-nav a:hover {
     border: 1px solid white;
+}
+.new-ticket {
+    background-color: green;
+}
+.nav .logout {
+    background-color: black;
+}
+
+.button1:hover {
+    border: 1px solid white;
+}
+
+.button1.demo {
+    background-color: black;
 }
 
 .link-style-header{
@@ -66,7 +91,6 @@
 
 .right-nav button{
     margin-left: 10px;
-    margin-right: 10px;
 }
 
 .link-container{

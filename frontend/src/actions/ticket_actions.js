@@ -1,13 +1,22 @@
 import * as TicketAPIUtil from '../util/ticket_api_util';
 
+
+// action type constants
 export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
+export const CLEAR_TICKET_ERRORS = "CLEAR_TICKET_ERRORS";
 
-const receiveTickets = tickets => ({
-    type: RECEIVE_TICKETS,
-    tickets: tickets.data
-});
+
+// action creators
+const receiveTickets = tickets => {
+    let payload = {};
+    tickets.data.map(ticket => payload[ticket._id] = ticket);
+    return({
+        type: RECEIVE_TICKETS,
+        tickets: payload
+    });
+};
 
 const receiveTicket = ticket => ({
     type: RECEIVE_TICKET,
@@ -19,9 +28,16 @@ const receiveTicketErrors = errors => ({
     errors: errors.response.data
 });
 
+
+// dispatch asynchronous thunk actions
+export const clearTicketErrors = () => ({
+    type: CLEAR_TICKET_ERRORS
+});
+
 export const getTickets = () => dispatch => (
     TicketAPIUtil.getTickets()
     .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
 
 export const createTicket = ticket => dispatch => (
@@ -60,8 +76,8 @@ export const fetchSubscribedTickets = userId => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
 
-export const fetchStarredTickets = userId => dispatch => (
-    TicketAPIUtil.getStarredTickets(userId)
+export const fetchStarredTickets = currentUser => dispatch => (
+    TicketAPIUtil.getStarredTickets(currentUser)
     .then(tickets => dispatch(receiveTickets(tickets)))
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );

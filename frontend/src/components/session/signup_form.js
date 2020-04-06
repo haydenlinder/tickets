@@ -24,7 +24,6 @@ class SignupForm extends React.Component {
         if (nextProps.signedIn === true) {
             this.props.history.push('/login');
         }
-
     }
 
     update(field) {

@@ -6,12 +6,11 @@ const Comment = require("../../models/Comment")
 
 
 router.post("/",  
-    // passport.authenticate("jwt", {session: false}),
+    // passport.authenticate("jwt", {session: false})
     (req, res) => {
         const { errors, isValid } = validateCommentInput(req.body)
-
         if (!isValid) {
-            return res.status(400).json(errors)
+            return res.status(422).json(errors)
         }
 
         const newComment = new Comment ({
@@ -24,7 +23,7 @@ router.post("/",
         .then(comment => {
             Comment.findById(comment._id)
             .populate("author", ['firstName', 'lastName', '_id'])
-            .populate("ticket", ["_id"])
+            .populate("ticket")
             .then(
                 populated => res.json(populated)
             )
@@ -35,7 +34,8 @@ router.post("/",
 
 router.get("/tickets/:ticketId", (req, res) => {
     Comment
-        .find({ ticket: req.params.ticketId})
+        .find({ ticket: req.params.ticketId })
+        .populate('author', ['firstName', 'lastName', '_id'])
         .sort({ createdAt: -1 })
         .then(comments => res.send(comments))
         .catch(err => 
@@ -45,8 +45,10 @@ router.get("/tickets/:ticketId", (req, res) => {
 })
 
 router.get("/author/:userId", (req, res) => {
-  Ticket.find({ author: req.params.userId })
+  Comment.find({ author: req.params.userId })
     .sort({ createdAt: -1 })
+    .populate('author', ['firstName', 'lastName', '_id'])
+    .populate('ticket')
     .then(comments => res.json(comments))
     .catch(err =>
       res
@@ -57,40 +59,45 @@ router.get("/author/:userId", (req, res) => {
 
 
 router.patch("/:id",
-        passport.authenticate('jwt', { session: false }),
-        (req, res) => {
-            Comment
-            .findById(req.params.id)
-            .then(comment => {
-                if (comment.user.equals(req.user._id)) {
-                    comment.update(req.body.body)
-                } else {
-                    res
-                        .status(403)
-                        .json({
-                        permissionconflict:
-                        "You do not have permission to delete"
-                      });
-                }
-            })
-        }
-)
+        // passport.authenticate('jwt', { session: false }),
 
-router.delete("/:id", 
-    passport.authenticate('jwt', { session: false }),
+        (req, res) => {
+            
+            Comment.findByIdAndUpdate( req.params.id, req.body, {new: true})
+                .populate('author', ['firstName', 'lastName', '_id'])
+                .then((comment) => res.json(comment))
+                .catch((err) => res.status(422).json(err))
+                // if (comment.user.equals(req.user._id)) {
+       
+                // } else {
+                //     res
+                //         .status(403)
+                //         .json({
+                //         permissionconflict:
+                //         "You do not have permission to delete"
+                //       });
+            ;
+        })
+        
+
+
+router.delete("/:id",
+
+    // passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Comment
-        .findById(req.params.id) 
-        .then(comment => {
-            if (comment.user.equals(req.user._id)) {
+            .findById(req.params.id)
+            .then(comment => {
                 comment.remove()
-            } else {
-                res
-                .status(403)
-                .json({permissionconflict: 
-                "You do not have permission to delete"})
-            }
-        })  
+                return res.json("success")
+                // } else {
+                //     res
+                //     .status(403)
+                //     .json({permissionconflict: 
+                //     "You do not have permission to delete"})
+                // }
+            })
+            .catch((errors) => {console.log(errors)})
     }
 )
  

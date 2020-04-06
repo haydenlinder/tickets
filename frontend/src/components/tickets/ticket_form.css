@@ -1,6 +1,103 @@
+.outer-container {
+    background-color: rgb(227, 241, 235);
+    display: flex;
+    justify-content: center;
+}
+
+.form-and-activity-container {
+    width: 800px;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    border: 1px solid grey;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 10px
+}
+
 input, textarea {
     border-radius: 5px;
     resize: none;
+    width: 750px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid rgb(184, 183, 183);
+}
+
+.title-star {
+    display: flex;
+    margin: 10px;
+}
+
+.form .title {
+    font-size: 24px;
+    width: 720px;
+    margin-right: 10px;
+}
+
+.star:hover {
+    cursor: pointer;
+}
+
+select {
+    background-color: lightgrey;
+}
+.selectors {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin: 10px;
+}
+
+
+.owner {
+    width: 150px;
+}
+
+.selectors label {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.selectors select, .selectors input {
+    font-size: 18px;
+}
+
+.selectors button {
+    margin-left: 160px;
+}
+
+.schedule {
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    align-items: center;
+}
+
+.schedule input {
+    font-size: 13px;
+    margin-left: 5px;
+    width: 170px;
+    margin-right: 10px;
+}
+
+.margin {
+    margin: 10px;
+}
+
+.subs-title {
+    margin-left: 15px;
 }
 
 .show{
@@ -14,15 +111,120 @@ input, textarea {
 }
 
 
-input:focus, textarea:focus {
-    border: 1px solid rgb(184, 183, 183);
-}
-
-
 .edited {
     border: 1px solid yellow;
+    background-color: rgb(248, 248, 218);
+}
+
+.button1.edited {
+    background-color: rgb(8, 92, 148);
+}
+
+button.button1.edited:hover {
+    border: 1px solid black
 }
 
 input.edited:focus, textarea.edited:focus {
-    border: 1px solid yellow;
+    border: 1px solid rgb(251, 251, 212);
+}
+
+.ticket-errors {
+    color: red;
+}
+
+.activity-container {
+    width: 798px;
+    background-color: lightgrey;
+}
+
+.avitar {
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+}
+
+.comment-form textarea {
+    width: 600px;
+    margin-right: 10px;
+    max-height: 500px;
+}
+
+.activity-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-container .title {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin: 10px;
+    color: grey
+}
+
+
+.comment-container {
+    display: flex;
+    align-items: baseline;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+
+.comment-container .top {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.comment-container .bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    min-width: fit-content;
+}
+
+.comment-container .body {
+    margin-right: 5px;
+    overflow-wrap: anywhere;
+    padding-bottom: 5px;
+}
+
+.activity-item {
+    margin-left: 40px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.time {
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.buttons .button1 {
+    font-size: 11px;
+    padding: 3px;
+    margin-right: 5px;
 }

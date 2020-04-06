@@ -1,18 +1,99 @@
-table {
-    border-collapse: collapse;
+.table {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-top: none;
+}
+
+.table a {
+    text-decoration: none;
+    color: black;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}
+
+.table-header-group {
+    display: flex;
+    background-color: lightgrey;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
     text-align: center;
 }
 
-tr {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-}
-
-tr:hover {
-    background-color: blanchedalmond;
+.table-header-group:hover {
     cursor: pointer;
 }
 
-div.starred:hover {
+.table-header-group .title {
+    font-weight: 800;
+}
+
+.triangle {
+    width: 15px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.table-cell.ticket-title {
+    width: 150px;
+}
+
+.table-cell {
+    border-top: 1px solid black;
+    padding: 5px;
+    overflow: hidden;
+    height: 25px;
+    width: 100px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.table-row-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.handle{
+    border: 2px solid black;
+    background-color: black;
+}
+
+.handle:hover {
+    cursor: col-resize;
+}
+
+.table-row {
+    display: flex;
+}
+
+.table-row:hover {
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
+.starred {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    margin-right: 0px;
+}
+
+div.star {
+    z-index: 1;
+    font-size: 20px;
+}
+
+.starred div.star {
+    line-height: 15px;
+}
+
+div.star:hover {
     color: red;
 }

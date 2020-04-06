@@ -1,12 +1,14 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const express = require("express");
 const router = express.Router();
-const keys = require('../../../config/keys')
-const validateRegisterInput = require("../../validation/register")
-const validateLoginInput = require("../../validation/login")
-const User = require('../../models/user')
+const keys = require('../../../config/keys');
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+const User = require('../../models/user');
+// const deepPopulate = require('mongoose-deep-populate')
+// User.plugin(deepPopulate)
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -68,7 +70,6 @@ router.post("/login", (req, res) => {
     const password = req.body.password;
 
     User.findOne({ email })
-    .populate('starred')
     .then(user => {
         if (!user) {
             errors.email = "There is no account associated with that email";
@@ -82,7 +83,7 @@ router.post("/login", (req, res) => {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     orgHandle: user.orgHandle,
-                    starred: user.starred
+                    starred: user.starred, 
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -104,20 +105,45 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         _id: req.user._id,
         email: req.user.email
     });
-})
+});
 
-router.get('/:userId', (req, res) => {});
+router.get('/:userId', (req, res) => {
+    User.findById(req.params.userId)
+      .then(user => res.json(user))
+      .catch(err => err.status(404).json(err));
+});
 
-router.get('/acme', (req, res) => {
-    // debugger
-    User.find({ orgHandle: "acme.boom" })
-    .then(users => {
-        res.json(users)
-    })
+router.patch('/:userId', (req, res) => {
+    User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
+      .then(user => res.json(user))
+      .catch(err => err.status(422).json(err));
+});
+
+// Get all users
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => res.json(users))
     .catch(err => {
-      res.status(404)
-      res.json({ noUsersFound: "No users found for this organization" })
+      res.status(500).json({
+        message:
+          err.message || "Some error occurred while retrieving users."
+      });
     });
 });
+
+// Get all users with the specified orgHandle
+router.get('/orgHandle/:orgHandle', (req, res) => {
+  const orgHandle = req.params.orgHandle;
+
+  User.find({ orgHandle: orgHandle })
+    .then(users => res.json(users))
+    .catch(err => {
+      res.status(400).json({
+        message:
+          err.message || `No users found with orgHandle=${orgHandle}`
+      });
+    });
+});
+
 
 module.exports = router;

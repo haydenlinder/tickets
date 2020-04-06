@@ -11,6 +11,10 @@ module.exports = function validateTicketInput(ticket) {
         errors.title = "A Ticket must have a title."
     }
 
+    if (ticket.startDate > ticket.endDate && !Validator.isEmpty(ticket.endDate)) {
+        errors.date = "Start date can't be before End date"
+    }
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0

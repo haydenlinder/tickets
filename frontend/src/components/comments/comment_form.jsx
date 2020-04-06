@@ -6,33 +6,48 @@ class CommentForm extends React.Component {
         super(props)
 
         this.state = { 
-            body: '',
+            body: this.props.body || '',
             author: this.props.currentUser._id,
             ticketId: this.props.ticketId
         }
-
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    navigate
+    handleSubmit(e) {
+         e.preventDefault();
+         this.props.clearCommentErrors();
+         this.props.action(this.state);
+         this.setState({ body: "" });
+    }
 
-    handleSubmit() {
-        this.props.createComment(this.state)
+    componentWillUnmount(){
+        this.props.clearCommentErrors()
     }
 
     update(field) {
-        return e => {
+       return e => {
             this.setState({ [field]: e.currentTarget.value})
-        }
+        } 
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
-                <button className="button1">Create Comment</button>
-            </form>
-        )
+          <form className="comment-form" onSubmit={this.handleSubmit}>
+            <div>
+              <span className="comment-errors">{this.props.errors.body}</span>
+            </div>
+            <div className="avitar">
+              {this.props.currentUser.firstName.slice(0, 1)}
+              {this.props.currentUser.lastName.slice(0, 1)}
+            </div>
+            <input
+              type="textarea"
+              value={this.state.body}
+              onChange={this.update("body")}
+            />
+            <button className="button1">Create Comment</button>
+          </form>
+        );
     }
   
 }

@@ -36,10 +36,10 @@ module.exports = function validateRegisterInput(data) {
         }
     })
 
-    Organization.findOne({ handle: organizationHandle })
-    .then(organization => {
-        if (!organization) {
-            errors.handle = "Your Organization is not registered.";
+    Organization.findOne({ handle: orgHandle })
+    .then(orgData => {
+        if (orgData == null) {
+            errors.handle = "Your company is not registered.";
         }
     })
 
