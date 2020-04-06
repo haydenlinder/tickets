@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
-import '../app.css'
-import './navbar.css'
+import { Link, withRouter } from 'react-router-dom';
+import '../app.css';
+import './navbar.css';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
    
-    this.writeTicket = this.writeTicket.bind(this)
+    this.writeTicket = this.writeTicket.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -91,4 +91,4 @@ class NavBar extends React.Component {
 }
 
 
-export default withRouter(NavBar)
+export default withRouter(NavBar);
