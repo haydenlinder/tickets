@@ -153,7 +153,6 @@ class TicketIndex extends React.Component {
         case 'updatedAt':
           attr1 = this.formatDate(attr1[0]);
           attr2 = this.formatDate(attr2[0]);
-          debugger
           break;
         default:
           break;
