@@ -1,15 +1,8 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-class TicketIndexItem extends React.Component {
-    constructor(props) {
-        super(props) 
 
-    this.formatDate = this.formatDate.bind(this)
-    }
-
-
-formatDate(ticketDate) {
+const formatDate = (ticketDate) => {
     let date = new Date(ticketDate)
     let dateString = date.toDateString()
 
@@ -33,9 +26,8 @@ formatDate(ticketDate) {
     return `${dateString} ${timeString}`
 }
 
-    render() { 
-        const { ticket, currentUser, starredIds, updateUser } = this.props
-
+const TicketIndexItem = ({ ticket, currentUser, starredIds, updateUser }) => {
+ 
         ticket.owner = ticket.owner ? ticket.owner : ""
         
         return (
@@ -43,8 +35,8 @@ formatDate(ticketDate) {
                 <div className='table-cell creator'> <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.creator._id}`}>{ticket.creator.firstName} {ticket.creator.lastName}</Link> </div><div className="handle 1" onClick={e => e.stopPropagation()}></div>
                 <div className='table-cell owner'>{ticket.owner ? <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.owner._id}`}>{ticket.owner.firstName + ' ' + ticket.owner.lastName}</Link> : '--'}</div><div className="handle 2" onClick={e => e.stopPropagation()}></div>
                 <div className="table-cell title">{ticket.title}</div><div className="handle 3" onClick={e => e.stopPropagation()}></div>
-                <div className="table-cell created-at">{this.formatDate(ticket.createdAt)}</div><div className="handle 4" onClick={e => e.stopPropagation()}></div>
-                <div className="table-cell updated-at">{ticket.updatedAt[0] ? this.formatDate(ticket.updatedAt[0]) : '--'}</div><div className="handle 5" onClick={e => e.stopPropagation()}></div>
+                <div className="table-cell created-at">{formatDate(ticket.createdAt)}</div><div className="handle 4" onClick={e => e.stopPropagation()}></div>
+                <div className="table-cell updated-at">{ticket.updatedAt[0] ? formatDate(ticket.updatedAt[0]) : '--'}</div><div className="handle 5" onClick={e => e.stopPropagation()}></div>
                 <div className="table-cell status">{ticket.status ? ticket.status : '--'}</div><div className="handle 6" onClick={e => e.stopPropagation()}></div>
                 <div className="table-cell priority">{ticket.priority ? ticket.priority : '--'}</div><div className="handle 7" onClick={e => e.stopPropagation()}></div>
                 <div className="table-cell start-date">{ticket.startDate ? ticket.startDate : '--'}</div><div className="handle 8" onClick={e => e.stopPropagation()}></div>
@@ -69,7 +61,7 @@ formatDate(ticketDate) {
             </div>
         )
     }
-}
+
 
 
 export default withRouter(TicketIndexItem)
