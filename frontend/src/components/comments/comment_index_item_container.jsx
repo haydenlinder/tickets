@@ -6,7 +6,8 @@ const mSTP = (state, ownProps) => {
     return {
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
     comments: Object.values(state.entities.comments),
-    users: Object.values(state.entities.users)
+    users: Object.values(state.entities.users),
+    errors: state.errors.comments
     }
 }
 

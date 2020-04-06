@@ -50,6 +50,7 @@ class Profile extends React.Component {
       ele1.createdAt < ele2.createdAt ? 1 : ele1.createdAt > ele2.createdAt ? -1 : 0
     );
     
+
     return (
       <div className="profile-container">
         <div className="profile-header-container">

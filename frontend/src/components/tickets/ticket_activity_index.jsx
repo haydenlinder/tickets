@@ -44,12 +44,13 @@ class TicketActivityIndex extends React.Component {
             return (
                 <li key={i + new Date().getTime()} >
                     {feedItem.body ? 
-                    <CommentIndexItem 
+                    <CommentIndexItem
+                        currentUserId={this.props.currentUser._id}
                         comment={feedItem} 
                         deleteComment={this.props.deleteComment} 
-                        fetchTicketComments={this.props.fetchTicketComments} 
                         ticketId={this.props.ticketId} 
                         updateComment={this.props.updateComment} 
+                        errors={this.props.errors}
                     />
                     : 
                     <ActivityIndexItem update={feedItem} />

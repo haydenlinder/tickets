@@ -94,7 +94,7 @@ class TicketIndex extends React.Component {
           toBeResized[j].previousElementSibling.style.width = width + 'px';
         }
       }
-
+      // eslint-disable-next-line
       handles[i].addEventListener('mousedown', (e) => {
         this.setState({ resizing: true });
         clickPos = e.pageX;
@@ -102,7 +102,7 @@ class TicketIndex extends React.Component {
         leftWidth = e.target.previousElementSibling.offsetWidth;
         rightWidth = e.target.nextElementSibling.offsetWidth;
       }, false);
-
+      // eslint-disable-next-line
       window.addEventListener('mousemove', (e) => {
         if (!clickPos) return 0;
         let dx = e.pageX - clickPos;
@@ -117,7 +117,7 @@ class TicketIndex extends React.Component {
           rightSib.style.width = rightWidth - dx + 'px';
         }
       });
-
+      // eslint-disable-next-line
       window.addEventListener('mouseup', (e) => {
         if (!clickPos) return 0
         clickPos = undefined;
@@ -148,6 +148,7 @@ class TicketIndex extends React.Component {
         case 'title':
           attr1 = attr1.toLowerCase();
           attr2 = attr2.toLowerCase();
+          break;
         case 'updatedAt':
           attr1 = attr1[0];
           attr2 = attr2[0];
@@ -272,7 +273,7 @@ class TicketIndex extends React.Component {
           <div 
             className="table-cell starred"
           >
-            <div className="title">Starred</div>
+            <div className="title starred">Starred</div>
           </div>
         </div>
         <div className="table-row-group">

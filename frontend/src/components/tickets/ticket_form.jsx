@@ -1,6 +1,7 @@
 import React from 'react';
 import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
+import LastUpdateSeenByContainer from './last_update_seen_by_container'
 import {withRouter} from "react-router-dom"
 
 import '../app.css'
@@ -28,6 +29,10 @@ class TicketForm extends React.Component {
 
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentWillUnmount() {
+        this.props.clearTicketErrors()
     }
 
     componentDidMount() {
@@ -341,6 +346,7 @@ class TicketForm extends React.Component {
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
                     <h1 className="title">Comments and activity</h1>
+                    <LastUpdateSeenByContainer />
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>
