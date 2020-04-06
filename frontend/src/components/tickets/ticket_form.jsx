@@ -1,11 +1,12 @@
 import React from 'react';
-import TicketActivityContainer from "./ticket_activity_container"
-import CommentFormContainer from "../comments/comment_form_container"
-import LastUpdateSeenByContainer from './last_update_seen_by_container'
-import {withRouter} from "react-router-dom"
+import { withRouter } from 'react-router-dom';
+import TicketActivityContainer from './ticket_activity_container';
+import CommentFormContainer from '../comments/comment_form_container';
+import LastUpdateSeenByContainer from './last_update_seen_by_container';
+import TicketOwnerContainer from './ticket_owner_container';
+import '../app.css';
+import './ticket_form.css';
 
-import '../app.css'
-import './ticket_form.css'
 
 class TicketForm extends React.Component {
     constructor(props) {
@@ -26,9 +27,8 @@ class TicketForm extends React.Component {
             startDate: '',
             endDate: '',
             creator: this.props.currentUser._id
-
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentWillUnmount() {
@@ -46,14 +46,14 @@ class TicketForm extends React.Component {
                 this.props.ticket.startDate = (
                     this.props.ticket.startDate ? 
                     this.props.ticket.startDate.slice(0,10) : ''
-                )
+                );
 
                 this.props.ticket.endDate = (
                     this.props.ticket.endDate ?
                     this.props.ticket.endDate.slice(0,10) : ''
-                )
+                );
 
-                this.setState(this.props.ticket)
+                this.setState(this.props.ticket);
             })
             .then(() => this.view());
         }
@@ -97,7 +97,7 @@ class TicketForm extends React.Component {
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
         
-        this.props.clearTicketErrors()
+        this.props.clearTicketErrors();
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -130,7 +130,7 @@ class TicketForm extends React.Component {
         };
     }
 
-    render(){
+    render() {
 
         if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
@@ -276,6 +276,10 @@ class TicketForm extends React.Component {
                         {prioritySelect}
                     </label>
 
+                    <label>TicketOwnerDropdown
+                        <TicketOwnerContainer />
+                    </label>
+
                     <button
                         onClick={this.handleSubmit}
                         className="button1 not-edited"
@@ -353,6 +357,9 @@ class TicketForm extends React.Component {
                 ) : null}
 
             </div>
+
+                  
+
 
         </div>
         );        
