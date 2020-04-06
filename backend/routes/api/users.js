@@ -41,6 +41,7 @@ router.post("/register", (req, res) => {
                             _id: user._id,
                             firstName: user.firstName,
                             lastName: user.lastName,
+                            email: user.email,
                             orgHandle: user.orgHandle,
                             starred: user.starred
                         };

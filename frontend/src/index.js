@@ -21,7 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     [decodedUser._id]: decodedUser
                 }
             },
-            session: { isAuthenticated: true, _id: decodedUser._id } 
+            session: { 
+              isAuthenticated: true, 
+              _id: decodedUser._id,
+              orgHandle: decodedUser.orgHandle
+            } 
         };
 
         store = configureStore(preloadedState);
