@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { createComment} from '../../actions/comment_actions'
+import { createComment, clearCommentErrors} from '../../actions/comment_actions'
 import CommentForm from './comment_form'
 import {withRouter} from "react-router-dom"
 import {getTicket} from "../../util/ticket_api_util"
@@ -16,7 +16,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
     getTicket: (id) => dispatch(getTicket()),
     action: comment => dispatch(createComment(comment)),
-
+    clearCommentErrors: () => dispatch(clearCommentErrors())
 })
 
 export default withRouter(connect(mSTP, mDTP)(CommentForm))

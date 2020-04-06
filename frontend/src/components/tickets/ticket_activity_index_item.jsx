@@ -23,7 +23,7 @@ class ActivityIndexItem extends React.Component {
 
     let timeString
 
-    if (hours == "0") {
+    if (hours === 0) {
         timeString = ` 12:${minutes}am `;
     } else if (hours === 12) {
       timeString = ` ${hours}:${minutes}pm`

@@ -1,11 +1,11 @@
 import * as CommentAPIUtil from '../util/comment_api_util';
 
-
 // action type constants
 export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
+export const CLEAR_COMMENT_ERRORS = "CLEAR_COMMENT_ERRORS";
 
 
 // action creators
@@ -33,9 +33,11 @@ const receiveCommentErrors = errors => ({
     errors: errors.response.data
 });
 
+export const clearCommentErrors = () => ({
+    type: CLEAR_COMMENT_ERRORS
+})
 
-// dispatch asynchronous thunk actions
-export const fetchTicketComments = ticketId => dispatch => (
+export const fetchTicketComments = (ticketId) => dispatch => (
     CommentAPIUtil.fetchTicketComments(ticketId)
     .then(comments => dispatch(receiveComments(comments)))
     .catch(errors => dispatch(receiveCommentErrors(errors)))
