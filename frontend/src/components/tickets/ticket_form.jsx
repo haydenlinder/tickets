@@ -246,13 +246,15 @@ class TicketForm extends React.Component {
             <div className="form-and-activity-container">
               <form className="form">
 
-                <div>
-                    <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
-                            <button>T{this.props.match.params.ticketId} - Copy Link to Clipboard <FaCopy /></button>
-                    </CopyToClipboard>
-                    {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
-                </div>
-              
+                {this.props.ticketId !== "new"
+                    ? <div>
+                            <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
+                                    <button>T{this.props.match.params.ticketId} - Copy Link to Clipboard <FaCopy /></button>
+                            </CopyToClipboard>
+                            {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
+                        </div>
+                    : null}
+
               <div className="ticket-errors">
                 <p>{this.props.errors.title}</p>
               </div>
