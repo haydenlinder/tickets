@@ -144,7 +144,7 @@ class Ticket extends React.Component {
         }
         const { currentUser, updateUser, ticket, errors } = this.props;
         this.update = this.update.bind(this);
-        
+        debugger
         return (
             <div className="outer-container">
                 <div className="form-and-activity-container">

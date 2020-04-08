@@ -5,21 +5,23 @@ class TicketQuery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            query: {}
+            query: new URLSearchParams()
         };
     };
 
     update(field) {
+        debugger
         return e => {
+            debugger
             // eslint-disable-next-line
-            this.state.query[field] = e.target.value;
+            this.state.query.set(field, e.target.value);
             this.setState({ query: this.state.query });
         };
     };
 
     handleSubmit(e) {
         e.preventDefault();
-        let queryString;
+        let queryString = this.state.query.toString();
         this.props.history.push(`/tickets/?${queryString}`)
     };
 
@@ -32,8 +34,8 @@ class TicketQuery extends React.Component {
                 </div>
                 <input 
                     type="text"
-                    onChange={(e) => this.update('priority')}
-                    value={query.priority}
+                    onChange={this.update('priority')}
+                    value={query.get('priority')}
                 />
                 <button 
                     className="button1"

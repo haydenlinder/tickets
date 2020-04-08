@@ -7,7 +7,7 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
-import TicketFormContainer from './ticket/ticket_container';
+import TicketContainer from './ticket/ticket_container';
 import TicketIndex from './ticket_index/ticket_index';
 import LeftPanelContainer from './left_panel/left_panel_container';
 import NotFound from './errors/not_found';
@@ -27,7 +27,7 @@ const App = () => (
                 <AuthRoute exact path="/login" component={LoginFormContainer} />
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
-                <ProtectedRoute exact path="/tickets/:ticketId" component={TicketFormContainer} />
+                <ProtectedRoute exact path="/tickets/:ticketId" component={TicketContainer} />
                 <ProtectedRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
                 <Route component={NotFound} />
             </Switch>

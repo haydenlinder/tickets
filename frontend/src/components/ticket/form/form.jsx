@@ -7,13 +7,15 @@ import Star from './star';
 
 const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, updateUser, setState }) => (
     <form className="form">
-        <div className="form-header">
-            <span className="ticket-number">T{ticket._id} - </span>
-            <CopyToClipboard text={window.location.href} onCopy={() => setState({ copied: true })}>
-                <span className="copy">Copy Link <FaCopy /></span>
-            </CopyToClipboard>
-            {state.copied ? <span className="copied fade-out"> Copied to Clipboard!</span> : null}
-        </div>
+        {ticket ?
+            <div className="form-header">
+                <span className="ticket-number">T{ticket._id} - </span>
+                <CopyToClipboard text={window.location.href} onCopy={() => setState({ copied: true })}>
+                    <span className="copy">Copy Link <FaCopy /></span>
+                </CopyToClipboard>
+                {state.copied ? <span className="copied fade-out"> Copied to Clipboard!</span> : null}
+            </div> : null
+        }
         <div className="ticket-errors">
             <p>{errors.title}</p>
         </div>
