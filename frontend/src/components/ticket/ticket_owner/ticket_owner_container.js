@@ -7,7 +7,7 @@ import ticketOwner from './ticket_owner';
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session._id],
   orgHandle: state.session.orgHandle,
-  path: ownProps.location.pathname
+  users: Object.values(state.entities.users)
 });
 
 const mapDispatchToProps = dispatch => ({

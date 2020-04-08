@@ -18,7 +18,7 @@ const usersReducer = (state = {}, action) => {
       nextState[action.payload._id] = action.payload;
       return nextState;
     case RECEIVE_ORG_USERS:
-      return action.orgs;
+      return action.users;
     default:
       return nextState;
   }
