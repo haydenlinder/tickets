@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TicketIndex from './ticket_index'
+import TicketTable from './ticket_table'
 import { withRouter } from 'react-router-dom'
 import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTickets, fetchStarredTickets } from '../../actions/ticket_actions'
 import { updateUser, getOneUser } from '../../actions/user_actions'
@@ -21,4 +21,4 @@ const mdtp = dispatch => ({
     updateUser: user => dispatch(updateUser(user))
 })
 
-export default withRouter(connect(mstp, mdtp)(TicketIndex))
+export default withRouter(connect(mstp, mdtp)(TicketTable))
