@@ -13,12 +13,85 @@
     border: 1px solid grey;
 }
 
-
 .form {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     padding: 10px
+}
+
+.ticket-number {
+    font-weight: 600;
+}
+
+.copy {
+    font-size: 14px;
+    font-weight: 600;
+    color: blue;
+}
+
+.copy:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.copied {
+    color: red;
+    font-size: 14px;
+    opacity: 0;
+}
+
+.fade-out {
+  animation: fadeOut ease 4s;
+  -webkit-animation: fadeOut ease 4s;
+  -moz-animation: fadeOut ease 4s;
+  -o-animation: fadeOut ease 4s;
+  -ms-animation: fadeOut ease 4s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
 }
 
 input, textarea {
@@ -27,10 +100,13 @@ input, textarea {
     width: 750px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 input:focus, textarea:focus {
     border: 1px solid rgb(184, 183, 183);
+    /* background-color: white; */
 }
 
 .title-star {
@@ -51,13 +127,15 @@ input:focus, textarea:focus {
 select {
     background-color: lightgrey;
 }
+
+
+
 .selectors {
     display: flex;
     justify-content: space-between;
     height: 40px;
     margin: 10px;
 }
-
 
 .owner {
     width: 150px;
@@ -135,6 +213,45 @@ input.edited:focus, textarea.edited:focus {
 .activity-container {
     width: 798px;
     background-color: lightgrey;
+}
+
+.activity-header{
+    display: flex;
+    align-items: baseline;
+}
+
+.lusb-container {
+    font-size: 13px;
+}
+
+.lusb-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.lusb-container a:hover {
+    text-decoration: underline;
+}
+
+.activity-container a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.activity-container a:hover {
+    text-decoration: underline;
+}
+
+
+
+.toggle-expand {
+    color: blue;
+}
+
+.toggle-expand:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .avitar {

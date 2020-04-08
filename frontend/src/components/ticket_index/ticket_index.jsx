@@ -32,26 +32,26 @@ class TicketIndex extends React.Component {
     // in case of page refresh, fetch the current user to overwrite 
     // stale preloaded state from login and get updated starred list
     this.props.getOneUser(this.props.currentUser._id)
-      switch (this.props.location.pathname) {
-        case `/tickets/owner/${this.props.userId}`:
-          this.props.fetchOwnerTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/subscribed/${this.props.userId}`:
-          this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/creator/${this.props.userId}`:
-          this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/starred/${this.props.userId}`: 
-          this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => this.receiveTickets(action))
-          break;
-        default:
-          break;
-      }
+    switch (this.props.location.pathname) {
+      case `/tickets/owner/${this.props.userId}`:
+        this.props.fetchOwnerTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/subscribed/${this.props.userId}`:
+        this.props.fetchSubscribedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/creator/${this.props.userId}`:
+        this.props.fetchCreatedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/starred/${this.props.userId}`: 
+        this.props.fetchStarredTickets(this.props.currentUser)
+        .then(action => this.receiveTickets(action))
+        break;
+      default:
+        break;
+    }
       
   }
 
@@ -87,11 +87,13 @@ class TicketIndex extends React.Component {
     for (let i = 0; i < handles.length; i++) {
       // when navigating to a new page after resize,
       // resize elements that weren't yet created to resized width:
-      if (i < 8) {
+      if (i < 9) {
         let width = handles[i].previousElementSibling.offsetWidth;
+        let rwidth = handles[8].nextElementSibling.offsetWidth;
         let toBeResized = document.getElementsByClassName(`${i + 1}`)
         for (let j = 0; j < toBeResized.length; j++) {
           toBeResized[j].previousElementSibling.style.width = width + 'px';
+          if (i === 8) toBeResized[j].nextElementSibling.style.width = rwidth + 'px';
         }
       }
       // eslint-disable-next-line

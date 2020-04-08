@@ -1,6 +1,6 @@
 import { createTicket, getTicket, updateTicket } from "../../actions/ticket_actions";
 import { connect } from "react-redux";
-import TicketForm from "./ticket_form";
+import Ticket from "./ticket";
 import {withRouter} from "react-router-dom";
 import {fetchTicketComments} from "../../actions/comment_actions"
 import { updateUser, getOneUser } from '../../actions/user_actions'
@@ -28,6 +28,6 @@ const mdp = dispatch => ({
     clearTicketErrors: () => dispatch(clearTicketErrors())
 });
 
-const TicketFormContainer = withRouter(connect(msp, mdp)(TicketForm));
+const TicketFormContainer = withRouter(connect(msp, mdp)(Ticket));
 
 export default TicketFormContainer;

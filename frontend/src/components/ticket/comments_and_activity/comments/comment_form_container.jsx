@@ -1,8 +1,10 @@
-import { connect } from 'react-redux'
-import { createComment, clearCommentErrors} from '../../actions/comment_actions'
-import CommentForm from './comment_form'
-import {withRouter} from "react-router-dom"
-import {getTicket} from "../../util/ticket_api_util"
+import { connect } from 'react-redux';
+import { createComment, clearCommentErrors} from 
+'../../../../actions/comment_actions';
+import { getTicket } from 
+"../../../../actions/ticket_actions";
+import CommentForm from './comment_form';
+import { withRouter } from "react-router-dom";
 
 const mSTP = (state, ownProps) => {
     return {

@@ -23,6 +23,7 @@
     font-size: 12px;
     line-height: 15px;
     text-align: center;
+    border-top: 1px solid black;
 }
 
 .table-header-group:hover {
@@ -44,7 +45,6 @@
 }
 
 .table-cell {
-    border-top: 1px solid black;
     padding: 5px;
     overflow: hidden;
     height: 25px;
@@ -71,6 +71,7 @@
 
 .table-row {
     display: flex;
+    border-top: 1px solid black;
 }
 
 .table-row:hover {
@@ -82,7 +83,6 @@
     display: flex;
     justify-content: center;
     width: 50px;
-    margin-right: 0px;
 }
 
 div.star {
