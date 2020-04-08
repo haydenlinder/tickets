@@ -15,14 +15,19 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        debugger
+        this.props.getOneUser()
+    }
+
     componentWillUnmount() {
+        debugger
+        this.props.getOneUser();
         this.props.clearErrors()
     }
 
-    componentWillUpdate() {
-    }
-
     componentWillReceiveProps(nextProps) {
+        debugger
         if (nextProps.currentUser === true) {
             this.props.history.push('/tickets/owner');
         }
@@ -42,6 +47,9 @@ class LoginForm extends React.Component {
         };
         
         this.props.login(user)
+        .then(function(action) {
+            debugger
+        })
         this.setState({
             email: '',
             password: ''
@@ -52,7 +60,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="form-container">
-                <form className="form" >
+                <form className="form" onSubmit={this.handleSubmit} >
                     <img className="cat-hat" alt="cat" src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"></img>
                     <input className="form-box-login" type="text"
                             value={this.state.email}
@@ -64,7 +72,8 @@ class LoginForm extends React.Component {
                             onChange={this.update('password')}
                             placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
                         />
-                        <button className="button1" onClick={this.handleSubmit}>Log In</button>
+                        {/* <button className="button1" onClick={this.handleSubmit}>Log In</button> */}
+                    <button className="button" type="submit">Sign in</button>
                 </form>
             </div>
         );
