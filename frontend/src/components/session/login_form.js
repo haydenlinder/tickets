@@ -16,18 +16,15 @@ class LoginForm extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         this.props.getOneUser()
     }
 
     componentWillUnmount() {
-        debugger
         this.props.getOneUser();
         this.props.clearErrors()
     }
 
     componentWillReceiveProps(nextProps) {
-        debugger
         if (nextProps.currentUser === true) {
             this.props.history.push('/tickets/owner');
         }
@@ -47,9 +44,6 @@ class LoginForm extends React.Component {
         };
         
         this.props.login(user)
-        .then(function(action) {
-            debugger
-        })
         this.setState({
             email: '',
             password: ''

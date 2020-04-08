@@ -10,9 +10,7 @@ class TicketQuery extends React.Component {
     };
 
     update(field) {
-        debugger
         return e => {
-            debugger
             // eslint-disable-next-line
             this.state.query.set(field, e.target.value);
             this.setState({ query: this.state.query });

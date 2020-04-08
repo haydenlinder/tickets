@@ -10,7 +10,6 @@ const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       nextState[action.payload._id] = action.payload;
-      debugger
       return nextState;
     case RECEIVE_USER_LOGOUT:
       return {};

@@ -4,7 +4,6 @@ import {getOneUser} from "../../actions/user_actions"
 import LoginForm from './login_form';
 
 const mapStateToProps = (state) => {
-    debugger
     return({
         users: Object.values(state.entities.users),
         currentUser: state.entities.users[state.session._id],
