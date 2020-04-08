@@ -12,19 +12,20 @@ class SignupForm extends React.Component {
             password: '',
             password2: ''
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillUnmount() {
-        this.props.clearErrors()
-    }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
-            this.props.history.push('/login');
-        }
-    }
+    // componentWillUnmount() {
+    //     this.props.clearErrors()
+    // }
+
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.signedIn === true) {
+    //         this.props.history.push('/tickets/owner');
+    //     }
+    // }
+
 
     update(field) {
         return e => this.setState({
@@ -41,7 +42,6 @@ class SignupForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         };
-
         this.props.clearErrors()
         this.props.signup(user)
         this.setState({
@@ -51,11 +51,14 @@ class SignupForm extends React.Component {
             password: '',
             password2: ''
         });
+        
     }
 
 
     render() {
+
         return (
+
             <div className="form-container">
                 <form className="form">
 

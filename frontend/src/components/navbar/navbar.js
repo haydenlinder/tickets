@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
+import LoginFormContainer from "../session/login_form_container"
 import '../app.css'
 import './navbar.css'
 
@@ -86,7 +87,14 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return <div className="hover-pointer container">{this.getLinks()}</div>;
+    return (
+      <div>
+          <div 
+              className="hover-pointer container">{this.getLinks()}
+
+          </div>
+      </div>
+    )
   }
 }
 

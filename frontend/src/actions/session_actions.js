@@ -51,8 +51,8 @@ export const signup = user => dispatch => (
     })
 ); 
 
-export const login = user => dispatch => (
-    SessionAPIUtil.login(user)
+export const login = user => dispatch => {
+    return SessionAPIUtil.login(user)
     .then(res => {
         const { token } = res.data;
         localStorage.setItem('jwtToken', token);
@@ -63,7 +63,7 @@ export const login = user => dispatch => (
     .catch(err => {
         dispatch(receiveErrors(err.response.data));
     })
-);
+};
 
 export const loginDemoUser = () => dispatch => {
   const demoUser = {

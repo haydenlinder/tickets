@@ -5,10 +5,11 @@ import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTick
 import { updateUser, getOneUser } from '../../actions/user_actions'
 
 
-const mstp = (state, ownProps) => ({
+const mstp = (state, ownProps) => { 
+    return {
     userId: ownProps.match.params.userId,
     currentUser: state.entities.users[state.session._id]
-})
+}}
 
 const mdtp = dispatch => ({
     getOneUser: userId => dispatch(getOneUser(userId)),
