@@ -4,155 +4,62 @@ import Autosuggest from 'react-autosuggest';
 import escapeRegexCharacters from '../../../util/regex_util';
 
 
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'C#',
-    year: 2000
-  },
-  {
-    name: 'C++',
-    year: 1983
-  },
-  {
-    name: 'Clojure',
-    year: 2007
-  },
-  {
-    name: 'Elm',
-    year: 2012
-  },
-  {
-    name: 'Go',
-    year: 2009
-  },
-  {
-    name: 'Haskell',
-    year: 1990
-  },
-  {
-    name: 'Java',
-    year: 1995
-  },
-  {
-    name: 'JavaScript',
-    year: 1995
-  },
-  {
-    name: 'Perl',
-    year: 1987
-  },
-  {
-    name: 'PHP',
-    year: 1995
-  },
-  {
-    name: 'Python',
-    year: 1991
-  },
-  {
-    name: 'Ruby',
-    year: 1995
-  },
-  {
-    name: 'Scala',
-    year: 2003
-  }
-];
-
-// const getSuggestions = value => {
-//   const escapedValue = escapeRegexCharacters(value.trim());
-
-//   if (escapedValue === '') {
-//     return [];
-//   }
-
-//   const regex = new RegExp('^' + escapedValue, 'i');
-
-//   return bank.filter(language => regex.test(language.name));
-// };
-
-// const getSuggestionValue = suggestion => suggestion.name;
-
-// const renderSuggestion = suggestion => <span>{ suggestion.name }</span>;
-
-
 class ticketOwner extends React.Component {
   constructor(props) {
     super(props);
+    
+    const languages = [
+      { name: 'C' },
+      { name: 'C#' },
+      { name: 'C++' },
+      { name: 'Clojure' }
+    ];
 
     this.state = {
       value: '',
       suggestions: [],
       users: this.props.users,
-      bank: languages
+      languages: languages
     };
 
-    this.getSuggestions = value => {
-    const escapedValue = escapeRegexCharacters(value.trim());
+ 
 
-    if (escapedValue === '') {
-      return [];
-    }
-
-    const regex = new RegExp('^' + escapedValue, 'i');
-
-    
-    return this.state.bank.filter(language => regex.test(language.name));
-  };
-
-  this.getSuggestionValue = suggestion => suggestion.name;
-
-  this.renderSuggestion = suggestion => <span>{ suggestion.name }</span>;
-
-  this.getSuggestions = this.getSuggestions.bind(this);
-  this.getSuggestionValue = this.getSuggestionValue.bind(this);
-  this.renderSuggestion = this.renderSuggestion.bind(this);
+    // bind autosuggest methods
+    this.getSuggestions = this.getSuggestions.bind(this);
+    this.getSuggestionValue = this.getSuggestionValue.bind(this);
+    this.renderSuggestion = this.renderSuggestion.bind(this);
 
 
     // this.whatever = this.whatever.bind(this);
   }
 
+  // autosuggest methods
+  getSuggestions(value) {
+    const escapedValue = escapeRegexCharacters(value.trim());
+    if (escapedValue === '') { return []; }
+    const regex = new RegExp('^' + escapedValue, 'i');
+    return this.state.users.filter(user => regex.test(user.firstName));
+  };
+
+  getSuggestionValue(suggestion) { 
+    return suggestion.firstName; 
+  };
+
+  renderSuggestion(suggestion) { 
+    return <span>{suggestion.firstName}</span>; 
+  };
+
   componentDidMount() {
     // debugger
     this.props.getOrgUsersByHandle(this.props.orgHandle);
     this.setState({
-      bank: this.props.users
+      users: this.props.users
     })
-    debugger
-    // in case of page refresh, fetch the current user to overwrite 
-    // stale preloaded state from login and get updated starred list
-    // this.props.getOrgUsersByHandle(this.props.orgHandle);
-    // console.log("MARSHALL");
-    // console.log(this.props.users);
-    // this.setState({
-    //   store: this.props.users.values
-    // });
-    // debugger
-    // if (this.props.ticketId !== 'new') {
-    //   this.props.getTicket(this.props.ticketId)
-    //     .then(ticket => {
-
-    //       this.props.ticket.startDate = (
-    //         this.props.ticket.startDate ?
-    //           this.props.ticket.startDate.slice(0, 10) : ''
-    //       );
-
-    //       this.props.ticket.endDate = (
-    //         this.props.ticket.endDate ?
-    //           this.props.ticket.endDate.slice(0, 10) : ''
-    //       );
-
-    //       this.setState(this.props.ticket);
-    //     })
-    //     .then(() => this.view());
-    // }
   }
 
+
   onChange = (event, { newValue }) => {
+    debugger
     this.setState({
       value: newValue
     });
@@ -170,21 +77,16 @@ class ticketOwner extends React.Component {
     });
   };
 
-  render() {
+  render = () => {
     const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: "Type 'c'",
       value,
       onChange: this.onChange
     };
-    // debugger
-    // this.props.getOrgUsersByHandle(this.props.orgHandle);
-    console.log("MARSHALL");
+
+    console.log("this.props.users = ");
     console.log(this.props.users);
-    // this.setState({
-    //   store: this.props.users.values
-    // });
-    // debugger
     return (
       <div id="basic-example">
         <div>
