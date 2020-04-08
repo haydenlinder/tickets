@@ -35,10 +35,11 @@ class ticketOwner extends React.Component {
 
   // autosuggest methods
   getSuggestions(value) {
+    debugger
     const escapedValue = escapeRegexCharacters(value.trim());
     if (escapedValue === '') { return []; }
     const regex = new RegExp('^' + escapedValue, 'i');
-    return this.state.users.filter(user => regex.test(user.firstName));
+    return this.props.users.filter(user => regex.test(user.firstName));
   };
 
   getSuggestionValue(suggestion) { 
@@ -53,7 +54,7 @@ class ticketOwner extends React.Component {
     // debugger
     this.props.getOrgUsersByHandle(this.props.orgHandle);
     this.setState({
-      users: this.props.users
+      users: this.props.getOrgUsersByHandle(this.props.orgHandle)
     })
   }
 
