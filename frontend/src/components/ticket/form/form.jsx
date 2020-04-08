@@ -5,7 +5,8 @@ import PrioritySelect from './priority_select';
 import StatusSelect from './status_select';
 import Star from './star';
 
-const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, updateUser, setState }) => (
+const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, updateUser, setState }) => {
+return(
     <form className="form">
         {ticket ?
             <div className="form-header">
@@ -51,7 +52,7 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
                 />
             </label>
             <label>Priority
-                                <PrioritySelect
+                <PrioritySelect
                     type={type}
                     priority={state.ticket.priority}
                     update={update}
@@ -115,6 +116,6 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
             onChange={update("blocks")}
         />
     </form>
-);
+)};
 
 export default Form;
