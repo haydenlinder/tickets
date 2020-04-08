@@ -11,6 +11,7 @@ import TicketContainer from './ticket/ticket_container';
 import TicketIndex from './ticket_index/ticket_index';
 import LeftPanelContainer from './left_panel/left_panel_container';
 import NotFound from './errors/not_found';
+import UserIndexContainer from "./user_index/user_index_container"
 
 import './reset.css';
 import './app.css';
@@ -29,6 +30,7 @@ const App = () => (
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
                 <ProtectedRoute exact path="/tickets/:ticketId" component={TicketContainer} />
                 <ProtectedRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
+                <ProtectedRoute exact path="/:orgHandle/users/:searchParams" component={UserIndexContainer} />
                 <Route component={NotFound} />
             </Switch>
             </div>

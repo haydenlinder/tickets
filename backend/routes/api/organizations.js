@@ -34,7 +34,6 @@ router.get("/:orgId", (req, res) => {
 // Get one organization, by handle
 router.get("/handle/:handle", (req, res) => {
   const orgHandle = req.params.handle;
-
   Organization.find({ handle: orgHandle })
     .then(organizations => res.json(organizations))
     .catch(err => {
@@ -49,9 +48,9 @@ router.get("/handle/:handle", (req, res) => {
 // Get all users with the specified handle
 router.get('/handle/:handle/users', (req, res) => {
   const orgHandle = req.params.handle;
-
   User.find({ orgHandle: orgHandle })
     .then(users => res.json(users))
+    .then(orgHandle => res.json(orgHandle))
     .catch(err => {
       res.status(400).json({
         message:
