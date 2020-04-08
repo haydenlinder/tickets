@@ -23,7 +23,6 @@ class LoginForm extends React.Component {
         if (nextProps.currentUser === true) {
             this.props.history.push('/tickets');
         }
-
     }
 
     update(field) {

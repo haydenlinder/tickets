@@ -38,7 +38,10 @@
     "mongoose-seed": "^0.6.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react": "^16.13.1",
     "react-autosuggest": "^10.0.0",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-icons": "^3.9.0",
     "validator": "^12.2.0"
   },
   "devDependencies": {

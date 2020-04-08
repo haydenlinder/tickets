@@ -1,8 +1,10 @@
 import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
+import {deleteComment, updateComment, fetchTicketComments} from 
+"../../../../actions/comment_actions";
+import {getTicket} from 
+"../../../../actions/ticket_actions";
 import TicketActivityIndex from "./ticket_activity_index";
-import {withRouter} from "react-router-dom";
-import {deleteComment, updateComment, fetchTicketComments} from "../../actions/comment_actions";
-import {getTicket} from "../../actions/ticket_actions";
 
 
 const mSTP = (state, ownProps) => {

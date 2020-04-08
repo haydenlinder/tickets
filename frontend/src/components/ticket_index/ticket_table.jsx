@@ -2,7 +2,7 @@ import React from 'react'
 import TicketIndexItem from './ticket_index_item'
 import './ticket_index.css'
 
-class TicketIndex extends React.Component {
+class TicketTable extends React.Component {
   constructor(props) {
     super(props)
 
@@ -14,7 +14,7 @@ class TicketIndex extends React.Component {
         ord: true
       }
     };
-  }
+  };
 
   receiveTickets(action) {
     this.setState({ 
@@ -25,33 +25,33 @@ class TicketIndex extends React.Component {
       } 
     });
     this.formatTable();
-    this.sortTicketsBy(this.state.sortedBy.attr)
+    this.sortTicketsBy(this.state.sortedBy.attr);
   }
 
   componentDidMount() {
     // in case of page refresh, fetch the current user to overwrite 
     // stale preloaded state from login and get updated starred list
     this.props.getOneUser(this.props.currentUser._id)
-      switch (this.props.location.pathname) {
-        case `/tickets/owner/${this.props.userId}`:
-          this.props.fetchOwnerTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/subscribed/${this.props.userId}`:
-          this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/creator/${this.props.userId}`:
-          this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/starred/${this.props.userId}`: 
-          this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => this.receiveTickets(action))
-          break;
-        default:
-          break;
-      }
+    switch (this.props.location.pathname) {
+      case `/tickets/owner/${this.props.userId}`:
+        this.props.fetchOwnerTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/subscribed/${this.props.userId}`:
+        this.props.fetchSubscribedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/creator/${this.props.userId}`:
+        this.props.fetchCreatedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/starred/${this.props.userId}`: 
+        this.props.fetchStarredTickets(this.props.currentUser)
+        .then(action => this.receiveTickets(action))
+        break;
+      default:
+        break;
+    }
       
   }
 
@@ -76,9 +76,9 @@ class TicketIndex extends React.Component {
           break;
         default:
           break;
-      }
-    }
-  }
+      };
+    };
+  };
 
   formatTable() {
     let handles = document.getElementsByClassName('handle');
@@ -87,13 +87,15 @@ class TicketIndex extends React.Component {
     for (let i = 0; i < handles.length; i++) {
       // when navigating to a new page after resize,
       // resize elements that weren't yet created to resized width:
-      if (i < 8) {
+      if (i < 9) {
         let width = handles[i].previousElementSibling.offsetWidth;
-        let toBeResized = document.getElementsByClassName(`${i + 1}`)
+        let rwidth = handles[8].nextElementSibling.offsetWidth;
+        let toBeResized = document.getElementsByClassName(`${i + 1}`);
         for (let j = 0; j < toBeResized.length; j++) {
           toBeResized[j].previousElementSibling.style.width = width + 'px';
-        }
-      }
+          if (i === 8) toBeResized[j].nextElementSibling.style.width = rwidth + 'px';
+        };
+      };
       // eslint-disable-next-line
       handles[i].addEventListener('mousedown', (e) => {
         this.setState({ resizing: true });
@@ -107,7 +109,7 @@ class TicketIndex extends React.Component {
         if (!clickPos) return 0;
         let dx = e.pageX - clickPos;
         
-        let colHandles = document.getElementsByClassName(colNum)
+        let colHandles = document.getElementsByClassName(colNum);
 
         for (let j = 0; j < colHandles.length; j++) {
           let leftSib = colHandles[j].previousElementSibling;
@@ -115,19 +117,19 @@ class TicketIndex extends React.Component {
   
           leftSib.style.width = leftWidth + dx + 'px';
           rightSib.style.width = rightWidth - dx + 'px';
-        }
+        };
       });
       // eslint-disable-next-line
       window.addEventListener('mouseup', (e) => {
-        if (!clickPos) return 0
+        if (!clickPos) return 0;
         clickPos = undefined;
         setTimeout(() => {
-          this.setState({ resizing: false })
-        }, 300)
+          this.setState({ resizing: false });
+        }, 300);
       });
-    } 
+    };
 
-  }
+  };
 
   sortTicketsBy(attr) {
     let tickets = Object.values(this.state.tickets);
@@ -155,12 +157,12 @@ class TicketIndex extends React.Component {
           break;
         default:
           break;
-      }
+      };
       if (this.state.sortedBy.ord) {
         return attr1 < attr2 ? 1 : attr1 > attr2 ? -1 : 0;
       } else {
         return  attr1 > attr2 ? 1 : attr1 < attr2 ? -1 : 0;
-      }
+      };
     });
 
     this.setState({
@@ -170,10 +172,10 @@ class TicketIndex extends React.Component {
         ord: !this.state.sortedBy.ord,
       }
     });
-  } 
+  };
 
   render() {
-    if (!this.state.tickets) return null
+    if (!this.state.tickets) return null;
     const tickets = Object.values(this.state.tickets);
     const { currentUser, updateUser, history } = this.props;
     const { sortedBy } = this.state;
@@ -292,7 +294,7 @@ class TicketIndex extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
-export default TicketIndex
+export default TicketTable;

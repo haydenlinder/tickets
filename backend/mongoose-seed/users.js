@@ -47,24 +47,24 @@ const userSeeds = {
       _id: "aaaaaaaaaaaaaaaaaaaaaaaa",
       firstName: "Wiley",
       lastName: "Coyote",
-      email: "wc@acme.boom",
-      orgHandle: "acme.boom",
+      email: "wc@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "bbbbbbbbbbbbbbbbbbbbbbbb",
       firstName: "Road",
       lastName: "Runner",
-      email: "rr@acme.boom",
-      orgHandle: "acme.boom",
+      email: "rr@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "cccccccccccccccccccccccc",
       firstName: "Marvin",
       lastName: "The Martian",
-      email: "mtm@acme.boom",
-      orgHandle: "acme.boom",
+      email: "mtm@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
@@ -79,56 +79,56 @@ const userSeeds = {
       _id: "ccccccccccccccccccccccc2",
       firstName: "Baby",
       lastName: "Shark",
-      email: "babyshark@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "babyshark@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc3",
       firstName: "Mommy",
       lastName: "Shark",
-      email: "mommyshark@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "mommyshark@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc4",
       firstName: "Daddy",
       lastName: "Shark",
-      email: "daddyshark@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "daddyshark@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc5",
       firstName: "Baby",
       lastName: "Squid",
-      email: "babysquid@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "babysquid@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc6",
       firstName: "Mommy",
       lastName: "Squid",
-      email: "mommysquid@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "mommysquid@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc7",
       firstName: "Daddy",
       lastName: "Squid",
-      email: "daddysquid@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "daddysquid@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "ccccccccccccccccccccccc8",
       firstName: "Foo",
       lastName: "Bar",
-      email: "foobar@appacademy.io",
-      orgHandle: "appacademy.io",
+      email: "foobar@cats4humanity.org",
+      orgHandle: "cats4humanity.org",
       password: genPasswordDigest("password")
     },
     {

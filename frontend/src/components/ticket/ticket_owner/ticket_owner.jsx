@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
-import isMobile from 'ismobilejs';
-import escapeRegexCharacters from '../../util/regex_util';
-import styles from './ticket_owner.less';
+import escapeRegexCharacters from '../../../util/regex_util';
 
 
 const languages = [
@@ -121,21 +119,8 @@ class ticketOwner extends React.Component {
     };
 
     return (
-      <div id="basic-example" className={styles.container}>
-        {/* <div className={styles.textContainer}>
-          <div className={styles.title}>Basic</div>
-          <div className={styles.description}>
-            Let’s start simple. Here’s a plain list of suggestions.
-          </div>
-          <Link
-            className={styles.codepenLink}
-            href="http://codepen.io/moroshko/pen/LGNJMy"
-            underline={false}
-          >
-            Codepen
-          </Link>
-        </div> */}
-        <div className={styles.autosuggest}>
+      <div id="basic-example">
+        <div>
           <Autosuggest
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -143,7 +128,6 @@ class ticketOwner extends React.Component {
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}
             inputProps={inputProps}
-            // focusInputOnSuggestionClick={focusInputOnSuggestionClick}
             id="basic-example"
           />
         </div>
