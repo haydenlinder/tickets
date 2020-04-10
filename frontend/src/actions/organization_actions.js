@@ -68,9 +68,13 @@ export const getOrgUsersByHandle = orgHandle => dispatch => (
     .catch(errors => dispatch(receiveOrgErrors(errors)))
 );
 
-export const getOrgUsersByHandleAndNameFragment = 
-  orgHandle => nameFragment => dispatch => (
+export const getOrgUsersByHandleAndNameFragment =
+  (orgHandle, nameFragment) => dispatch => {
+    debugger
+    return (
     OrgAPIUtil.getOrgUsersByHandleAndNameFragment(orgHandle, nameFragment)
       .then(users => dispatch(receiveOrgUsers(users)))
       .catch(errors => dispatch(receiveOrgErrors(errors)))
-  );
+    )
+    
+  };

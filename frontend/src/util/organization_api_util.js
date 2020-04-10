@@ -16,6 +16,9 @@ export const getOrgUsersByHandle = orgHandle => (
   axios.get(`/api/organizations/handle/${orgHandle}/users`)
 );
 
-export const getOrgUsersByHandleAndNameFragment = (orgHandle, nameFragment) => (
-  axios.get(`/api/organizations/handle/${orgHandle}/users/${nameFragment}`)
-);
+export const getOrgUsersByHandleAndNameFragment = (orgHandle, nameFragment) => {
+  debugger
+  return (
+  axios.get(`/api/organizations/handle/${orgHandle}/users/name/${nameFragment}`
+  )
+  )};
