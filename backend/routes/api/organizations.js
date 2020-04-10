@@ -34,7 +34,6 @@ router.get("/:orgId", (req, res) => {
 // Get one organization, by handle
 router.get("/handle/:handle", (req, res) => {
   const orgHandle = req.params.handle;
-  debugger
   Organization.find({ handle: orgHandle })
     .then(organizations => res.json(organizations))
     .catch(err => {
@@ -49,7 +48,6 @@ router.get("/handle/:handle", (req, res) => {
 // Get all users with the specified handle
 router.get('/handle/:handle/users', (req, res) => {
   const orgHandle = req.params.handle;
-  debugger  
   User.find({ orgHandle: orgHandle })
     .then(users => res.json(users))
     .then(orgHandle => res.json(orgHandle))
@@ -66,7 +64,6 @@ router.get('/handle/:handle/users', (req, res) => {
 router.get('/handle/:handle/users/name/:nameFragment', (req, res) => {
   const orgHandle = req.params.handle;
   const nameFragment = req.params.nameFragment
-  debugger
   
   User.find({
     $and : [
@@ -78,10 +75,8 @@ router.get('/handle/:handle/users/name/:nameFragment', (req, res) => {
       // $text: { $search: name} 
    })
     .then(users => {
-      debugger
       res.json(users)})
     .catch(err => {
-      debugger
       res.status(400).json({
         message:
           err.message || `No users found where orgHandle=${orgHandle} and firstName or lastName contains ${nameFragment}`

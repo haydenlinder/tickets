@@ -70,7 +70,6 @@ export const getOrgUsersByHandle = orgHandle => dispatch => (
 
 export const getOrgUsersByHandleAndNameFragment =
   (orgHandle, nameFragment) => dispatch => {
-    debugger
     return (
     OrgAPIUtil.getOrgUsersByHandleAndNameFragment(orgHandle, nameFragment)
       .then(users => dispatch(receiveOrgUsers(users)))

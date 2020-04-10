@@ -12,8 +12,8 @@ class UserIndex extends React.Component{
        let queryString = this.props.location.search
        let params = new URLSearchParams(queryString)
        let nameFragment = params.get('namefragment')
-       this.props.getOrgUsersByHandleAndNameFragment(this.props.currentUser.orgHandle, nameFragment) 
-       debugger
+       let currentUser = this.props.currentUser.orgHandle
+       this.props.getOrgUsersByHandleAndNameFragment(currentUser, nameFragment) 
     }
 
 
