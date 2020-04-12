@@ -33,16 +33,16 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(port, () => 
-  console.log(`Server is running. App is listening on port ${port}...`);
-)
+app.listen(port, () =>
+  console.log(`Server is running. App is listening on port ${port}... `)
+);
 
 
 const dbConnectionURI = KEYS.mongoURI;
 const dbConnectionOptions = {
-  'useNewUrlParser'   : true,
-  'useFindAndModify'  : false,
-  'useCreateIndex'    : true,
+  'useNewUrlParser': true,
+  'useFindAndModify': false,
+  'useCreateIndex': true,
   'useUnifiedTopology': true,
 };
 
@@ -50,5 +50,5 @@ mongoose
   .connect(dbConnectionURI, dbConnectionOptions)
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => {
-    console.log(`DB Connection Error: ${ err.message }`);
+    console.log(`DB Connection Error: ${err.message}`);
   });
