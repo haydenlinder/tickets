@@ -87,12 +87,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
-          <div 
-              className="hover-pointer container">{this.getLinks()}
-
-          </div>
-      </div>
+      <div>className="hover-pointer container">{this.getLinks()}</div>
     )
   }
 }
