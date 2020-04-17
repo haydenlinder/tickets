@@ -2,9 +2,8 @@
 node_modules/
 
 # keys
-/config/keys_dev.js
-/config/keys_aws.js
-/config/marstrong_keys_aws.js
+config/keys_dev.js
+config/keys_aws.js
 .env
 
 # misc
