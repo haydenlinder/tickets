@@ -44,9 +44,9 @@ class NavBar extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    const { loginRandomUser, clearErrors } = this.props;
+    const { loginDemoUser, clearErrors } = this.props;
     clearErrors();
-    loginRandomUser()
+    loginDemoUser()
     .then(() => {
       this.props.history.push(
         `/tickets/search?${getQueryString('owner', this.props.currentUser._id)}`

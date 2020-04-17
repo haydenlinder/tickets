@@ -33,4 +33,23 @@ const userSchema = new Schema({
 
 userSchema.index({ firstName: "text", lastName: "text" });
 
+
+userSchema.methods.logFullName = function () {
+  console.log(this.firstName + this.lastName);
+}
+
+userSchema.methods.findByEmail = function() {
+  return this.model('User').find({ email: this.email });
+};
+
+userSchema.methods.saveAndFind = () => {
+  debugger
+  const self = this;
+  self.save(function(err) {
+    if(err) throw err;
+    return User.findByEmail();
+  })
+};
+
+
 module.exports = userSchema;

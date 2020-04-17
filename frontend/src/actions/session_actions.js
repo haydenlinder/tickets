@@ -63,7 +63,7 @@ export const login = user => dispatch => (
   })
 );
 
-export const loginRandomUser = () => dispatch => {
+export const loginDemoUser = () => dispatch => {
   const emails = [
     "michael@acme.org",
     "bugs@acme.org",
