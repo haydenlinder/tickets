@@ -28,7 +28,10 @@ const userSchema = new Schema({
     },
     starred: [{
         type: String
-    }]
+    }],
+    avatar: {
+      type: String
+    }
 });
 
 userSchema.index({ firstName: "text", lastName: "text" });
