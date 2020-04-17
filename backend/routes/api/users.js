@@ -67,7 +67,7 @@ router.post("/register", (req, res) => {
             starred: user.starred,
             createdAt: user.createdAt
           };
-          jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 
+          jwt.sign(payload, keys.SECRET_OR_KEY, { expiresIn: 3600 }, 
             (err, token) => {
               res.status(201).json({
                 success: true,
@@ -115,7 +115,7 @@ router.post("/login", (req, res) => {
           createdAt: user.createdAt
         };
 
-        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, keys.SECRET_OR_KEY, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
             token: "Bearer " + token

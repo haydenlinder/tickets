@@ -48,7 +48,7 @@ const dbSeed = () => {
 
 
 // Connect to MogoDB via Mongoose
-const dbConnectionURI = KEYS.mongoURI;
+const dbConnectionURI = KEYS.URI;
 const dbConnectionOptions = {
   'useNewUrlParser': true,
   'useFindAndModify': false,

@@ -2,9 +2,9 @@
 node_modules/
 
 # keys
-config/keys_dev.js
-config/keys_aws.js
 .env
+.env.production
+.env.test
 
 # misc
 .DS_Store
