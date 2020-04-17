@@ -276,7 +276,7 @@ const getSomeHelp = new Ticket({
 });
 ticketSeeds.documents.push(getSomeHelp);
 
-const mikeOrientation = newTicket({
+const mikeOrientation = new Ticket({
   title: "Introduce Mike to the Gang",
   body: "lorem ipsum",
   status: "In Progress",
