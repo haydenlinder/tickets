@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const KEYS = require('./config/keys');
 const organizations = require('./backend/routes/api/organizations');
 const users = require('./backend/routes/api/users');
 const tickets = require('./backend/routes/api/tickets');
@@ -38,7 +39,7 @@ app.listen(port, () =>
 );
 
 
-const dbConnectionURI = KEYS.URI;
+const dbConnectionURI = process.env.URI;
 const dbConnectionOptions = {
   'useNewUrlParser'   : true,
   'useFindAndModify'  : false,

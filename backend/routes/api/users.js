@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const express = require("express");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const router = express.Router();
-const keys = require('../../../config/keys');
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require('../../models/user');
@@ -67,7 +68,7 @@ router.post("/register", (req, res) => {
             starred: user.starred,
             createdAt: user.createdAt
           };
-          jwt.sign(payload, keys.SECRET_OR_KEY, { expiresIn: 3600 }, 
+          jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 }, 
             (err, token) => {
               res.status(201).json({
                 success: true,
@@ -115,7 +116,7 @@ router.post("/login", (req, res) => {
           createdAt: user.createdAt
         };
 
-        jwt.sign(payload, keys.SECRET_OR_KEY, { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, process.env.SECRET_OR_KEY, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
             token: "Bearer " + token
@@ -170,8 +171,6 @@ router.get('/orgHandle/:orgHandle', (req, res) => {
     });
   });
 });
-
-
 
 
 module.exports = router;
